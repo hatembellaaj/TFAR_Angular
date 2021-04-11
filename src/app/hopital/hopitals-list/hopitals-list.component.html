@@ -1,0 +1,24 @@
+
+<div class="container">
+  <ng-container >
+    <table class="table">
+      <tr>
+        <th>Code_hopitale</th><th>Nom_Hopitale</th>
+      </tr>
+      <tr *ngFor="let h of hopitals$ | async">
+        <td>{{h.Code_hopitale}}</td>
+        <td>{{h.Nom_Hopitale}}</td>
+        <td>
+          <button class="btn btn-danger" (click)="onDelete(h)">
+            <span class="fa fa-trash-o"></span>
+          </button>
+        </td>
+        <td>
+          <button class="btn btn-danger" (click)="onEdit(h)">
+            <span class="fa fa-edit"></span>
+          </button>
+        </td>
+      </tr>
+    </table>
+  </ng-container>
+</div>
