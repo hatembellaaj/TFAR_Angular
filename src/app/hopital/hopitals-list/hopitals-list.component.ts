@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { HopitalService } from 'src/app/service/hopital.service';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-hopitals-list',
@@ -13,14 +14,15 @@ export class HopitalsListComponent implements OnInit {
 
   hopitals$:Observable<Hopital[]> |null=null;
 
-  constructor(private hopitalsService:HopitalService, private router:Router) { }
+  constructor(private hopitalsService:HopitalService, private router:Router, private http: HttpClient) { }
 
  ngOnInit(): void {
   this.onGetAllHopitals();
  }
 
  onGetAllHopitals() {
-  this.hopitals$= this.hopitalsService.getAllHopilals();
+
+ this.hopitals$= this.hopitalsService.getAllHopitals();
 }
 
  onDelete(h: Hopital) {
