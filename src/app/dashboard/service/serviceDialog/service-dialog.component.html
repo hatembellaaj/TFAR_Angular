@@ -1,0 +1,36 @@
+<section class="signup-form">
+  <!--<form fxLayout="column" fxLayoutAlign="center center" #f="ngForm" (ngSubmit)="onAdd(f)">-->
+    <form fxLayout="column" fxLayoutAlign="center center" #f="ngForm" >
+    <mat-form-field>
+      <input
+        type="number"
+        matInput
+        placeholder="Your code service"
+        ngModel
+        name="Code_Service"
+        required
+        [(ngModel)]="data.Code_Service"
+        #codeSInput="ngModel">
+      <mat-error *ngIf="codeSInput.hasError('required')">code must not be empty.</mat-error>
+    </mat-form-field>
+    <mat-form-field >
+      <input
+        type="text"
+        matInput
+        placeholder="Your nom service"
+        ngModel
+        name="Nom_Service"
+        required
+        [(ngModel)]="data.Nom_Service"
+        #nomSInput="ngModel">
+        <mat-error *ngIf="nomSInput.hasError('required')">nom must not be empty.</mat-error>
+    </mat-form-field>
+    <div class="button-row">
+      <!--<button type="submit" mat-raised-button color="primary" [disabled]="f.invalid" [mat-dialog-close]="data">Submit</button>-->
+      <button  mat-raised-button color="primary" [disabled]="f.invalid" [mat-dialog-close]="data">Submit</button>
+      <button  mat-raised-button color="warn" (click)="onNoClick()" >Cancel</button>
+
+    </div>
+
+  </form>
+</section>
