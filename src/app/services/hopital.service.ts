@@ -13,8 +13,14 @@ export class HopitalService {
   array!:Hopital[];
   ELEMENT_DATA!:Hopital[];
 
+  private baseUrl = environment.host;
 
-  constructor() {
+  private auth_token="eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImF1dGgiOiJST0xFX0FETUlOLFJPTEVfVVNFUiIsImV4cCI6MTYyMDIwNDkxOH0.THT3m9zZXDLvAe6RL2K2991vX1d2trjMMXoTCu_8SPEqYcheVuzV_PNt2AYDS04fbTkKs7LeiPHljcM6u-IWIQ";
+
+  headers: HttpHeaders = new HttpHeaders();
+
+
+  constructor(private http: HttpClient) {
     this.ELEMENT_DATA=[{Code_hopitale:1,Nom_Hopitale:"hopitale1"},
     {Code_hopitale:3,Nom_Hopitale:"hopitale3"},
     {Code_hopitale:4,Nom_Hopitale:"hopitale4"},
@@ -30,9 +36,26 @@ export class HopitalService {
    }
 
 
-   getAllHopitals() {
+
+
+
+   //getAllHopitals(): Observable<Hopital[]>
+   getAllHopitals()
+   {
+     //const token=sessionStorage.getItem('jhi-authenticationtoken');
+     const token=this.auth_token;
+     console.log(token);
+     this.headers = new HttpHeaders().set('Authorization', 'Bearer ' + token);
+     console.log("salut test ...... "); 
+     this.http.get<Hopital[]>(this.baseUrl+"/api/hopitaleDtos/findAll", { headers: this.headers }).subscribe(response => {
+      //this.hopitalList = response.map(item => new Hopital(item));
+      console.log(response);
+  });
+     return this.hopitalList;
+   }
+  /* getAllHopitals() {
     return this.hopitalList;
-  }
+  }*/
 
 
   saveHopital(hopital:Hopital) {
@@ -70,63 +93,6 @@ export class HopitalService {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  /*private baseUrl = environment.host;
-
-  private auth_token="eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImF1dGgiOiJST0xFX0FETUlOLFJPTEVfVVNFUiIsImV4cCI6MTYxODk1MDk5N30.YEw0Vj3kgDLfkK_DWiCaE-wwjj0-sR-6ouBogfD8OstSCqgRG6896Gp7LGU753_d1gZjZ8fPIlVCr7KE6MEESA";
-
-  headers: HttpHeaders = new HttpHeaders();
-
-
-  constructor(private http: HttpClient) { }
-
-
-  getAllHopitals(): Observable<Hopital[]>
-
-  {
-    //const token=sessionStorage.getItem('jhi-authenticationtoken');
-    const token=this.auth_token;
-    console.log(token);
-    this.headers = new HttpHeaders().set('Authorization', 'Bearer ' + token);
-    return this.http.get<Hopital[]>(this.baseUrl+"/api/hopitaleDtos/findAll", { headers: this.headers });
-
-  }*/
 
   /*
 
