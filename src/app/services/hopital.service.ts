@@ -15,9 +15,17 @@ export class HopitalService {
 
   private baseUrl = environment.host;
 
-  private auth_token="eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImF1dGgiOiJST0xFX0FETUlOLFJPTEVfVVNFUiIsImV4cCI6MTYyMDIwNDkxOH0.THT3m9zZXDLvAe6RL2K2991vX1d2trjMMXoTCu_8SPEqYcheVuzV_PNt2AYDS04fbTkKs7LeiPHljcM6u-IWIQ";
+  private auth_token="eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImF1dGgiOiJST0xFX0FETUlOLFJPTEVfVVNFUiIsImV4cCI6MTYyMDY1NDUwOH0.ga_qOUF8PWCws_s89DVfWGphrjFFUFgHzDeNSyNQ2gnITc4Ec5nKIKeZ4vXinTv19w5q3KJxwV2CCqlOeUOVqg";
 
-  headers: HttpHeaders = new HttpHeaders();
+   headers!: HttpHeaders;
+getAllHopitaux(): Observable<Hopital[]>
+  {
+    return this.http.get<Hopital[]>(this.baseUrl+"/api/hopitaleDtos/findAll", { headers: this.headers });
+
+  }
+
+
+ // headers: HttpHeaders = new HttpHeaders();
 
 
   constructor(private http: HttpClient) {
@@ -49,7 +57,7 @@ export class HopitalService {
      console.log("salut test ...... "); 
      this.http.get<Hopital[]>(this.baseUrl+"/api/hopitaleDtos/findAll", { headers: this.headers }).subscribe(response => {
       //this.hopitalList = response.map(item => new Hopital(item));
-      console.log(response);
+      console.log("server connection ok + response : " + response);
   });
      return this.hopitalList;
    }

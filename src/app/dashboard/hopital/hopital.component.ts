@@ -8,6 +8,7 @@ import { HopitalService } from 'src/app/services/hopital.service';
 
 import { HopitalDialogComponent } from './hopitalDialog/hopital-dialog.component';
 import { HopitalDtDialogComponent } from './hopitalDtDialog/hopital-dt-dialog.component';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-hopital',
@@ -17,9 +18,9 @@ import { HopitalDtDialogComponent } from './hopitalDtDialog/hopital-dt-dialog.co
 export class HopitalComponent implements OnInit,AfterViewInit  {
 
 
-
+  hopitaux$!:Observable<Hopital[]>;
   dataSource!: MatTableDataSource<Hopital> ;
-
+  hopitalList!:Hopital[];
 
   displayedColumns: string[] = ['Code_hopitale', 'Nom_Hopitale','detail','update','delete'];
 
@@ -34,6 +35,7 @@ export class HopitalComponent implements OnInit,AfterViewInit  {
   ngAfterViewInit(): void {
     this.sort1();
     this.paginator1();
+    this.getAllhopitaux();
   }
 
   sort1(){
@@ -51,7 +53,7 @@ export class HopitalComponent implements OnInit,AfterViewInit  {
   }
 
   getData(){
-    this.dataSource= new MatTableDataSource<Hopital>(this.hopitalService.getAllHopitals() );
+    this.dataSource = new MatTableDataSource<Hopital>(this.hopitalService.getAllHopitals() );
   }
 
   onSearchClear() {
@@ -64,15 +66,15 @@ export class HopitalComponent implements OnInit,AfterViewInit  {
   }
 
   onCreate(){
-    const dialogConfig=new MatDialogConfig();
-    dialogConfig.disableClose=true;
-    dialogConfig.autoFocus=true;
-    dialogConfig.width="60%";
-    dialogConfig.data={Code_Hopitale: this.Code_hopitale, Nom_Hopitale: this.Nom_Hopitale};
-    const dialogRef=this.dialog.open(HopitalDialogComponent,dialogConfig);
+    const dialogConfig =new MatDialogConfig();
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+    dialogConfig.width = "60%";
+    dialogConfig.data = {Code_Hopitale: this.Code_hopitale, Nom_Hopitale: this.Nom_Hopitale};
+    const dialogRef =this.dialog.open(HopitalDialogComponent,dialogConfig);
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
-      if (result!=undefined){
+      if (result != undefined){
 
         console.log(result);
 
@@ -107,35 +109,35 @@ export class HopitalComponent implements OnInit,AfterViewInit  {
 
   onDetails(hopital:Hopital){
 
-    const dialogConfig=new MatDialogConfig();
-    dialogConfig.disableClose=true;
-    dialogConfig.autoFocus=true;
-    dialogConfig.width="60%";
-    dialogConfig.data={Code_hopitale: hopital.Code_hopitale, Nom_Hopitale: hopital.Nom_Hopitale};
-    console.log("["+hopital.Code_hopitale+", "+hopital.Nom_Hopitale+"]");
-    const dialogRef=this.dialog.open(HopitalDtDialogComponent,dialogConfig);
+    const dialogConfig =new MatDialogConfig();
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+    dialogConfig.width = "60%";
+    dialogConfig.data = {Code_hopitale: hopital.Code_hopitale, Nom_Hopitale: hopital.Nom_Hopitale};
+    console.log("["+hopital.Code_hopitale+", "+hopital.Nom_Hopitale + "]");
+    const dialogRef =this.dialog.open(HopitalDtDialogComponent,dialogConfig);
 
   }
 
 
   onUpdate(hopital:Hopital){
 
-    const dialogConfig=new MatDialogConfig();
-    dialogConfig.disableClose=true;
-    dialogConfig.autoFocus=true;
-    dialogConfig.width="60%";
-    dialogConfig.data={Code_hopitale: hopital.Code_hopitale, Nom_Hopitale: hopital.Nom_Hopitale};;
-    console.log("["+hopital.Code_hopitale+", "+hopital.Nom_Hopitale+"]");
-    const dialogRef=this.dialog.open(HopitalDialogComponent,dialogConfig);
+    const dialogConfig =new MatDialogConfig();
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+    dialogConfig.width = "60%";
+    dialogConfig.data = {Code_hopitale: hopital.Code_hopitale, Nom_Hopitale: hopital.Nom_Hopitale};;
+    console.log("["+hopital.Code_hopitale+", "+hopital.Nom_Hopitale + "]");
+    const dialogRef =this.dialog.open(HopitalDialogComponent,dialogConfig);
 
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed update');
-      if (result==undefined){
+      if (result == undefined){
 
         console.log("vous avez clicker sur cancel");
       }
-      else if (result.Code_hopitale==hopital.Code_hopitale){
+      else if (result.Code_hopitale == hopital.Code_hopitale){
 
         console.log("rrrrrrrrrrrrrrrrrrrrrrrrr")
         console.log(result.Code_Hopitale);
@@ -161,5 +163,19 @@ export class HopitalComponent implements OnInit,AfterViewInit  {
 
   }
 
+
+
+  getAllhopitaux(){
+    let artists: any[] = [];
+    this.hopitaux$ = this.hopitalService.getAllHopitaux();
+    this.hopitaux$.subscribe(response => {
+      artists = response ;
+      console.log("server connection ok + detail response : " + artists[0].nom_Hopitale);
+  }
+
+
+
+    )
+  }
 
 }
