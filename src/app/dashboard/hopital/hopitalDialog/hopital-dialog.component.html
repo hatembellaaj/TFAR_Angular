@@ -7,10 +7,8 @@
         placeholder="Your code hopitale"
         ngModel
         name="Code_hopitale"
-        required
-        [(ngModel)]="data.Code_hopitale"
+        [(ngModel)]="data.code_hopitale"
         #codeHInput="ngModel">
-      <mat-error *ngIf="codeHInput.hasError('required')">code must not be empty.</mat-error>
     </mat-form-field>
     <mat-form-field >
       <input
@@ -20,7 +18,7 @@
         ngModel
         name="Nom_Hopitale"
         required
-        [(ngModel)]="data.Nom_Hopitale"
+        [(ngModel)]="data.nom_Hopitale"
         #nomHInput="ngModel">
         <mat-error *ngIf="nomHInput.hasError('required')">nom must not be empty.</mat-error>
     </mat-form-field>

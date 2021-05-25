@@ -18,20 +18,6 @@ export class ServiceDialogComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  /*onAdd(form:any){
-    console.log(form);
-    if (form.valid) {
-
-      this.serviceService.saveService(form.value)
-
-      console.log("ajouté: ["+form.value.Code_Service+","+form.value.Nom_Service+"]");
-
-      console.log(this.serviceService.getAllServices());
-
-    }
-
-  }*/
-
   onNoClick(){
 
     this.dialogRef.close();

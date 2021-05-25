@@ -1,4 +1,4 @@
 export interface Service {
-  Code_Service : number;
-  Nom_Service  : string;
+  code_service : number;
+  nom_service  : string;
 }

@@ -14,7 +14,7 @@ import { ServiceDtDialogComponent } from './serviceDtDialog/service-dt-dialog.co
 @NgModule({
   declarations: [
 
-    ServiceComponent,
+     ServiceComponent,
      ServiceDialogComponent,
      ServiceDtDialogComponent
   ],
