@@ -1,21 +1,22 @@
+import { DepartementModule } from './departement/departement.module';
 import { StatistiqueModule } from './statistique/statistique.module';
 import { FicheModule } from './fiche/fiche.module';
 import { MedecinModule } from './medecin/medecin.module';
-import { ServiceModule } from './service/service.module';
-import { HopitalModule } from './hopital/hopital.module';
 import { DashboardComponent } from './dashboard.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { OrganismeModule } from 'src/app/dashboard/organisme/organisme.module';
+import { Fiche2Module } from 'src/app/dashboard/fiche2/fiche2.module';
 
 const routes: Routes = [{path:'', component:DashboardComponent ,children: [{
-  path: 'hopital',
+  path: 'organisme',
   loadChildren: () =>
-    import('src/app/dashboard/hopital/hopital.module').then((m) => HopitalModule)
+    import('src/app/dashboard/organisme/organisme.module').then((m) => OrganismeModule)
 },
 {
-  path: 'service',
+  path: 'departement',
   loadChildren: () =>
-    import('src/app/dashboard/service/service.module').then((m) => ServiceModule)
+    import('src/app/dashboard/departement/departement.module').then((m) => DepartementModule)
 }
 ,
 {
@@ -30,6 +31,11 @@ const routes: Routes = [{path:'', component:DashboardComponent ,children: [{
     import('src/app/dashboard/fiche/fiche.module').then((m) => FicheModule)
 }
 ,
+{
+  path: 'fiche2',
+  loadChildren: () =>
+    import('src/app/dashboard/fiche2/fiche2.module').then((m) => Fiche2Module)
+},
 {
   path: 'statistique',
   loadChildren: () =>

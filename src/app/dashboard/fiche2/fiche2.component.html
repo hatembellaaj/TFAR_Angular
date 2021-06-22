@@ -1,0 +1,243 @@
+<div class="container">
+  <mat-toolbar color="primary">
+    <span class="fill-remaining-space"></span>
+    <span>Fiche</span>
+    <span class="fill-remaining-space"></span>
+  </mat-toolbar>
+</div>
+
+<div class="fiche-details-container">
+  <div class="left">
+
+    <div>
+      <span class="label">Organisme</span>
+      <mat-form-field appearance="fill" class="item">
+        <mat-select [(ngModel)]="selectedOrganisme" [ngModelOptions]="{standalone: true}" >
+          <mat-option *ngFor="let item of organismes$ | async " value="{{item.nom}}">{{item.nom}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <div>
+      <span class="label">Date d'enregistrement</span>
+      <mat-form-field appearance="fill" class="item">
+        <input matInput [matDatepicker]="picker">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+    </div>
+
+
+  </div>
+
+  <div class="right">
+    <div>
+      <span class="label">Departement</span>
+      <mat-form-field appearance="fill" class="item">
+        <mat-select [(ngModel)]="selectedDepartement" [ngModelOptions]="{standalone: true}">
+          <mat-option *ngFor="let item of departements$ | async " value="{{item.nom}}">{{item.nom}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <div>
+      <span class="label">Date de diagnostique</span>
+      <mat-form-field appearance="fill" class="item">
+        <input matInput [matDatepicker]="picker10">
+        <mat-datepicker-toggle matSuffix [for]="picker10"></mat-datepicker-toggle>
+        <mat-datepicker #picker10></mat-datepicker>
+      </mat-form-field>
+    </div>
+
+
+  </div>
+</div>
+
+
+
+
+<div class="example-action-buttons">
+  <button mat-button (click)="accordion.openAll()">Expand All</button>
+  <button mat-button (click)="accordion.closeAll()">Collapse All</button>
+</div>
+
+
+<form>
+  <mat-accordion class="example-headers-align" multi>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Identification du Patient
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+
+      <fiche2-patient></fiche2-patient>
+
+    </mat-expansion-panel>
+
+
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Histoire Familiale
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+
+      <mat-form-field>
+        <mat-label>Date</mat-label>
+        <input matInput [matDatepicker]="picker9">
+        <mat-datepicker-toggle matSuffix [for]="picker9"></mat-datepicker-toggle>
+        <mat-datepicker #picker9></mat-datepicker>
+      </mat-form-field>
+
+    </mat-expansion-panel>
+
+
+
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Circonstances de découverte
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+
+      <mat-form-field>
+        <mat-label>First name</mat-label>
+        <input matInput>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Age</mat-label>
+        <input matInput type="number" min="1">
+      </mat-form-field>
+
+    </mat-expansion-panel>
+
+
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Sandrome Malformatif
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+
+      <mat-form-field>
+        <mat-label>Date</mat-label>
+        <input matInput [matDatepicker]="picker1">
+        <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+        <mat-datepicker #picker1></mat-datepicker>
+      </mat-form-field>
+    </mat-expansion-panel>
+
+
+
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Etude Cytogenetique
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+
+      <mat-form-field>
+        <mat-label>First name</mat-label>
+        <input matInput>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Age</mat-label>
+        <input matInput type="number" min="1">
+      </mat-form-field>
+
+    </mat-expansion-panel>
+
+
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Signes Hématologiques
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+
+      <mat-form-field>
+        <mat-label>Date</mat-label>
+        <input matInput [matDatepicker]="picker2">
+        <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+        <mat-datepicker #picker2></mat-datepicker>
+      </mat-form-field>
+    </mat-expansion-panel>
+
+
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Biologie Moléculaire
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+
+      <mat-form-field>
+        <mat-label>First name</mat-label>
+        <input matInput>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Age</mat-label>
+        <input matInput type="number" min="1">
+      </mat-form-field>
+
+    </mat-expansion-panel>
+
+
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Congélation de Cellules
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+
+      <mat-form-field>
+        <mat-label>Date</mat-label>
+        <input matInput [matDatepicker]="picker3">
+        <mat-datepicker-toggle matSuffix [for]="picker3"></mat-datepicker-toggle>
+        <mat-datepicker #picker3></mat-datepicker>
+      </mat-form-field>
+    </mat-expansion-panel>
+
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Score Clinique
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+
+      <mat-form-field>
+        <mat-label>Date</mat-label>
+        <input matInput [matDatepicker]="picker4">
+        <mat-datepicker-toggle matSuffix [for]="picker4"></mat-datepicker-toggle>
+        <mat-datepicker #picker4></mat-datepicker>
+      </mat-form-field>
+    </mat-expansion-panel>
+
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Traitement
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+
+      <mat-form-field>
+        <mat-label>Date</mat-label>
+        <input matInput [matDatepicker]="picker5">
+        <mat-datepicker-toggle matSuffix [for]="picker5"></mat-datepicker-toggle>
+        <mat-datepicker #picker5></mat-datepicker>
+      </mat-form-field>
+    </mat-expansion-panel>
+
+
+  </mat-accordion>
+</form>
+<div fxLayoutAlign="center center">
+
+  <button mat-raised-button color="primary" (click)="toFiche()">Ajouter</button>
+  <button mat-raised-button color="warn"  (click)="toFiche()">Quitter</button>
+</div>
+

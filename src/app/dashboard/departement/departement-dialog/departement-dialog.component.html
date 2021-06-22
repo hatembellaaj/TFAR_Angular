@@ -1,0 +1,32 @@
+<section class="signup-form">
+  <form fxLayout="column" fxLayoutAlign="center center" #f="ngForm" >
+  <!--<mat-form-field>
+    <input
+      type="number"
+      matInput
+      placeholder="Your code departement"
+      ngModel
+      name="Code_Departement"
+      [(ngModel)]="data.code"
+      #codeSInput="ngModel">
+  </mat-form-field>-->
+  <mat-form-field >
+    <input
+      type="text"
+      matInput
+      placeholder="Your nom departement"
+      ngModel
+      name="Nom_Departement"
+      required
+      [(ngModel)]="data.nom"
+      #nomSInput="ngModel">
+      <mat-error *ngIf="nomSInput.hasError('required')">nom must not be empty.</mat-error>
+  </mat-form-field>
+  <div class="button-row">
+    <button  mat-raised-button color="primary" [disabled]="f.invalid" [mat-dialog-close]="data">Submit</button>
+    <button  mat-raised-button color="warn" (click)="onNoClick()" >Cancel</button>
+
+  </div>
+
+</form>
+</section>

@@ -23,7 +23,7 @@ export class LoginComponent implements OnInit {
 
   login() : void {
     if(this.username == 'admin' && this.password == 'admin'){
-     this.router.navigate(["dashboard/hopital"]);
+     this.router.navigate(["dashboard/organisme"]);
      console.log("vrai");
     }else {
       console.log("non");

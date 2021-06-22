@@ -1,22 +1,24 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FicheRoutingModule } from './fiche-routing.module';
-import { FicheComponent } from './fiche.component';
-import { FormsModule } from '@angular/forms';
 import { MaterialModule } from 'src/app/material/material.module';
+import { Fiche2RoutingModule } from './fiche2-routing.module';
+import { Fiche2Component } from './fiche2.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { FormsModule } from '@angular/forms';
+import { PatientComponent } from './patient/patient.component';
 
 
 @NgModule({
   declarations: [
-    FicheComponent
+    Fiche2Component,
+    PatientComponent
   ],
   imports: [
     CommonModule,
-    FicheRoutingModule,
+    Fiche2RoutingModule,
     MaterialModule,
     FlexLayoutModule,
     FormsModule
   ]
 })
-export class FicheModule { }
+export class Fiche2Module { }
