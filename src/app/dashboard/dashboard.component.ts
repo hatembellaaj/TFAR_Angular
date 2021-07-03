@@ -10,7 +10,7 @@ import { map, shareReplay } from 'rxjs/operators';
 })
 export class DashboardComponent {
 
-  menuItems = ['organisme', 'departement', 'medecin', 'fiche', 'statistique'];
+  menuItems = ['organisme', 'departement', 'user', 'fiche', 'statistique'];
 
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(

@@ -10,6 +10,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { OrganismeService } from '../../services/organisme.service';
 import { OrganismeDialogComponent } from './organisme-dialog/organisme-dialog.component';
 import { OrganismeDtDialogComponent } from './organisme-dt-dialog/organisme-dt-dialog.component';
+import { OrganismeType } from 'src/app/enumeration/OrganismeType';
 
 @Component({
   selector: 'app-organisme',
@@ -31,7 +32,7 @@ export class OrganismeComponent implements OnInit,AfterViewInit,DoCheck {
   tel!:string;
   contact!:string;
   email!:string;
-  type!:string;
+  type!:OrganismeType;
   bool :boolean=false;
 
 

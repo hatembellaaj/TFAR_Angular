@@ -22,4 +22,8 @@ export class OrganismeDialogComponent implements OnInit {
 
   }
 
+  todo(a:any){
+    console.log(a,"mokhtar");
+  }
+
 }
