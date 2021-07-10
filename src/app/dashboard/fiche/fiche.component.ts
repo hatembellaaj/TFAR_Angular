@@ -21,7 +21,7 @@ export class FicheComponent implements OnInit {
   dataSource!: MatTableDataSource<Fiche> ;
   //displayedColumns: string[] = ['code', 'num dossier','nom','prenom','date diagnostique','date d enregistrement','organisme','departement','impression','detail','update','delete'];
 
-  displayedColumns: string[] = ['numDossier','detail','update','delete'];
+  displayedColumns: string[] = ['code','num_dossier','nom','prenom','date_diagnostic','date_enregistrement','organisme','departement','detail','update','delete'];
 
   searchKey!: string;
   @ViewChild(MatSort) sort!: MatSort;

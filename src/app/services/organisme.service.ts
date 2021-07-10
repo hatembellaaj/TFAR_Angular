@@ -28,6 +28,10 @@ export class OrganismeService {
     return this.http.get<Organisme[]>(this.baseUrl+"/api/organismes/findAll", { headers: this.headers });
   }
 
+  getOrganismeById(id:number): Observable<Organisme>{
+    return this.http.get<Organisme>(this.baseUrl+"/api/organismes/find/"+id, { headers: this.headers });
+  }
+
   saveOrganisme(organisme: Organisme): Observable<Organisme> {
     return this.http.post<Organisme>(this.baseUrl+"/api/organismes/save",organisme,{ headers: this.headers });
   }

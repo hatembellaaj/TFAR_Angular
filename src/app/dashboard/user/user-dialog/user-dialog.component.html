@@ -199,28 +199,36 @@
         </mat-form-field>
 
 
-          <mat-form-field appearance="fill" >
+          <!--<mat-form-field appearance="fill" >
             <mat-label>Organisme</mat-label>
             <mat-select [(ngModel)]="data.codeOrganisme" ngModel name="codeOrganismeUser" required >
               <mat-option *ngFor="let item of organismes$ | async " value="{{ item.code }}">{{item.nom}}</mat-option>
             </mat-select>
-          </mat-form-field>
+          </mat-form-field>-->
 
-
-
-
-
-
-          <mat-form-field appearance="fill"  >
-            <mat-label>Departement</mat-label>
-            <mat-select [(ngModel)]="data.codeDepartement" ngModel name="codeDepartementUser" required >
-              <mat-option *ngFor="let item of departements$ | async " value="{{ item.code }}">{{item.nom}}</mat-option>
+          <mat-form-field appearance="fill" >
+            <mat-label>Organisme</mat-label>
+            <mat-select [(value)]="data.codeOrganisme"  name="codeOrganismeUser" required >
+              <mat-option *ngFor="let item of organismes$ | async " [value]="item.code" >{{item.nom}}</mat-option>
             </mat-select>
           </mat-form-field>
 
+          <!--<mat-form-field appearance="fill"  >
+            <mat-label>Departement</mat-label>
+            <mat-select [(ngModel)]="data.codeDepartement" ngModel name="codeDepartementUser" required >
+              <mat-option *ngFor="let item of departements$ | async " value="{{ item.code  }}">{{item.nom}}</mat-option>
+            </mat-select>
+          </mat-form-field>-->
+
+          <mat-form-field appearance="fill" >
+            <mat-label>Departement</mat-label>
+            <mat-select   [(value)]="data.codeDepartement" name="codeDepartementUser" required >
+                <mat-option *ngFor="let item of departements$ | async" [value]="item.code"> {{ item.nom }} </mat-option>
+            </mat-select>
+        </mat-form-field>
+
       </div>
     </div>
-
 
 
 

@@ -5,41 +5,45 @@ import { TypeUser } from "src/app/enumeration/TypeUser";
 
 export interface User {
 
-  code:number;
+  code: number;
 
-  role:RoleType;
+  role: RoleType;
 
-  type:TypeUser;
+  type: TypeUser;
 
-  nom:string;
+  nom: string;
 
-  prenom:string;
+  prenom: string;
 
-  grade:string;
+  grade: string;
 
-  gouvernorat:Gouvernorat;
+  gouvernorat: Gouvernorat;
 
-  adresse:string;
+  adresse: string;
 
-  tel:string;
+  tel: string;
 
-  email:string;
+  email: string;
 
-  photo:string;
+  photo: string;
 
-  poste:string;
+  poste: string;
 
-  fax:string;
+  fax: string;
 
-  login:string;
+  login: string;
 
-  password:string;
+  password: string;
 
-  url:string;
+  url: string;
 
-  codeOrganisme:number;
+  codeOrganisme: number;
 
-  codeDepartement:number;
+  nomOrganisme: string;
+
+  codeDepartement: number;
+
+  nomDepartement: string;
 
 
 }

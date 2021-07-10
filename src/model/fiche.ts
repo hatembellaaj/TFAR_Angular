@@ -1,6 +1,12 @@
 export interface Fiche {
 
-  nDossierFiche:string;
+  idFiche:number;
+
+  ndossierFiche:string;
+
+  dateDiagnostique:Date;
+
+  dateEnregistrement:Date;
 
 
 }

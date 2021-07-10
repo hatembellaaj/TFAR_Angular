@@ -1,0 +1,68 @@
+#wrapper {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: minmax(70px, auto);
+}
+
+
+* {
+  box-sizing: border-box;
+}
+
+/* Create two unequal columns that floats next to each other */
+.column {
+  float: left;
+  padding: 10px;
+  height: 370px; /* Should be removed. Only for demonstration */
+}
+
+.left {
+  width: 60%;
+}
+
+.right {
+  width: 40%;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+
+hr{
+  height: 2px;
+  background-color:#0000FF;
+  border: none;
+}
+
+
+/* Create two unequal columns that floats next to each other */
+.column1 {
+  float: left;
+  padding: 10px;
+  height: 450px; /* Should be removed. Only for demonstration */
+}
+
+.left1 {
+  width: 25%;
+}
+
+.right1 {
+  width: 75%;
+}
+
+/* Clear floats after the columns */
+.row1:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+#gg{
+  overflow:auto;
+  width: 100%;
+}
+

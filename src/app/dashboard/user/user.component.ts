@@ -1,5 +1,5 @@
 import { Organisme } from './../../../model/organisme';
-import { element } from 'protractor';
+
 
 import { User } from './../../../model/user';
 import { AfterViewInit, Component, DoCheck, OnInit, ViewChild } from '@angular/core';
@@ -29,7 +29,7 @@ import { Gouvernorat } from 'src/app/enumeration/Gouvernorat';
 export class UserComponent implements OnInit, AfterViewInit, DoCheck {
 
   users$!: Observable<User[]>;
-  organismes$!: Observable<Organisme[]>;
+  organismes$!: Observable<Organisme>;
   departements$!: Observable<Departement[]>;
   dataSource!: MatTableDataSource<User>;
   displayedColumns: string[] = ['code', 'role', 'type', 'nom', 'prenom', 'grade', 'gouvernorat', 'adresse', 'tel', 'email', 'poste', 'fax', 'organisme',
@@ -56,6 +56,8 @@ export class UserComponent implements OnInit, AfterViewInit, DoCheck {
   codeOrganisme!: number;
   codeDepartement!: number;
   bool: boolean = false;
+  nomOrganisme!:string;
+  nomDepartement!: string;
 
 
   constructor(private dialog: MatDialog, private userService: UserService, private _snackBar: MatSnackBar,
@@ -117,6 +119,8 @@ export class UserComponent implements OnInit, AfterViewInit, DoCheck {
 
 
 
+
+
   onSearchClear() {
     this.searchKey = "";
     this.applyFilter();
@@ -149,21 +153,19 @@ export class UserComponent implements OnInit, AfterViewInit, DoCheck {
       password: this.password,
       url: this.url,
       codeOrganisme: this.codeOrganisme,
-      codeDepartement: this.codeDepartement
+      nomOrganisme: this.nomOrganisme,
+      codeDepartement: this.codeDepartement,
+      nomDepartement: this.nomDepartement
     };
     const dialogRef = this.dialog.open(UserDialogComponent, dialogConfig);
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
       if (result != undefined) {
 
-        //result.organisme=JSON.parse(result.organisme);
-        //result.departement=JSON.parse(result.departement );
 
         console.log(result, "zouari");
         console.log(result.code);
         console.log(result.nom);
-        //console.log(typeof(result.organisme),"org-code m");
-        //console.log(result.departement.code,"dep-code m");
 
         this.userService.saveUser(result).subscribe(
           res => {
@@ -230,7 +232,9 @@ export class UserComponent implements OnInit, AfterViewInit, DoCheck {
       password: user.password,
       url: user.url,
       codeOrganisme: user.codeOrganisme,
-      codeDepartement: user.codeDepartement
+      nomOrganisme: user.nomOrganisme,
+      codeDepartement: user.codeDepartement,
+      nomDepartement: user.nomDepartement
     };
     console.log("[" + user.codeOrganisme + ", " + user.codeDepartement + "]uuuu");
     const dialogRef = this.dialog.open(UserDtDialogComponent, dialogConfig);
@@ -265,9 +269,10 @@ export class UserComponent implements OnInit, AfterViewInit, DoCheck {
       password: user.password,
       url: user.url,
       codeOrganisme: user.codeOrganisme,
-      codeDepartement: user.codeDepartement
+      nomOrganisme: user.nomOrganisme,
+      codeDepartement: user.codeDepartement,
+      nomDepartement: user.nomDepartement
     };
-    //console.log("["+JSON.stringify(user.organisme)+", "+JSON.stringify(user.departement)+ "]"+"gggg");
     const dialogRef = this.dialog.open(UserDialogComponent, dialogConfig);
 
 
@@ -283,9 +288,6 @@ export class UserComponent implements OnInit, AfterViewInit, DoCheck {
         console.log(result.code);
         console.log("update sucsess");
         console.log(user.code);
-        //console.log(user.organisme,"dddddddddddddddddddddddddy");
-        //result.organisme=JSON.parse(result.organisme);
-        //esult.departement=JSON.parse(result.departement);
 
         this.userService.updateUser(result).subscribe(
           res => {
@@ -300,13 +302,7 @@ export class UserComponent implements OnInit, AfterViewInit, DoCheck {
         );
 
       }
-      /*else {
 
-        console.log("il ne faut pas changer le code organisme");
-
-        this.openSnackBar("You  mustn't change the code organisme", "Update fail",2800);
-
-      }*/
     });
 
   }
@@ -323,11 +319,6 @@ export class UserComponent implements OnInit, AfterViewInit, DoCheck {
     console.log(element, "aqwaqwaqw");
   }
 
-  getAllOrganismes() {
-    this.organismes$ = this.organismeService.getAllOrganismes().pipe(map(data => {
-      console.log(data); return data
-    }));
-  }
 
   getAllDepartements() {
     this.departements$ = this.departementService.getAllDepartements().pipe(map(data => {
@@ -335,16 +326,7 @@ export class UserComponent implements OnInit, AfterViewInit, DoCheck {
     }));
   }
 
-  fct(a:any){
 
-    this.getAllOrganismes();
-
-    let item: string | undefined;
-    this.organismes$?. // observable cached data
-        subscribe((items: Organisme[]) => item = items.find(p => p.code == a)?.nom);
-
-        return item;
-  }
 
 }
 

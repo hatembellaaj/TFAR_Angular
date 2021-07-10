@@ -1,3 +1,4 @@
+import { Laboratoire } from './../../model/laboratoire';
 import { Fiche } from './../../model/fiche';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
@@ -7,7 +8,7 @@ import { environment } from 'src/environments/environment';
 @Injectable({
   providedIn: 'root'
 })
-export class FicheService {
+export class LaboratoireService {
 
   private baseUrl = environment.host;
   private auth_token="eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImF1dGgiOiJST0xFX0FETUlOLFJPTEVfVVNFUiIsImV4cCI6MTYyMzI1ODAzN30.7a-YVPD9wr5VX2Teil9kXcsXBriQHStlydVbqC0GjqcAufHBSyuOxusLfCnFlIPImXhU3uGONRMozeS3mL63Qw";
@@ -23,21 +24,11 @@ export class FicheService {
    }
 
 
-  getAllFiches(): Observable<Fiche[]>{
-    return this.http.get<Fiche[]>(this.baseUrl+"/api/fiches/findAll", { headers: this.headers });
+  getAllLaboratoires(): Observable<Laboratoire[]>{
+    return this.http.get<Laboratoire[]>(this.baseUrl+"/api/laboratoires/findAll", { headers: this.headers });
   }
 
-  saveFiche(fiche: Fiche): Observable<Fiche> {
-    return this.http.post<Fiche>(this.baseUrl+"/api/fiches/save",fiche,{ headers: this.headers });
-  }
 
-  updateFiche(fiche: Fiche): Observable<Fiche> {
-    return this.http.put<Fiche>(this.baseUrl+"/api/fiches/save/"+fiche.idFiche,fiche,{ headers: this.headers });
-  }
-
-  deleteFiche(fiche: Fiche): Observable<void> {
-    return this.http.delete<void>(this.baseUrl+"/api/fiches/delete/"+fiche.idFiche,{ headers: this.headers });
-  }
 
 
 

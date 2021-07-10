@@ -1,0 +1,119 @@
+<div>
+  <span class="label">Degré de consanguinité des parents</span>
+  <mat-form-field appearance="fill">
+    <mat-label>Degré de consanguinité des parents</mat-label>
+    <mat-select [(ngModel)]="dcdp" ngModel name="dcdp" required>
+      <mat-option *ngFor="let item of dConsanguiniteParent " value="{{item}}">{{item}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
+
+<div id="wrapper">
+  <div id="c1">
+
+    <span class="label">Numbre de frére(s) et soeur(s) vivants </span>
+    <mat-form-field appearance="fill">
+      <mat-label>Numbre de frére(s) et soeur(s) vivants </mat-label>
+      <mat-select [(ngModel)]="nfsv" ngModel name="nfsv" required>
+        <mat-option *ngFor="let item of tab " value="{{item}}">{{item}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <br>
+
+    <span class="label">Place de l'enfant dans la fratrie (le plus agé est numero 1 ) </span>
+    <mat-form-field appearance="fill">
+      <mat-label>Place de l'enfant dans la fratrie </mat-label>
+      <mat-select [(ngModel)]="dpaf" ngModel name="nfsv" required>
+        <mat-option *ngFor="let item of tab2 " value="{{item}}">{{item}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+  </div>
+
+
+
+  <div id="c2">
+
+    <span class="label">Décedés par AF </span>
+    <mat-form-field appearance="fill">
+      <mat-label>Décedés par AF </mat-label>
+      <mat-select [(ngModel)]="dpaf1" ngModel name="dpaf" required>
+        <mat-option *ngFor="let item of tab2 " value="{{item}}">{{item}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <br>
+
+    <span class="label">Mort(s) né(s) </span>
+    <mat-form-field appearance="fill">
+      <mat-label>Mort(s) né(s) </mat-label>
+      <mat-select [(ngModel)]="dpaf2" ngModel name="dpaf" required>
+        <mat-option *ngFor="let item of tab2 " value="{{item}}">{{item}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+
+  </div>
+
+
+
+  <div id="c3">
+
+    <button mat-raised-button color="primary" >Frere(Prénom par ordre décroissant,Atteint ou non )</button>
+
+    <br>
+
+    <span class="label">Fausse(s) couche(s) spontanné(s) </span>
+    <mat-form-field appearance="fill">
+      <mat-label>Fausse(s) couche(s) spontanné(s) </mat-label>
+      <mat-select [(ngModel)]="nfsv1" ngModel name="dpaf" required>
+        <mat-option *ngFor="let item of tab " value="{{item}}">{{item}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+
+  </div>
+
+</div>
+
+
+<p><strong> Autres membres atteints de FA</strong></p><br>
+
+
+<div class="row">
+  <div class="column" >
+
+    <span class="label">Cousin(s) </span>
+    <mat-form-field appearance="fill">
+      <mat-label>Cousin(s) </mat-label>
+      <mat-select [(ngModel)]="dpaf3" ngModel name="dpaf" required>
+        <mat-option *ngFor="let item of tab2 " value="{{item}}">{{item}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <br>
+
+    <span class="label">Membres de la famille atteints de cancer </span>
+    <mat-form-field appearance="fill">
+      <mat-label>Membres de la famille atteints de cancer </mat-label>
+      <mat-select [(ngModel)]="dpaf4" ngModel name="dpaf" required>
+        <mat-option *ngFor="let item of tab2 " value="{{item}}">{{item}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <br>
+
+    <span class="label">Arbre généalogique de Fonconie </span>
+    <button mat-raised-button color="primary" >+ charger fichier</button>
+    <br><br><br>
+
+    <span class="label">Arbre généalogique  de cancer </span>
+    <button mat-raised-button color="primary" >+ charger fichier</button>
+
+
+  </div>
+  <div class="column" >
+    <button mat-raised-button color="primary" >Cousins(Prénom par ordre décroissant)</button>
+    <br><br><br>
+    <button mat-raised-button color="primary" >Membres(Prénom par ordre décroissant)</button>
+  </div>
+</div>

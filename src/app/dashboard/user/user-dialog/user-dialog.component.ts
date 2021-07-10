@@ -27,9 +27,10 @@ export class UserDialogComponent implements OnInit,DoCheck {
   //selectedgv:any;
 
   constructor(public dialogRef: MatDialogRef<UserDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: User, private organismeService: OrganismeService, private departementService: DepartementService) { }
+    @Inject(MAT_DIALOG_DATA) public data: User, private organismeService: OrganismeService, private departementService: DepartementService) {
+    }
   ngDoCheck(): void {
-    console.log(this.data,"mokhtar");
+    console.log(this.data,"mokhtar2");
   }
 
   ngOnInit(): void {
@@ -40,6 +41,7 @@ export class UserDialogComponent implements OnInit,DoCheck {
 
     this.getAllOrganismes();
     this.getAllDepartements();
+
 
     this.organismeService.getAllOrganismes().subscribe(data => this.selectedOrganisme = data[0].nom);
 
@@ -65,21 +67,6 @@ export class UserDialogComponent implements OnInit,DoCheck {
     }));
   }
 
-  /*fctCodeOrg(a: Organisme)  {
-    return JSON.stringify(a);
-    //return a;
-
-
-
-
-  }
-
-
-  fctCodeDep(a: Departement)  {
-    return JSON.stringify(a);
-    //return a;
-
-  }*/
 
 
   todo(data: any){
