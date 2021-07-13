@@ -13,6 +13,9 @@ import { SyndromeMalformatifComponent } from './syndrome-malformatif/syndrome-ma
 import { BiologieMoleculaireComponent } from './biologie-moleculaire/biologie-moleculaire.component';
 import { ScoreCliniqueComponent } from './score-clinique/score-clinique.component';
 import { CongelationCellComponent } from './congelation-cell/congelation-cell.component';
+import { EtudeCytoComponent } from './etude-cyto/etude-cyto.component';
+import { SignesHemaComponent } from './signes-hema/signes-hema.component';
+import { TraitementComponent } from './traitement/traitement.component';
 
 
 
@@ -25,7 +28,10 @@ import { CongelationCellComponent } from './congelation-cell/congelation-cell.co
     SyndromeMalformatifComponent,
     BiologieMoleculaireComponent,
     ScoreCliniqueComponent,
-    CongelationCellComponent
+    CongelationCellComponent,
+    EtudeCytoComponent,
+    SignesHemaComponent,
+    TraitementComponent
   ],
   imports: [
     CommonModule,

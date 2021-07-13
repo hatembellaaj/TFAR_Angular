@@ -1,0 +1,841 @@
+<span class="label"><strong>Transfusion :</strong></span>
+<mat-form-field appearance="fill">
+  <mat-label>Transfusion</mat-label>
+  <mat-select [(ngModel)]="enum1" ngModel name="Transfusion" required>
+    <mat-option *ngFor="let item of tabenum1 " value="{{item}}">{{item}}</mat-option>
+  </mat-select>
+</mat-form-field>
+
+<div id="conteneur">
+
+  <div>
+
+    <span class="label">Age de la premiere transfusion :</span>
+    <mat-form-field>
+      <input type="text" matInput placeholder="Age de la premiere transfusion" ngModel name="Agepret" required
+        [(ngModel)]="Agepret" #AgepretInput="ngModel">
+      <mat-error *ngIf="AgepretInput.hasError('required')">age must not be empty.</mat-error>
+    </mat-form-field>
+    <span class="label">ans</span><br>
+
+    <span class="label">NbCG :</span>
+    <mat-form-field appearance="fill">
+      <mat-label>NbCG</mat-label>
+      <mat-select [(ngModel)]="enum2" ngModel name="NbCG" required>
+        <mat-option *ngFor="let item of tabenum8 " value="{{item}}">{{item}}</mat-option>
+      </mat-select>
+    </mat-form-field><br>
+
+    <span class="label">chélation du fer :</span>
+    <mat-form-field appearance="fill">
+      <mat-label>chélation du fer</mat-label>
+      <mat-select [(ngModel)]="enum3" ngModel name="chélation_du_fer" required>
+        <mat-option *ngFor="let item of tabenum1 " value="{{item}}">{{item}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+
+  </div>
+
+
+  <div>
+
+    <span class="label">Delai par rapport au diagnostic :</span>
+    <mat-form-field>
+      <input type="text" matInput placeholder="Delai par rapport au diagnostic" ngModel name="delaiprad" required
+        [(ngModel)]="delaiprad" #delaipradInput="ngModel">
+      <mat-error *ngIf="delaipradInput.hasError('required')">Delai must not be empty.</mat-error>
+    </mat-form-field>
+    <span class="label">mois</span><br>
+
+    <span class="label">NbCP :</span>
+    <mat-form-field appearance="fill">
+      <mat-label>NbCP</mat-label>
+      <mat-select [(ngModel)]="enum4" ngModel name="NbCP" required>
+        <mat-option *ngFor="let item of tabenum8 " value="{{item}}">{{item}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+
+  </div>
+
+</div>
+
+<div *ngIf="enum3=='Oui'" id="conteneur1">
+
+  <span class="label">Chélateur :</span>
+  <mat-form-field>
+    <input type="text" matInput placeholder="Chélateur" ngModel name="Chélateur" required [(ngModel)]="Chelateur"
+      #ChelateurInput="ngModel">
+    <mat-error *ngIf="ChelateurInput.hasError('required')">Chélateur must not be empty.</mat-error>
+  </mat-form-field>
+
+
+</div>
+
+<br>
+<hr><br>
+
+<p><strong>Traitement de fond : </strong></p>
+
+<div id="conteneur">
+
+  <div>
+    Type :
+  </div>
+
+
+  <div>
+
+    <span class="label">Nilvar :</span>
+    <mat-form-field appearance="fill">
+      <mat-label>Nilvar</mat-label>
+      <mat-select [(ngModel)]="enum5" ngModel name="Nilvar" required>
+        <mat-option *ngFor="let item of tabenum1 " value="{{item}}">{{item}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+  </div>
+
+
+  <div>
+
+    <span class="label">Oxymétholone :</span>
+    <mat-form-field appearance="fill">
+      <mat-label>Oxymétholone</mat-label>
+      <mat-select [(ngModel)]="enum6" ngModel name="Oxymétholone" required>
+        <mat-option *ngFor="let item of tabenum1 " value="{{item}}">{{item}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+  </div>
+
+
+  <div>
+
+    <span class="label">Androtordyl :</span>
+    <mat-form-field appearance="fill">
+      <mat-label>Androtordyl</mat-label>
+      <mat-select [(ngModel)]="enum7" ngModel name="Androtordyl" required>
+        <mat-option *ngFor="let item of tabenum1 " value="{{item}}">{{item}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+  </div>
+
+
+  <div>
+
+    <span class="label">Autre :</span>
+    <mat-form-field>
+      <input type="text" matInput placeholder="Autre" ngModel name="Autre" required [(ngModel)]="autremok"
+        #autremokInput="ngModel">
+      <mat-error *ngIf="autremokInput.hasError('required')">Autre must not be empty.</mat-error>
+    </mat-form-field>
+
+  </div>
+
+
+</div><br>
+
+
+<div id="conteneur">
+
+  <div>
+
+    Début :
+
+  </div>
+
+
+  <div>
+
+    <mat-form-field appearance="fill" class="item">
+      <input matInput [matDatepicker]="pickermo">
+      <mat-datepicker-toggle matSuffix [for]="pickermo"></mat-datepicker-toggle>
+      <mat-datepicker #pickermo></mat-datepicker>
+    </mat-form-field>
+
+
+  </div>
+
+
+  <div>
+
+
+    Fin :
+
+  </div>
+
+
+  <div>
+
+    <mat-form-field appearance="fill" class="item">
+      <input matInput [matDatepicker]="pickerzo">
+      <mat-datepicker-toggle matSuffix [for]="pickerzo"></mat-datepicker-toggle>
+      <mat-datepicker #pickerzo></mat-datepicker>
+    </mat-form-field>
+
+
+  </div>
+
+
+</div><br><br>
+
+
+<div id="conteneur">
+
+  <div>
+
+    Observance
+
+
+  </div>
+
+
+
+  <div>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Observance</mat-label>
+      <mat-select [(ngModel)]="el1" ngModel name="Androtordyl" required>
+        <mat-option *ngFor="let item of tab " value="{{item}}">{{item}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+  </div>
+
+
+</div>
+
+<br>
+<hr><br>
+
+<div id="conteneur2">
+
+  <div>
+
+    <span class="label"><strong>Toxicité :</strong></span>
+    <mat-form-field appearance="fill">
+      <mat-label>Toxicité</mat-label>
+      <mat-select [(ngModel)]="el2" ngModel name="Toxicite" required>
+        <mat-option *ngFor="let item of toxicite " value="{{item}}">{{item}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+  </div>
+
+
+  <div>
+
+    <span class="label">Autre :</span>
+    <mat-form-field>
+      <input type="text" matInput placeholder="Autre" ngModel name="Autre" required [(ngModel)]="autremok1"
+        #autremok1Input="ngModel">
+      <mat-error *ngIf="autremok1Input.hasError('required')">Autre must not be empty.</mat-error>
+    </mat-form-field>
+
+  </div>
+
+</div>
+
+
+<br>
+<hr><br>
+
+<p><strong>Greffe :</strong></p><br>
+
+<div id="conteneur2">
+
+  <div>
+
+    <span class="label"><strong>Enquete HLA :</strong></span>
+    <mat-form-field appearance="fill">
+      <mat-label>Enquete HLA</mat-label>
+      <mat-select [(ngModel)]="el3" ngModel name="Enquete_HLA" required>
+        <mat-option *ngFor="let item of tabenum1 " value="{{item}}">{{item}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+
+
+  </div>
+
+  <div>
+
+    <span class="label">Pourquoi :</span>
+    <mat-form-field>
+      <input type="text" matInput placeholder="Pourquoi" ngModel name="Pourquoi" required [(ngModel)]="pourquoi"
+        #PourquoiInput="ngModel">
+      <mat-error *ngIf="PourquoiInput.hasError('required')">Pourquoi must not be empty.</mat-error>
+    </mat-form-field>
+
+  </div>
+
+</div>
+
+
+<div id="conteneur">
+
+  <div>
+
+    <span class="label">Nombre de fraterie typé(s) :</span>
+    <mat-form-field>
+      <input type="text" matInput placeholder="Nombre de fraterie typé(s)" ngModel name="nbreFratType" required
+        [(ngModel)]="nbreFratType" #nbreFratTypeInput="ngModel">
+      <mat-error *ngIf="nbreFratTypeInput.hasError('required')">nbreFratType must not be empty.</mat-error>
+    </mat-form-field>
+  </div>
+
+  <div>
+
+    <span class="label">Nombre de fraterie non typé(s) :</span>
+    <mat-form-field>
+      <input type="text" matInput placeholder="Nombre de fraterie non typé(s)" ngModel name="nbreFratnType" required
+        [(ngModel)]="nbreFratnType" #nbreFratnTypeInput="ngModel">
+      <mat-error *ngIf="nbreFratnTypeInput.hasError('required')">nbreFratType must not be empty.</mat-error>
+    </mat-form-field>
+
+  </div>
+
+</div>
+
+<div id="conteneur">
+
+  <div>
+    <span class="label">Donneur compatible(s) :</span>
+    <mat-form-field appearance="fill">
+      <mat-label>Donneur compatible(s)</mat-label>
+      <mat-select [(ngModel)]="el4" ngModel name="Donneur_compatible" required>
+        <mat-option *ngFor="let item of tableau " value="{{item}}">{{item}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+  <div>
+    <span class="label">Présiser :</span>
+    <mat-form-field>
+      <input type="text" matInput placeholder="Présiser" ngModel name="Présiser" required [(ngModel)]="presiser"
+        #presiserInput="ngModel">
+      <mat-error *ngIf="presiserInput.hasError('required')">presiser must not be empty.</mat-error>
+    </mat-form-field>
+  </div>
+
+</div><br>
+
+<span class="label">Donneur :</span>
+<mat-form-field appearance="fill">
+  <mat-label>Donneur </mat-label>
+  <mat-select [(ngModel)]="don" ngModel name="Donneur" required>
+    <mat-option *ngFor="let item of donneur " value="{{item}}">{{item}}</mat-option>
+  </mat-select>
+</mat-form-field>
+
+<div id="conteneur2">
+
+  <div>
+
+    <span class="label">Greffe faite :</span>
+    <mat-form-field appearance="fill">
+      <mat-label>Greffe faite</mat-label>
+      <mat-select [(ngModel)]="el5" ngModel name="Greffe_faite" required>
+        <mat-option *ngFor="let item of tabenum1 " value="{{item}}">{{item}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+  </div>
+
+  <div>
+
+    <span class="label">Délai par rapport au diagnostic :</span>
+    <mat-form-field>
+      <input type="text" matInput placeholder="Délai par rapport au diagnostic" ngModel name="delaiprad" required
+        [(ngModel)]="delaiprad1" #delaipradInput="ngModel">
+      <mat-error *ngIf="delaipradInput.hasError('required')">Délai must not be empty.</mat-error>
+    </mat-form-field>
+    <span class="label">mois</span>
+
+  </div>
+
+</div>
+
+<span class="label">Si non faite pourquoi :</span>
+<mat-form-field appearance="fill">
+  <mat-label>pourquoi</mat-label>
+  <mat-select [(ngModel)]="elp" ngModel name="pourquoi" required>
+    <mat-option *ngFor="let item of tabp " value="{{item}}">{{item}}</mat-option>
+  </mat-select>
+</mat-form-field><br>
+
+
+<span class="label">Cyclophophamide</span>
+<mat-form-field appearance="fill">
+  <mat-label>Cyclophophamide</mat-label>
+  <mat-select [(ngModel)]="el6" ngModel name="Cyclophophamide" required>
+    <mat-option *ngFor="let item of tabenum1 " value="{{item}}">{{item}}</mat-option>
+  </mat-select>
+</mat-form-field>
+
+<div id="conteneur" *ngIf="el6=='Oui'">
+
+  <span class="label">Dose cumulative :</span>
+  <mat-form-field>
+    <input type="text" matInput placeholder="Dose cumulative" ngModel name="Dose_cumulative" required
+      [(ngModel)]="doseCumu" #doseCumuInput="ngModel">
+    <mat-error *ngIf="doseCumuInput.hasError('required')">Dose cumulative must not be empty.</mat-error>
+  </mat-form-field>
+  <span class="label">mg/kg</span>
+
+</div><br>
+
+<span class="label">Fludarabine</span>
+<mat-form-field appearance="fill">
+  <mat-label>Fludarabine</mat-label>
+  <mat-select [(ngModel)]="el7" ngModel name="Fludarabine" required>
+    <mat-option *ngFor="let item of tabenum1 " value="{{item}}">{{item}}</mat-option>
+  </mat-select>
+</mat-form-field>
+
+<div id="conteneur" *ngIf="el7=='Oui'">
+
+  <span class="label">Dose cumulative :</span>
+  <mat-form-field>
+    <input type="text" matInput placeholder="Dose cumulative" ngModel name="Dose_cumulative" required [(ngModel)]="flu"
+      #fluInput="ngModel">
+    <mat-error *ngIf="fluInput.hasError('required')">Dose cumulative must not be empty.</mat-error>
+  </mat-form-field>
+  <span class="label">mg/kg</span>
+
+</div><br>
+
+<span class="label">Busulfan</span>
+<mat-form-field appearance="fill">
+  <mat-label>Busulfan</mat-label>
+  <mat-select [(ngModel)]="el8" ngModel name="Busulfan" required>
+    <mat-option *ngFor="let item of tabenum1 " value="{{item}}">{{item}}</mat-option>
+  </mat-select>
+</mat-form-field>
+
+<div id="conteneur" *ngIf="el8=='Oui'">
+
+  <span class="label">Dose cumulative :</span>
+  <mat-form-field>
+    <input type="text" matInput placeholder="Dose cumulative" ngModel name="Dose_cumulative" required
+      [(ngModel)]="doseCumu1" #doseCumu1Input="ngModel">
+    <mat-error *ngIf="doseCumu1Input.hasError('required')">Dose cumulative must not be empty.</mat-error>
+  </mat-form-field>
+  <span class="label">mg/kg</span>
+
+</div><br>
+
+<span class="label">Autre :</span>
+<mat-form-field>
+  <input type="text" matInput placeholder="Autre" ngModel name="Autregh" required [(ngModel)]="autregh"
+    #autreghInput="ngModel">
+  <mat-error *ngIf="autreghInput.hasError('required')">Délai must not be empty.</mat-error>
+</mat-form-field>
+
+<div id="conteneur">
+
+  <span class="label">Irradiation</span>
+  <mat-form-field appearance="fill">
+    <mat-label>Irradiation</mat-label>
+    <mat-select [(ngModel)]="el9" ngModel name="Irradiation" required>
+      <mat-option *ngFor="let item of tabirr " value="{{item}}">{{item}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+</div><br>
+
+<div id="conteneur">
+
+  <span class="label">Sérothérapie</span>
+  <mat-form-field appearance="fill">
+    <mat-label>Sérothérapie</mat-label>
+    <mat-select [(ngModel)]="el10" ngModel name="Serotherapie" required>
+      <mat-option *ngFor="let item of tabenum2 " value="{{item}}">{{item}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+</div><br>
+
+<div id="conteneur1" *ngIf="el10=='Faite'">
+
+  <span class="label">SAL</span>
+  <mat-form-field appearance="fill">
+    <mat-label>SAL</mat-label>
+    <mat-select [(ngModel)]="el11" ngModel name="SAL" required>
+      <mat-option *ngFor="let item of tabenum1 " value="{{item}}">{{item}}</mat-option>
+    </mat-select>
+  </mat-form-field><br><br>
+
+  <div id="conteneur1" *ngIf="el11=='Oui'">
+
+    <span class="label">Dose :</span>
+    <mat-form-field>
+      <input type="text" matInput placeholder="Dose" ngModel name="Dose" required [(ngModel)]="dose1"
+        #dose1Input="ngModel">
+      <mat-error *ngIf="dose1Input.hasError('required')">Dose cumulative must not be empty.</mat-error>
+    </mat-form-field>
+    <span class="label">mg/kg</span>
+
+  </div>
+
+
+</div><br>
+
+<span class="label">source de cellule souche</span>
+<mat-form-field appearance="fill">
+  <mat-label>source de cellule souche</mat-label>
+  <mat-select [(ngModel)]="el12" ngModel name="sourceCelluleSouche" required>
+    <mat-option *ngFor="let item of tabSouche " value="{{item}}">{{item}}</mat-option>
+  </mat-select>
+</mat-form-field><br>
+
+<span class="label">Sortie d'aplasie J :</span>
+<mat-form-field appearance="fill">
+  <mat-label>Sortie d'aplasie J</mat-label>
+  <mat-select [(ngModel)]="el13" ngModel name="SortieAplasieJ" required>
+    <mat-option *ngFor="let item of tableau1 " value="{{item}}">{{item}}</mat-option>
+  </mat-select>
+</mat-form-field>
+
+<div id="conteneur">
+
+  <div>
+    Complicationde la greffe :
+  </div>
+
+
+  <div>
+
+    <span class="label">aGvH : Grade :</span>
+    <mat-form-field appearance="fill">
+      <mat-label>aGvH : Grade</mat-label>
+      <mat-select [(ngModel)]="el14" ngModel name="aGvH_Grade" required>
+        <mat-option *ngFor="let item of tabenum9 " value="{{item}}">{{item}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+  </div>
+
+
+  <div>
+
+    <span class="label">cGvH :</span>
+    <mat-form-field appearance="fill">
+      <mat-label>cGvH</mat-label>
+      <mat-select [(ngModel)]="el15" ngModel name="cGvH" required>
+        <mat-option *ngFor="let item of tabenum10 " value="{{item}}">{{item}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+  </div>
+
+
+  <div>
+
+    <span class="label">MVO :</span>
+    <mat-form-field appearance="fill">
+      <mat-label>MVO</mat-label>
+      <mat-select [(ngModel)]="el16" ngModel name="MVO" required>
+        <mat-option *ngFor="let item of tabenum1 " value="{{item}}">{{item}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+
+  <div>
+
+    <span class="label">Complication pulminaire :</span>
+    <mat-form-field appearance="fill">
+      <mat-label>Complication pulminaire</mat-label>
+      <mat-select [(ngModel)]="el17" ngModel name="ComplicationPulminaire" required>
+        <mat-option *ngFor="let item of tabenum1 " value="{{item}}">{{item}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+  </div>
+
+
+</div>
+
+<div *ngIf="el17=='Oui'">
+
+  <span class="label">Preciser :</span>
+  <mat-form-field>
+    <input type="text" matInput placeholder="Preciser" ngModel name="Preciser" required [(ngModel)]="preciser"
+      #PreciserInput="ngModel">
+    <mat-error *ngIf="PreciserInput.hasError('required')">Preciser cumulative must not be empty.</mat-error>
+  </mat-form-field>
+
+
+</div>
+
+<span class="label">Survie : J 100 post greffe :</span>
+<mat-form-field appearance="fill">
+  <mat-label>Survie : J 100 post greffe</mat-label>
+  <mat-select [(ngModel)]="el18" ngModel name="surviej100" required>
+    <mat-option *ngFor="let item of tabenum1 " value="{{item}}">{{item}}</mat-option>
+  </mat-select>
+</mat-form-field>
+
+<br>
+<hr><br>
+
+<p><strong>Evolution :</strong></p>
+
+<div id="conteneur">
+
+  <div>
+
+    <span class="label">SMD :</span>
+    <mat-form-field appearance="fill">
+      <mat-label>SMD</mat-label>
+      <mat-select [(ngModel)]="el19" ngModel name="SMD" required>
+        <mat-option *ngFor="let item of tabenum1 " value="{{item}}">{{item}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+  </div>
+
+
+  <div>
+
+    <span class="label">Critéres diagnostic :</span>
+    <mat-form-field>
+      <input type="text" matInput placeholder="Critéres diagnostic" ngModel name="Critéres_diagnostic" required [(ngModel)]="CritDiag"
+        #cridiagInput="ngModel">
+      <mat-error *ngIf="cridiagInput.hasError('required')">Critéres diagnostic must not be empty.</mat-error>
+    </mat-form-field>
+
+  </div>
+
+
+  <div>
+
+    <span class="label">Traitement :</span>
+    <mat-form-field>
+      <input type="text" matInput placeholder="Traitement" ngModel name="Traitement" required [(ngModel)]="traitement"
+        #TraitementInput="ngModel">
+      <mat-error *ngIf="TraitementInput.hasError('required')">Traitement cumulative must not be empty.</mat-error>
+    </mat-form-field>
+
+  </div>
+
+
+</div>
+
+<div id="conteneur1" *ngIf="el19=='Oui'">
+
+  <span class="label">Age au diagnostic de SMD :</span>
+  <mat-form-field>
+    <input type="text" matInput placeholder="Age au diagnostic de SMD" ngModel name="AgeDiagnosticSMD" required [(ngModel)]="agediagSMD"
+      #agediagSMDInput="ngModel">
+    <mat-error *ngIf="agediagSMDInput.hasError('required')">agediagSMD must not be empty.</mat-error>
+  </mat-form-field>
+
+</div>
+
+<div id="conteneur">
+
+  <span class="label">Transformation aigue  :</span>
+    <mat-form-field appearance="fill">
+      <mat-label>Transformation aigue</mat-label>
+      <mat-select [(ngModel)]="el20" ngModel name="Transformation_aigue" required>
+        <mat-option *ngFor="let item of taigue " value="{{item}}">{{item}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+
+</div>
+
+<div id="conteneur">
+
+  <span class="label">Age au diagnostic LA :</span>
+  <mat-form-field>
+    <input type="text" matInput placeholder="Age au diagnostic LA" ngModel name="AgeDiagnosticLA" required [(ngModel)]="agediagLA"
+      #agediagLAInput="ngModel">
+    <mat-error *ngIf="agediagLAInput.hasError('required')">agediagLA must not be empty.</mat-error>
+  </mat-form-field>
+  <span class="label">ans</span>
+
+</div>
+
+<div id="conteneur">
+
+  <span class="label">Traitement de la LA :</span>
+    <mat-form-field appearance="fill">
+      <mat-label>Traitement de la LA</mat-label>
+      <mat-select [(ngModel)]="el21" ngModel name="TraitementLA" required>
+        <mat-option *ngFor="let item of tabenum1 " value="{{item}}">{{item}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+</div>
+
+
+<div id="conteneur">
+
+  <span class="label">Cancer :</span>
+    <mat-form-field appearance="fill">
+      <mat-label>Cancer</mat-label>
+      <mat-select [(ngModel)]="el22" ngModel name="Cancer" required>
+        <mat-option *ngFor="let item of tabenum1 " value="{{item}}">{{item}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+</div>
+
+<div id="conteneur1" *ngIf="el22=='Oui'">
+
+  <div>
+
+    <span class="label">Localisation :</span>
+  <mat-form-field>
+    <input type="text" matInput placeholder="Localisation" ngModel name="Localisation" required [(ngModel)]="localis"
+      #LocalisationInput="ngModel">
+    <mat-error *ngIf="LocalisationInput.hasError('required')">Localisation must not be empty.</mat-error>
+  </mat-form-field>
+
+  </div>
+
+
+  <div>
+
+    <span class="label">Type histologique :</span>
+  <mat-form-field>
+    <input type="text" matInput placeholder="Type histologique" ngModel name="TypeHistologique" required [(ngModel)]="typeHisto"
+      #typeHistoInput="ngModel">
+    <mat-error *ngIf="typeHistoInput.hasError('required')">Type histologique must not be empty.</mat-error>
+  </mat-form-field>
+
+  </div>
+
+
+  <div>
+
+    <span class="label">Traitement :</span>
+    <mat-form-field appearance="fill">
+      <mat-label>Traitement</mat-label>
+      <mat-select [(ngModel)]="el23" ngModel name="Traitement" required>
+        <mat-option *ngFor="let item of tabenum1 " value="{{item}}">{{item}}</mat-option>
+      </mat-select>
+    </mat-form-field><br><br>
+
+    <div *ngIf="el23=='Oui'">
+
+      <span class="label">Présiser :</span>
+  <mat-form-field>
+    <input type="text" matInput placeholder="Présiser" ngModel name="Presiser" required [(ngModel)]="presisert"
+      #presisertInput="ngModel">
+    <mat-error *ngIf="presisertInput.hasError('required')">Présiser must not be empty.</mat-error>
+  </mat-form-field>
+
+
+    </div>
+
+  </div>
+
+
+</div>
+
+
+<div id="conteneur">
+
+  <span class="label">Evolution cytogénétique clonale :</span>
+    <mat-form-field appearance="fill">
+      <mat-label>Evolution cytogénétique clonale</mat-label>
+      <mat-select [(ngModel)]="el24" ngModel name="EvolutionCytogClonale" required>
+        <mat-option *ngFor="let item of tabenum1 " value="{{item}}">{{item}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+</div><br>
+
+<div id="conteneur1" *ngIf="el24=='Oui'">
+
+
+  <div>
+
+    <span class="label">Formule chromosomique médullaire :</span>
+  <mat-form-field>
+    <input type="text" matInput placeholder="Formule chromosomique médullaire" ngModel name="FormuleChromoMédullaire" required [(ngModel)]="fchromoM"
+      #fchromoMInput="ngModel">
+    <mat-error *ngIf="fchromoMInput.hasError('required')">fchromoM histologique must not be empty.</mat-error>
+  </mat-form-field>
+  </div>
+
+  <div>
+
+    <span class="label">Age au moment de l'evolution :</span>
+  <mat-form-field>
+    <input type="text" matInput placeholder="Age au moment de l'evolution" ngModel name="AgeMomentEvolution" required [(ngModel)]="ageme"
+      #agemeInput="ngModel">
+    <mat-error *ngIf="agemeInput.hasError('required')">Age histologique must not be empty.</mat-error>
+  </mat-form-field>
+  </div>
+
+</div>
+
+<div id="conteneur">
+
+  <span class="label">Autre :</span>
+  <mat-form-field>
+    <input type="text" matInput placeholder="Autre" ngModel name="Autre" required [(ngModel)]="autrezz"
+      #autrezzInput="ngModel">
+    <mat-error *ngIf="autrezzInput.hasError('required')">Age histologique must not be empty.</mat-error>
+  </mat-form-field>
+
+</div>
+
+<div id="conteneur">
+
+  <span class="label">DDN</span>
+      <mat-form-field appearance="fill" class="item">
+        <input matInput [matDatepicker]="pickeryt">
+        <mat-datepicker-toggle matSuffix [for]="pickeryt"></mat-datepicker-toggle>
+        <mat-datepicker #pickeryt></mat-datepicker>
+      </mat-form-field>
+
+</div>
+
+<div id="conteneur">
+
+  <span class="label">Statut :</span>
+    <mat-form-field appearance="fill">
+      <mat-label>Statut</mat-label>
+      <mat-select [(ngModel)]="el25" ngModel name="Statut" required>
+        <mat-option *ngFor="let item of tabstatut " value="{{item}}">{{item}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+</div>
+
+<div id="conteneur">
+
+  <span class="label">Survie globale :</span>
+  <mat-form-field>
+    <input type="text" matInput placeholder="Survie globale" ngModel name="SurvieGlobale" required [(ngModel)]="survieGlobale"
+      #survieGlobaleInput="ngModel">
+    <mat-error *ngIf="survieGlobaleInput.hasError('required')">survieGlobale must not be empty.</mat-error>
+  </mat-form-field>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

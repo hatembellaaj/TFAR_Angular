@@ -1,3 +1,4 @@
+import { FicheList } from './../../../model/FicheList';
 import { Fiche } from './../../../model/fiche';
 import {  Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
@@ -18,7 +19,7 @@ import {  Router } from '@angular/router';
 export class FicheComponent implements OnInit {
 
   fiches$!:Observable<Fiche[]>;
-  dataSource!: MatTableDataSource<Fiche> ;
+  dataSource!: MatTableDataSource<FicheList> ;
   //displayedColumns: string[] = ['code', 'num dossier','nom','prenom','date diagnostique','date d enregistrement','organisme','departement','impression','detail','update','delete'];
 
   displayedColumns: string[] = ['code','num_dossier','nom','prenom','date_diagnostic','date_enregistrement','organisme','departement','detail','update','delete'];
@@ -76,7 +77,7 @@ export class FicheComponent implements OnInit {
 
 
   getData(){
-    this.ficheService.getAllFiches().subscribe(data => {
+    this.ficheService.getAllFicheLists().subscribe(data => {
       this.dataSource = new MatTableDataSource(data);
       this.sort1();
       this.paginator1();

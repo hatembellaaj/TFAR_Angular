@@ -41,7 +41,7 @@ export class SyndromeMalformatifComponent implements OnInit, DoCheck {
 
   autre: any;
 
-  tabenum1 = ['Oui', 'Non', 'NP', 'moin1']
+  tabenum1 = ['Oui', 'Non', 'NP', 'moin1'];
 
   enum11 = 'NP';
 
@@ -166,6 +166,8 @@ export class SyndromeMalformatifComponent implements OnInit, DoCheck {
   p: any;
 
   t: any;
+
+  typeHisto:any;
 
   panom:any;
 

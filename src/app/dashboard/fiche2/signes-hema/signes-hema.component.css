@@ -1,0 +1,29 @@
+#conteneur
+{
+    display: flex;
+    justify-content: space-around;
+}
+
+
+hr{
+  height: 2px;
+  background-color:#0000FF;
+  border: none;
+}
+
+#conteneur1
+{
+    display: flex;
+    justify-content: space-around;
+}
+
+#conteneur2
+{
+    display: flex;
+}
+
+#conteneur3
+{
+    display: flex;
+    justify-content: space-around;
+}

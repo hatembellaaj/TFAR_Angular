@@ -1,3 +1,4 @@
+import { FicheList } from './../../model/FicheList';
 import { Fiche } from './../../model/fiche';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
@@ -25,6 +26,10 @@ export class FicheService {
 
   getAllFiches(): Observable<Fiche[]>{
     return this.http.get<Fiche[]>(this.baseUrl+"/api/fiches/findAll", { headers: this.headers });
+  }
+
+  getAllFicheLists(): Observable<FicheList[]>{
+    return this.http.get<FicheList[]>(this.baseUrl+"/api/fiches/findAllFicheListDto", { headers: this.headers });
   }
 
   saveFiche(fiche: Fiche): Observable<Fiche> {
