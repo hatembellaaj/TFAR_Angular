@@ -16,9 +16,6 @@ import { UserDtDialogComponent } from './user-dt-dialog/user-dt-dialog.component
 import { Departement } from 'src/model/departement';
 import { OrganismeService } from 'src/app/services/organisme.service';
 import { DepartementService } from 'src/app/services/departement.service';
-import { RoleType } from 'src/app/enumeration/RoleType';
-import { TypeUser } from 'src/app/enumeration/TypeUser';
-import { Gouvernorat } from 'src/app/enumeration/Gouvernorat';
 
 
 @Component({
@@ -37,27 +34,9 @@ export class UserComponent implements OnInit, AfterViewInit, DoCheck {
   searchKey!: string;
   @ViewChild(MatSort) sort!: MatSort;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
-  code!: number;
-  role!: RoleType;
-  nom!: string;
-  prenom!: string;
-  grade!: string;
-  gouvernorat!: Gouvernorat;
-  adresse!: string;
-  tel!: string;
-  photo!: string;
-  email!: string;
-  type!: TypeUser;
-  poste!: string;
-  fax!: string;
-  login!: string;
-  password!: string;
-  url!: string;
-  codeOrganisme!: number;
-  codeDepartement!: number;
   bool: boolean = false;
-  nomOrganisme!:string;
-  nomDepartement!: string;
+  selectedOrganisme:any;
+  selectedDepartement:any;
 
 
   constructor(private dialog: MatDialog, private userService: UserService, private _snackBar: MatSnackBar,
@@ -67,6 +46,8 @@ export class UserComponent implements OnInit, AfterViewInit, DoCheck {
   ngOnInit(): void {
 
     this.getData();
+    this.organismeService.getAllOrganismes().subscribe(data => this.selectedOrganisme = data[0].code);
+    this.departementService.getAllDepartements().subscribe(data => this.selectedDepartement = data[0].code);
 
   }
 
@@ -116,11 +97,6 @@ export class UserComponent implements OnInit, AfterViewInit, DoCheck {
   }
 
 
-
-
-
-
-
   onSearchClear() {
     this.searchKey = "";
     this.applyFilter();
@@ -135,28 +111,7 @@ export class UserComponent implements OnInit, AfterViewInit, DoCheck {
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
     dialogConfig.width = "60%";
-    dialogConfig.data = {
-      code: this.code,
-      role: this.role,
-      type: this.type,
-      nom: this.nom,
-      prenom: this.prenom,
-      grade: this.grade,
-      gouvernorat: this.gouvernorat,
-      adresse: this.adresse,
-      tel: this.tel,
-      email: this.email,
-      photo: this.photo,
-      poste: this.poste,
-      fax: this.fax,
-      login: this.login,
-      password: this.password,
-      url: this.url,
-      codeOrganisme: this.codeOrganisme,
-      nomOrganisme: this.nomOrganisme,
-      codeDepartement: this.codeDepartement,
-      nomDepartement: this.nomDepartement
-    };
+    dialogConfig.data={codeOrganisme:this.selectedOrganisme,codeDepartement:this.selectedDepartement} as User;
     const dialogRef = this.dialog.open(UserDialogComponent, dialogConfig);
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
@@ -171,8 +126,6 @@ export class UserComponent implements OnInit, AfterViewInit, DoCheck {
           res => {
             console.log(res);
             this.bool = true;
-
-
 
           },
           err => {
@@ -214,30 +167,11 @@ export class UserComponent implements OnInit, AfterViewInit, DoCheck {
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
     dialogConfig.width = "60%";
-    dialogConfig.data = {
-      code: user.code,
-      role: user.role,
-      type: user.type,
-      nom: user.nom,
-      prenom: user.prenom,
-      grade: user.grade,
-      gouvernorat: user.gouvernorat,
-      adresse: user.adresse,
-      tel: user.tel,
-      email: user.email,
-      photo: user.photo,
-      poste: user.poste,
-      fax: user.fax,
-      login: user.login,
-      password: user.password,
-      url: user.url,
-      codeOrganisme: user.codeOrganisme,
-      nomOrganisme: user.nomOrganisme,
-      codeDepartement: user.codeDepartement,
-      nomDepartement: user.nomDepartement
-    };
+    dialogConfig.data=user;
     console.log("[" + user.codeOrganisme + ", " + user.codeDepartement + "]uuuu");
     const dialogRef = this.dialog.open(UserDtDialogComponent, dialogConfig);
+    console.log(user,'oooooo');
+
 
   }
 
@@ -251,28 +185,7 @@ export class UserComponent implements OnInit, AfterViewInit, DoCheck {
     console.log(user, "xxxxxxxxxxxxxxx");
     console.log(user.codeOrganisme, "eeeeeeee");
     console.log(user.codeDepartement, "ffffffffffffff");
-    dialogConfig.data = {
-      code: user.code,
-      role: user.role,
-      type: user.type,
-      nom: user.nom,
-      prenom: user.prenom,
-      grade: user.grade,
-      gouvernorat: user.gouvernorat,
-      adresse: user.adresse,
-      tel: user.tel,
-      email: user.email,
-      photo: user.photo,
-      poste: user.poste,
-      fax: user.fax,
-      login: user.login,
-      password: user.password,
-      url: user.url,
-      codeOrganisme: user.codeOrganisme,
-      nomOrganisme: user.nomOrganisme,
-      codeDepartement: user.codeDepartement,
-      nomDepartement: user.nomDepartement
-    };
+    dialogConfig.data=user;
     const dialogRef = this.dialog.open(UserDialogComponent, dialogConfig);
 
 

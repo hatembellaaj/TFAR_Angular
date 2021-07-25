@@ -16,6 +16,8 @@ import { CongelationCellComponent } from './congelation-cell/congelation-cell.co
 import { EtudeCytoComponent } from './etude-cyto/etude-cyto.component';
 import { SignesHemaComponent } from './signes-hema/signes-hema.component';
 import { TraitementComponent } from './traitement/traitement.component';
+import { AndrogeneComponent } from './androgene/androgene.component';
+import { EtudeCytoDialogComponent } from './etude-cyto/etude-cyto-dialog/etude-cyto-dialog.component';
 
 
 
@@ -31,7 +33,9 @@ import { TraitementComponent } from './traitement/traitement.component';
     CongelationCellComponent,
     EtudeCytoComponent,
     SignesHemaComponent,
-    TraitementComponent
+    TraitementComponent,
+    AndrogeneComponent,
+    EtudeCytoDialogComponent
   ],
   imports: [
     CommonModule,

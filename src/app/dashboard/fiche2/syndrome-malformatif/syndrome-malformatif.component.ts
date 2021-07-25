@@ -1,4 +1,5 @@
-import { Component, OnInit, DoCheck } from '@angular/core';
+import { Component, OnInit, DoCheck, Output, EventEmitter } from '@angular/core';
+import { Fiche } from 'src/model/fiche';
 
 @Component({
   selector: 'fiche2-syndrome-malformatif',
@@ -6,6 +7,9 @@ import { Component, OnInit, DoCheck } from '@angular/core';
   styleUrls: ['./syndrome-malformatif.component.css']
 })
 export class SyndromeMalformatifComponent implements OnInit, DoCheck {
+
+  fiche3!: Fiche;
+  @Output() fiche3Change: EventEmitter<Fiche> = new EventEmitter<Fiche>();
 
   tab: number[] = [];
 
@@ -19,167 +23,9 @@ export class SyndromeMalformatifComponent implements OnInit, DoCheck {
 
   tab6: number[] = [];
 
-  el1: any;
-
-  el2: any;
-
-  el3: any;
-
-  el33:any;
-
-  el4: any;
-
-  el44:any;
-
-  el4o:any;
-
-  el5: any;
-
-  el6: any;
-
-  colorPeau: any;
-
-  autre: any;
-
   tabenum1 = ['Oui', 'Non', 'NP', 'moin1'];
 
-  enum11 = 'NP';
-
-  enum111 = 'NP';
-
-  enum1122 = 'NP';
-
-  enum112 = 'NP';
-
-  enum113 = 'NP';
-
-  enum114 = 'NP';
-
-  enum115 = 'NP';
-
-  enum116 = 'NP';
-
-  enum117 = 'NP';
-
-  enum118 = 'NP';
-
-  enum119 = 'NP';
-
-  enum12 = 'NP';
-
-  enum13 = 'NP';
-
-  enum14 = 'NP';
-
-  enum15 = 'NP';
-
-  enum16 = 'NP';
-
-  enum17 = 'NP';
-
-  enum18 = 'NP';
-
-  enum19 = 'NP';
-
-  enum20 = 'NP';
-
-  enum21 = 'NP';
-
-  enum22 = '';
-
-  enum23 = 'NP';
-
-  enum24 = '';
-
-  enum25 = 'NP';
-
-  enum26 = 'NP';
-
-  enum27 = 'NP';
-
-  enum28 = 'NP';
-
-  enum29 = 'NP';
-
-  enum30 = 'NP';
-
-  enum31 = 'NP';
-
-  enum32 = 'NP';
-
-  enum33 = 'NP';
-
-  enum34='NP';
-
-  enum35='NP';
-
-  enum36='NP';
-
-  enum37='NP';
-
-  enum38='NP';
-
-  enum39='NP';
-
-  enum40='NP';
-
-  enum41='NP';
-
-  enum42='NP';
-
-  enum43='NP';
-
-  enum44='NP';
-
-  enum45='NP';
-
-  enum46='NP';
-
-  enum47='NP';
-
-  enum48='NP';
-
   tabDS = ['NP', 'M', '-2 DS', '-3 DS', '-4 DS', '+ DS'];
-
-  elDS = 'NP';
-
-  elDS1 = 'NP';
-
-  autre1: any;
-
-  autrev: any;
-
-  siegeEcto: any;
-
-  typeAnom: any;
-
-  typeAnomomalie:any;
-
-  anomomalieRachis:any;
-
-  anomalieOsseuse:any;
-
-  Autrew:any;
-
-  m: any;
-
-  p: any;
-
-  t: any;
-
-  typeHisto:any;
-
-  panom:any;
-
-  panom1:any;
-
-  aged:any;
-
-  autresSymp:any;
-
-  autresanoCong:any;
-
-  autrem = 'autreMU';
 
   tabenum2 = ['Faite', 'Nonfaite', 'Moin1', 'NP'];
 
@@ -189,65 +35,83 @@ export class SyndromeMalformatifComponent implements OnInit, DoCheck {
 
   tabAnomVerg = ['NP', 'non', 'inseffisament developpe', 'hypospadias', 'epispadias', 'Autre'];
 
-  tabperfSco=['Vide', 'Bonne', 'Mauvaise', 'Moyenne', 'NP', 'NonScolaire', 'Moin1'];
+  tabperfSco = ['Vide', 'Bonne', 'Mauvaise', 'Moyenne', 'NP', 'NonScolaire', 'Moin1'];
 
-  constructor() { }
+  constructor() {
+    this.fiche3 = {
+      hypotrophie: 'NP', troubleCroi: 'NP', atteinteCut: 'NP', tacheCaf: 'NP', dos: 'NP', ventre: 'NP', membreSup: 'NP', membreInf: 'NP',
+      visage: 'NP', thorax: 'NP', hyperPig: 'NP', atteinteTete: 'NP', microcephalie: 'NP', facieTrig: 'NP', traitsFin: 'NP', microphtalmie: 'NP',
+      malUro: 'NP', uiv: 'NP', echo: 'NP', reinEctop: 'NP', reinFerChev: 'NP', reinUnique: 'NP', retardPubertaire: 'NP', atteinteOss: 'NP',
+      anomPouce: 'NP', anomAutreDoigts: 'NP', courtsTrapus: 'NP', syndactylie: 'NP', agenesieRadius: 'NP', anomOrteil: 'NP',
+      typeAnomOrteil: 'NP', bifide: 'NP', luxCongHanche: 'NP', anomNeuro: 'NP', retardMent: 'NP', performanceScolaire: 'NP',
+      hypoacousie: 'NP', strabisme: 'NP', anomCardVas: 'NP', echoCoeur: 'NP', anomDig: 'NP', endocrinopathie: 'NP', diabete: 'NP', hypothyroidie: 'NP',
+      deficiteGH: 'NP', poidsDS: 'NP', tailleDS: 'NP', anomVerge: 'NP', anomVoisUri: 'NP', autreUrogenital: 'autreMU'
+    } as Fiche;
+
+
+
+  }
+
+  public onChangeFiche3() {
+    this.fiche3Change.emit(this.fiche3);
+  }
+
   ngDoCheck(): void {
 
-    if (this.enum112 != 'oui') {
+    if (this.fiche3.tacheCaf != 'Oui') {
 
-      this.enum113 = 'NP';
+      this.fiche3.dos = 'NP';
 
-      this.enum114 = 'NP';
+      this.fiche3.ventre = 'NP';
 
-      this.enum115 = 'NP';
+      this.fiche3.membreSup = 'NP';
 
-      this.enum116 = 'NP';
+      this.fiche3.membreInf = 'NP';
 
-      this.enum117 = 'NP';
+      this.fiche3.visage = 'NP';
 
-      this.enum118 = 'NP';
+      this.fiche3.thorax = 'NP';
 
     }
 
-    if (this.enum20 != 'Oui') {
-      this.siegeEcto = '';
+    if (this.fiche3.reinEctop != 'Oui') {
+      this.fiche3.siegeEctopie = '';
     }
 
-    if (this.enum26 != 'Oui') {
-      this.typeAnom = '';
+    if (this.fiche3.anomVoisUri != 'Oui') {
+      this.fiche3.typeAnomVoisUri = '';
     }
 
-    if (this.enum27 != 'Oui') {
-      this.m = '';
-      this.p = '';
-      this.t = '';
+    if (this.fiche3.retardPubertaire != 'Oui') {
+      this.fiche3.mtanner = '';
+      this.fiche3.ptanner = '';
+      this.fiche3.ttanner = '';
     }
 
-    if (this.enum30 != 'Oui') {
-      this.enum31 = 'NP';
-      this.enum32 = 'NP';
-      this.autrev = '';
+    if (this.fiche3.anomAutreDoigts != 'Oui') {
+      this.fiche3.courtsTrapus = 'NP';
+      this.fiche3.syndactylie = 'NP';
+      this.fiche3.autreAnomAutreDoigts = '';
     }
 
-    if (this.enum34 != 'Oui') {
-      this.typeAnomomalie = '';
+    if (this.fiche3.anomOrteil != 'Oui') {
+      this.fiche3.typeAnomOrteil = '';
     }
 
-    if (this.enum43 != 'Oui') {
-      this.panom = '';
+    if (this.fiche3.echoCoeur != 'Oui') {
+      this.fiche3.preciseAnomCardio = '';
     }
 
-    if (this.enum44 != 'Oui') {
-      this.panom1 = '';
+    if (this.fiche3.anomDig != 'Oui') {
+      this.fiche3.preciseAnomDig = '';
     }
 
-    if (this.enum45 != 'Oui') {
-      this.enum46 = 'NP';
-      this.enum47 = 'NP';
-      this.enum48 = 'NP';
-      this.aged='';
-      this.autresSymp='';
+    if (this.fiche3.endocrinopathie != 'Oui') {
+      this.fiche3.diabete = 'NP';
+      this.fiche3.hypothyroidie = 'NP';
+      this.fiche3.deficiteGH = 'NP';
+      this.fiche3.ageDecouverte = 0;
+      this.fiche3.autreSympEndo = '';
     }
 
   }

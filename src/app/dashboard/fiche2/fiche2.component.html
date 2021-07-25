@@ -9,54 +9,50 @@
 <div class="fiche-details-container">
   <div class="left">
 
-    <!--<div>
-      <span class="label">Organisme</span>
-      <mat-form-field appearance="fill" class="item">
-        <mat-select [(ngModel)]="selectedOrganisme" [ngModelOptions]="{standalone: true}" >
-          <mat-option *ngFor="let item of organismes$ | async " value="{{item.nom}}">{{item.nom}}</mat-option>
-        </mat-select>
-      </mat-form-field>
-    </div>-->
+    <mat-form-field class="example-full-width">
+      <mat-label>User</mat-label>
 
-    <div>
-      <span class="label">User</span>
-      <mat-form-field appearance="fill">
-        <mat-select [(ngModel)]="selectedUser" [ngModelOptions]="{standalone: true}">
-          <mat-option *ngFor="let item of users$ | async " value="{{item.code}}">{{item.nom}}</mat-option>
-        </mat-select>
-      </mat-form-field>
-    </div>
+      <mat-select [(ngModel)]="selectedUser" [ngModelOptions]="{standalone: true}">
+        <mat-option *ngFor="let item of users$ | async " value="{{item.code}}">{{item.nom}}</mat-option>
+      </mat-select>
 
-    <div>
-      <span class="label">Date d'enregistrement</span>
-      <mat-form-field appearance="fill" class="item">
-        <input matInput [matDatepicker]="picker">
-        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-        <mat-datepicker #picker></mat-datepicker>
-      </mat-form-field>
-    </div>
+    </mat-form-field>
+
+
+    <mat-form-field class="example-full-width">
+      <mat-label>Date d'enregistrement</mat-label>
+
+      <input matInput [matDatepicker]="picker">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+
+    </mat-form-field>
+
+
 
 
   </div>
 
   <div class="right">
-    <!--<div>
-      <span class="label">Departement</span>
-      <mat-form-field appearance="fill" class="item">
-        <mat-select [(ngModel)]="selectedDepartement" [ngModelOptions]="{standalone: true}">
-          <mat-option *ngFor="let item of departements$ | async " value="{{item.nom}}">{{item.nom}}</mat-option>
-        </mat-select>
-      </mat-form-field>
-    </div>-->
 
-    <div>
-      <span class="label">Date de diagnostique</span>
-      <mat-form-field appearance="fill" class="item">
-        <input matInput [matDatepicker]="picker10">
-        <mat-datepicker-toggle matSuffix [for]="picker10"></mat-datepicker-toggle>
-        <mat-datepicker #picker10></mat-datepicker>
-      </mat-form-field>
-    </div>
+    <mat-form-field class="example-full-width">
+      <mat-label>Date de diagnostique</mat-label>
+
+      <input matInput [matDatepicker]="picker10">
+      <mat-datepicker-toggle matSuffix [for]="picker10"></mat-datepicker-toggle>
+      <mat-datepicker #picker10></mat-datepicker>
+
+    </mat-form-field>
+
+
+    <mat-form-field class="example-full-width">
+      <mat-label>Numéro de Dossier Fiche </mat-label>
+
+      <input type="text" matInput placeholder="Numéro de Dossier Fiche" ngModel name="NDFiche" required
+        [(ngModel)]="ndfiche" #ndficheInput="ngModel">
+      <mat-error *ngIf="ndficheInput.hasError('required')">ndfiche must not be empty.</mat-error>
+
+    </mat-form-field>
 
 
   </div>
@@ -80,7 +76,7 @@
         </mat-panel-title>
       </mat-expansion-panel-header>
 
-      <fiche2-patient></fiche2-patient>
+      <fiche2-patient  (patientChange)="this.patientFromChild=$event" ></fiche2-patient>
 
     </mat-expansion-panel>
 
@@ -92,7 +88,7 @@
         </mat-panel-title>
       </mat-expansion-panel-header>
 
-      <fiche2-histoire-familiale></fiche2-histoire-familiale>
+      <fiche2-histoire-familiale (fiche1Change)="this.fich1FromChild=$event"></fiche2-histoire-familiale>
 
     </mat-expansion-panel>
 
@@ -105,7 +101,7 @@
         </mat-panel-title>
       </mat-expansion-panel-header>
 
-      <fiche2-circon-de-decouverte></fiche2-circon-de-decouverte>
+      <fiche2-circon-de-decouverte (fiche2Change)="this.fich2FromChild=$event"></fiche2-circon-de-decouverte>
 
     </mat-expansion-panel>
 
@@ -117,7 +113,7 @@
         </mat-panel-title>
       </mat-expansion-panel-header>
 
-      <fiche2-syndrome-malformatif></fiche2-syndrome-malformatif>
+      <fiche2-syndrome-malformatif (fiche3Change)="this.fich3FromChild=$event"></fiche2-syndrome-malformatif>
     </mat-expansion-panel>
 
 
@@ -129,7 +125,18 @@
         </mat-panel-title>
       </mat-expansion-panel-header>
 
-      <fiche2-etude-cyto></fiche2-etude-cyto>
+      <fiche2-etude-cyto  (cyto1Change)="this.etudeCytoFromChild=$event"  ></fiche2-etude-cyto>
+
+    </mat-expansion-panel>
+
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Androgene
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+
+      <fiche2-androgene  (androgeneChange)="this.androgeneFromChild=$event" ></fiche2-androgene>
 
     </mat-expansion-panel>
 
@@ -141,7 +148,7 @@
         </mat-panel-title>
       </mat-expansion-panel-header>
 
-      <fiche2-signes-hema></fiche2-signes-hema>
+      <fiche2-signes-hema (fiche4Change)="this.fich4FromChild=$event"></fiche2-signes-hema>
 
     </mat-expansion-panel>
 
@@ -153,7 +160,7 @@
         </mat-panel-title>
       </mat-expansion-panel-header>
 
-      <fiche2-biologie-moleculaire></fiche2-biologie-moleculaire>
+      <fiche2-biologie-moleculaire (fiche5Change)="this.fich5FromChild=$event"></fiche2-biologie-moleculaire>
 
     </mat-expansion-panel>
 
@@ -165,7 +172,7 @@
         </mat-panel-title>
       </mat-expansion-panel-header>
 
-      <fiche2-congelation-cell></fiche2-congelation-cell>
+      <fiche2-congelation-cell (fiche6Change)="this.fich6FromChild=$event"></fiche2-congelation-cell>
     </mat-expansion-panel>
 
     <mat-expansion-panel>
@@ -175,7 +182,7 @@
         </mat-panel-title>
       </mat-expansion-panel-header>
 
-      <fiche2-score-clinique></fiche2-score-clinique>
+      <fiche2-score-clinique (fiche7Change)="this.fich7FromChild=$event" ></fiche2-score-clinique>
     </mat-expansion-panel>
 
     <mat-expansion-panel>
@@ -185,7 +192,7 @@
         </mat-panel-title>
       </mat-expansion-panel-header>
 
-      <fiche2-traitement></fiche2-traitement>
+      <fiche2-traitement (fiche8Change)="this.fich8FromChild=$event" ></fiche2-traitement>
     </mat-expansion-panel>
 
 

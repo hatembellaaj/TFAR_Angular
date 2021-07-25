@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Fiche } from 'src/model/fiche';
 
 @Component({
   selector: 'fiche2-biologie-moleculaire',
@@ -7,21 +8,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BiologieMoleculaireComponent implements OnInit {
 
-  tabenum1=['Oui', 'Non', 'NP', 'moin1'];
+  fiche5!: Fiche;
+  @Output() fiche5Change: EventEmitter<Fiche> = new EventEmitter<Fiche>();
 
-  tabenum7=['Positif', 'Negatif', 'Moin1'];
+  tabenum1 = ['Oui', 'Non', 'NP', 'moin1'];
 
-  enum11='NP';
+  tabenum7 = ['Positif', 'Negatif', 'Moin1'];
 
-  enum77='Positif';
-
-  groupeComp:any;
-
-  mutationGene:any;
-
-  constructor() { }
+  constructor() {
+    this.fiche5 = { ubiquitination: 'NP', resUbiquitination: 'Moin1' } as Fiche;
+  }
 
   ngOnInit(): void {
+  }
+
+  public onChangeFiche5() {
+    this.fiche5Change.emit(this.fiche5);
   }
 
 }

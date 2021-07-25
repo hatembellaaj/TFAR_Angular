@@ -1,4 +1,6 @@
+import { EventEmitter, Output } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
+import { Fiche } from 'src/model/fiche';
 
 @Component({
   selector: 'fiche2-score-clinique',
@@ -7,15 +9,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ScoreCliniqueComponent implements OnInit {
 
-  scoreClinique:any;
+  fiche7!: Fiche;
+  @Output() fiche7Change: EventEmitter<Fiche> = new EventEmitter<Fiche>();
 
-  scoreEBMT:any;
+  score = ['Limite', 'Extensif', 'Moin1'];
 
-  score=['Limite', 'Extensif', 'Moin1'];
+  constructor() {
+    this.fiche7 = { score: 'Moin1', scoreClinique: 0, scoreEBMT: 0 } as Fiche;
+  }
 
-  score1='Limite';
-
-  constructor() { }
+  public onChangeFiche7() {
+    this.fiche7Change.emit(this.fiche7);
+  }
 
   ngOnInit(): void {
   }

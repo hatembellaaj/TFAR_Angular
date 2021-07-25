@@ -1,5 +1,5 @@
-import { Enum1 } from './../../../enumeration/Enum1';
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Fiche } from 'src/model/fiche';
 
 
 @Component({
@@ -9,30 +9,31 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CirconDeDecouverteComponent implements OnInit {
 
+  fiche2!: Fiche;
+  @Output() fiche2Change: EventEmitter<Fiche> = new EventEmitter<Fiche>();
 
 
-  tabenum1=['Oui', 'Non', 'NP', 'moin1']
 
-  typeCancer:any;
-
-  autres:any;
-
-  enuma1='NP';
-
-  enuma2='NP';
-
-  enuma3='NP';
-
-  enuma4='NP';
-
-  enuma5='NP';
-
-  enuma6='NP';
+  tabenum1 = ['Oui', 'Non', 'NP', 'moin1'];
 
 
-  constructor() { }
+
+  typeCancer: any;
+
+  //autres:any;
+
+
+  constructor() {
+    this.fiche2 = {
+      syndromeAnemique: 'NP', syndromeHem: 'NP', syndromeInf: 'NP', decouverteFort: 'NP', enqueteFam: 'NP', typeCancer: '', cancer: 'NP'
+    } as Fiche;
+  }
 
   ngOnInit(): void {
+  }
+
+  public onChangeFiche2() {
+    this.fiche2Change.emit(this.fiche2);
   }
 
 }

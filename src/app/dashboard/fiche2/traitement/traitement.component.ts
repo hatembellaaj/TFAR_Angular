@@ -1,220 +1,122 @@
+import { EventEmitter, Output } from '@angular/core';
 import { Component, OnInit, DoCheck } from '@angular/core';
+import { Fiche } from 'src/model/fiche';
 
 @Component({
   selector: 'fiche2-traitement',
   templateUrl: './traitement.component.html',
   styleUrls: ['./traitement.component.css']
 })
-export class TraitementComponent implements OnInit,DoCheck {
+export class TraitementComponent implements OnInit, DoCheck {
+
+  fiche8!: Fiche;
+  @Output() fiche8Change: EventEmitter<Fiche> = new EventEmitter<Fiche>();
+
+  a: any;
 
   tabenum1 = ['Oui', 'Non', 'NP', 'moin1'];
 
-  enum1='NP';
+  tabenum8 = ['Moin1', 'Inf10', 'Between10Et20', 'Sup20'];
 
-  tabenum8=[ 'Moin1', 'Inf10', 'Between10Et20', 'Sup20'];
+  tab = ['', 'Bonne', 'Moyenne', 'Mediocre'];
 
-  tab=[ '', 'Bonne', 'Moyenne', 'Mediocre'];
+  toxicite = ['Virilisation', 'Hepatique', 'Autre', 'Moin1'];
 
-  el1='';
+  tableau: number[] = [];
 
-  toxicite=['Virilisation', 'Hepatique', 'Autre', 'Moin1'];
+  tableau1: number[] = [];
 
-  el2='Moin1';
+  donneur = ['FF', 'FM', 'MF', 'MM', 'Mere', 'Pere'];
 
-  Agepret:any;
+  tabp = ['', 'condition socio-economique', 'Refus', 'Deces', 'Donneur Fonconie', 'malade polytransfuse', 'Autre'];
 
-  enum2='Moin1';
+  tabirr = ['', 'non', 'TBI', 'TNI', 'NP', 'Autre'];
 
-  enum3='NP';
+  tabenum2 = ['Faite', 'Nonfaite', 'Moin1', 'NP'];
 
-  enum4='Moin1';
+  tabSouche = ['', 'Cordon', 'Moelle', 'Sang peripherique'];
 
-  delaiprad:any;
+  tabenum9 = ['Zero', 'I', 'II', 'III', 'IV', 'Moin1'];
 
-  Chelateur:any;
+  tabenum10 = ['Aucune', 'Limitee', 'Extensive', 'Moin1'];
 
-  enum5='NP';
+  taigue = ['', 'Myeloblastique', 'Lymphoplastique', 'NP'];
 
-  enum6='NP';
+  tabstatut = ['', 'PDV', 'Vivant en RC', 'Vivant en RP', 'Vivant en RM', 'Echec', 'Decede', 'Manque d information'];
 
-  enum7='NP';
+  constructor() {
 
-  el3='NP';
+    this.rempTab();
+    this.rempTab1();
 
-  el5='NP';
+    this.fiche8 = {
+      transfusion: 'NP', ageTransf: 0, delaiDiag: 0, nbCG: 'Moin1', nbCP: 'Moin1', chelationFer: 'NP', nilevar: 'NP', oxymetholone: 'NP', androtordyl: 'NP', toxicite: 'Moin1',
+      enqueteHLA: 'NP', nbFratTyp: 0, nbFratNTyp: 0, donneurComp: this.tableau[0], greffeFaite: 'NP', delaiRappDiag: 0, cyclophosphamide: 'NP', fludarabine: 'NP', busulfan: 'NP',
+      irradiation: 'NP', serotherapie: 'NP', gradeaGvH: 'Moin1', cgvH: 'Moin1', mvo: 'NP', complicationPulmonaire: 'NP', survieJ100: 'NP', smd: 'NP', transformationAigue: 'NP', ageDiagLA: 0,
+      traitementLA: 'NP', cancerE: 'NP', evolution_cyto: 'NP'
 
-  el6='NP';
+    } as Fiche;
 
-  el7='NP';
+  }
 
-  el8='NP';
-
-  autremok:any;
-
-  autremok1:any;
-
-  pourquoi:any;
-
-  nbreFratType:any;
-
-  nbreFratnType:any;
-
-  tableau: number[]=[];
-
-  tableau1: number[]=[];
-
-  el4:any;
-
-  el13:any;
-
-  presiser:any;
-
-  donneur=['FF','FM','MF','MM','Mere','Pere'];
-
-  don='FF';
-
-  delaiprad1:any;
-
-  tabp=['','condition socio-economique','Refus','Deces','Donneur Fonconie','malade polytransfuse','Autre'];
-
-  elp='';
-
-  doseCumu:any;
-
-  flu:any;
-
-  doseCumu1:any;
-
-  autregh:any;
-
-  tabirr=['','non','TBI','TNI','NP','Autre'];
-
-  el9='';
-
-  tabenum2=['Faite', 'Nonfaite', 'Moin1', 'NP'];
-
-  el10='NP';
-
-  el11='NP';
-
-  dose1:any;
-
-  tabSouche=['','Cordon','Moelle','Sang peripherique'];
-
-  el12='';
-
-  tabenum9=['Zero', 'I', 'II', 'III', 'IV', 'Moin1'];
-
-  el14='Moin1';
-
-  tabenum10=['Aucune', 'Limitee', 'Extensive', 'Moin1'];
-
-  el15='Moin1';
-
-  el16='NP';
-
-  el17='NP';
-
-  el18='Oui';
-
-  el19='NP';
-
-  preciser:any;
-
-  CritDiag:any;
-
-  traitement:any;
-
-  agediagSMD:any;
-
-  taigue=['','Myeloblastique','Lymphoplastique','NP'];
-
-  el20='';
-
-  agediagLA='';
-
-  el21='NP';
-
-  el22='NP';
-
-  localis:any;
-
-  typeHisto:any;
-
-  el23='NP';
-
-  el24='NP';
-
-  presisert:any;
-
-  fchromoM:any;
-
-  ageme:any;
-
-  autrezz='AutreComplication';
-
-  tabstatut=['','PDV','Vivant en RC','Vivant en RP','Vivant en RM','Echec','Decede','Manque d information'];
-
-  el25='';
-
-  survieGlobale:any;
-
-  constructor() { }
+  public onChangeFiche8() {
+    this.fiche8Change.emit(this.fiche8);
+  }
 
   ngDoCheck(): void {
 
-    if (this.enum3!='Oui'){
-      this.Chelateur='';
+    if (this.fiche8.chelationFer != 'Oui') {
+      this.fiche8.chelateur = '';
     }
 
-    if (this.el6!='Oui'){
-      this.doseCumu='';
+    if (this.fiche8.cyclophosphamide != 'Oui') {
+      this.fiche8.doseCum1 = 0;
 
     }
-    if (this.el7!='Oui'){
-      this.flu='';
-
-    }
-
-    if (this.el8!='Oui'){
-      this.doseCumu1='';
-    }
-
-    if (this.el10!='Faite'){
-      this.el11='NP';
-    }
-    if (this.el11!='Oui'){
-      this.dose1='';
+    if (this.fiche8.fludarabine != 'Oui') {
+      this.fiche8.doseCum2 = 0;
 
     }
 
-    if (this.el17!='Oui'){
-      this.preciser='';
+    if (this.fiche8.busulfan != 'Oui') {
+      this.fiche8.doseCum3 = 0;
     }
 
-    if (this.el19!='Oui'){
-      this.agediagSMD='';
+    if (this.fiche8.serotherapie != 'Faite') {
+      this.fiche8.sal = 'NP';
+    }
+    if (this.fiche8.sal != 'Oui') {
+      this.fiche8.doseSAL = 0;
+
     }
 
-    if (this.el23!='Oui'){
-      this.presisert='';
+    if (this.fiche8.complicationPulmonaire != 'Oui') {
+      this.fiche8.preciseCompPulm = '';
     }
 
-    if (this.el22!='Oui'){
-      this.localis='';
-      this.typeHisto='';
-      this.el23='NP';
+    if (this.fiche8.smd != 'Oui') {
+      this.fiche8.ageDiagSMD = 0;
     }
-    if (this.el24!='Oui'){
-      this.fchromoM='';
-      this.ageme='';
+
+    if (this.fiche8.cancerE != 'Oui') {
+      this.fiche8.localisation = '';
+      this.fiche8.typeHistologique = '';
+      this.fiche8.traitementCancer = 'NP';
+    }
+
+    if (this.fiche8.traitementCancer != 'Oui') {
+      this.fiche8.preciseTraitement = '';
+    }
+
+    if (this.fiche8.evolution_cyto != 'Oui') {
+      this.fiche8.formuleChrom = '';
+      this.fiche8.ageE = 0;
     }
 
   }
 
   ngOnInit(): void {
-    this.rempTab();
-    this.rempTab1();
+
   }
 
   rempTab() {
@@ -227,6 +129,12 @@ export class TraitementComponent implements OnInit,DoCheck {
     for (let i = 8; i <= 13; i++) {
       this.tableau1.push(i);
     }
+  }
+
+  public onDate(a: Date): void {
+    this.fiche8.androDebut = a;
+    this.onChangeFiche8();
+
   }
 
 }

@@ -7,14 +7,15 @@
 
     <span class="label">Hb :</span>
     <mat-form-field>
-      <input type="text" matInput placeholder="Hb" ngModel name="Hb" required [(ngModel)]="hb" #hbInput="ngModel">
+      <input type="number" matInput placeholder="Hb" ngModel name="Hb" required (ngModelChange)="onChangeFiche4()"
+        [(ngModel)]="fiche4.hb" #hbInput="ngModel">
       <mat-error *ngIf="hbInput.hasError('required')">Hb must not be empty.</mat-error>
     </mat-form-field><br>
 
     <span class="label">Leuco :</span>
     <mat-form-field>
-      <input type="text" matInput placeholder="Leuco" ngModel name="Leuco" required [(ngModel)]="leuco"
-        #leucoInput="ngModel">
+      <input type="number" matInput placeholder="Leuco" ngModel name="Leuco" required (ngModelChange)="onChangeFiche4()"
+        [(ngModel)]="fiche4.leuco" #leucoInput="ngModel">
       <mat-error *ngIf="leucoInput.hasError('required')">leuco must not be empty.</mat-error>
     </mat-form-field>
 
@@ -26,13 +27,15 @@
 
     <span class="label">VGM :</span>
     <mat-form-field>
-      <input type="text" matInput placeholder="VGM" ngModel name="VGM" required [(ngModel)]="vgm" #vgmInput="ngModel">
+      <input type="number" matInput placeholder="VGM" ngModel name="VGM" required (ngModelChange)="onChangeFiche4()"
+        [(ngModel)]="fiche4.vgm" #vgmInput="ngModel">
       <mat-error *ngIf="vgmInput.hasError('required')">vgm must not be empty.</mat-error>
     </mat-form-field><br>
 
     <span class="label">PNN :</span>
     <mat-form-field>
-      <input type="text" matInput placeholder="PNN" ngModel name="PNN" required [(ngModel)]="pnn" #pnnInput="ngModel">
+      <input type="number" matInput placeholder="PNN" ngModel name="PNN" required (ngModelChange)="onChangeFiche4()"
+        [(ngModel)]="fiche4.pnn" #pnnInput="ngModel">
       <mat-error *ngIf="pnnInput.hasError('required')">pnn must not be empty.</mat-error>
     </mat-form-field>
 
@@ -44,14 +47,15 @@
 
     <span class="label">Retic :</span>
     <mat-form-field>
-      <input type="text" matInput placeholder="Retic" ngModel name="Retic" required [(ngModel)]="retic"
-        #reticInput="ngModel">
+      <input type="number" matInput placeholder="Retic" ngModel name="Retic" required (ngModelChange)="onChangeFiche4()"
+        [(ngModel)]="fiche4.retic" #reticInput="ngModel">
       <mat-error *ngIf="reticInput.hasError('required')">color must not be empty.</mat-error>
     </mat-form-field><br>
 
     <span class="label">Plq :</span>
     <mat-form-field>
-      <input type="text" matInput placeholder="Plq" ngModel name="Plq" required [(ngModel)]="plq" #plqInput="ngModel">
+      <input type="number" matInput placeholder="Plq" ngModel name="Plq" required (ngModelChange)="onChangeFiche4()"
+        [(ngModel)]="fiche4.plq" #plqInput="ngModel">
       <mat-error *ngIf="plqInput.hasError('required')">color must not be empty.</mat-error>
     </mat-form-field>
 
@@ -66,8 +70,8 @@
 
 <span class="label"><Strong>Age du début des manifestations hématologiques :</Strong></span>
 <mat-form-field>
-  <input type="text" matInput placeholder="Age du début des manifestations hématologiques" ngModel name="agedeb"
-    required [(ngModel)]="agedeb" #agedebInput="ngModel">
+  <input type="number" matInput placeholder="Age du début des manifestations hématologiques" ngModel name="agedeb"
+    required (ngModelChange)="onChangeFiche4()" [(ngModel)]="fiche4.ageDebutManiHema" #agedebInput="ngModel">
   <mat-error *ngIf="agedebInput.hasError('required')">Age du début must not be empty.</mat-error>
 </mat-form-field> <span class="label">ans</span>
 <br>
@@ -85,7 +89,7 @@
     <span class="label"><strong>Hb inférieur à 10 g :</strong></span>
     <mat-form-field appearance="fill">
       <mat-label>Hb inférieur à 10 g </mat-label>
-      <mat-select [(ngModel)]="enum1" ngModel name="Hb_inf_10g" required>
+      <mat-select [(ngModel)]="fiche4.hbInf" ngModel name="Hb_inf_10g" required (selectionChange)="onChangeFiche4()">
         <mat-option *ngFor="let item of tabenum1 " value="{{item}}">{{item}}</mat-option>
       </mat-select>
     </mat-form-field>
@@ -98,7 +102,8 @@
     <span class="label"><strong>Plq inférieur à 100000 :</strong></span>
     <mat-form-field appearance="fill">
       <mat-label>Plq inférieur à 100000 </mat-label>
-      <mat-select [(ngModel)]="enum2" ngModel name="Plq_inf_100000" required>
+      <mat-select [(ngModel)]="fiche4.plq_inf" ngModel name="Plq_inf_100000" required
+        (selectionChange)="onChangeFiche4()">
         <mat-option *ngFor="let item of tabenum1 " value="{{item}}">{{item}}</mat-option>
       </mat-select>
     </mat-form-field>
@@ -111,7 +116,7 @@
     <span class="label"><strong>PNN inférieur à 2000 :</strong></span>
     <mat-form-field appearance="fill">
       <mat-label>PNN inférieur à 2000 </mat-label>
-      <mat-select [(ngModel)]="enum3" ngModel name="faciesTriang" required>
+      <mat-select [(ngModel)]="fiche4.pnnInf" ngModel name="faciesTriang" required (selectionChange)="onChangeFiche4()">
         <mat-option *ngFor="let item of tabenum1 " value="{{item}}">{{item}}</mat-option>
       </mat-select>
     </mat-form-field>
@@ -131,7 +136,8 @@
     <span class="label"><strong>Electrophorése de l'Hb :</strong></span>
     <mat-form-field appearance="fill">
       <mat-label>Electrophorése de l'Hb </mat-label>
-      <mat-select [(ngModel)]="enum4" ngModel name="Electropho" required>
+      <mat-select [(ngModel)]="fiche4.electrophoreseHb" ngModel name="Electropho" required
+        (selectionChange)="onChangeFiche4()">
         <mat-option *ngFor="let item of tabenum2 " value="{{item}}">{{item}}</mat-option>
       </mat-select>
     </mat-form-field>
@@ -143,7 +149,8 @@
 
     <span class="label">Hbf :</span>
     <mat-form-field>
-      <input type="text" matInput placeholder="Hbf" ngModel name="Hbf" required [(ngModel)]="hbf" #hbfInput="ngModel">
+      <input type="number" matInput placeholder="Hbf" ngModel name="Hbf" required (ngModelChange)="onChangeFiche4()"
+        [(ngModel)]="fiche4.hbf" #hbfInput="ngModel">
       <mat-error *ngIf="hbfInput.hasError('required')">Hbf du début must not be empty.</mat-error>
     </mat-form-field> <span class="label">%</span>
 
@@ -158,15 +165,16 @@
 <span class="label"><strong>Myélogramme au diagnostic :</strong></span>
 <mat-form-field appearance="fill">
   <mat-label>Myélogramme au diagnostic </mat-label>
-  <mat-select [(ngModel)]="enum5" ngModel name="MyelogrammeDiag" required>
+  <mat-select [(ngModel)]="fiche4.myelogramme" ngModel name="MyelogrammeDiag" required
+    (selectionChange)="onChangeFiche4()">
     <mat-option *ngFor="let item of tabenum2 " value="{{item}}">{{item}}</mat-option>
   </mat-select>
 </mat-form-field><br>
 
-<span class="label"><strong>Electrophorése de l'Hb :</strong></span>
+<span class="label"><strong>Cellularité :</strong></span>
 <mat-form-field appearance="fill">
-  <mat-label>Electrophorése de l'Hb </mat-label>
-  <mat-select [(ngModel)]="enum6" ngModel name="Electropho" required>
+  <mat-label>Cellularité </mat-label>
+  <mat-select [(ngModel)]="fiche4.cellularite" ngModel name="Cellularite" required (selectionChange)="onChangeFiche4()">
     <mat-option *ngFor="let item of tabenum4 " value="{{item}}">{{item}}</mat-option>
   </mat-select>
 </mat-form-field>
@@ -177,8 +185,8 @@
 
     <span class="label">Erythroblastes :</span>
     <mat-form-field>
-      <input type="text" matInput placeholder="Erythroblastes" ngModel name="Erythroblastes" required
-        [(ngModel)]="Erythroblastes" #ErythroblastesInput="ngModel">
+      <input type="number" matInput placeholder="Erythroblastes" ngModel name="Erythroblastes" required
+        (ngModelChange)="onChangeFiche4()" [(ngModel)]="fiche4.erythroblaste" #ErythroblastesInput="ngModel">
       <mat-error *ngIf="ErythroblastesInput.hasError('required')">Erythroblastes du début must not be empty.</mat-error>
     </mat-form-field> <span class="label">%</span>
 
@@ -189,7 +197,8 @@
     <span class="label">Morphologie</span>
     <mat-form-field appearance="fill">
       <mat-label>Morphologie</mat-label>
-      <mat-select [(ngModel)]="enum7" ngModel name="Morphologie" required>
+      <mat-select [(ngModel)]="fiche4.morphologie" ngModel name="Morphologie" required
+        (selectionChange)="onChangeFiche4()">
         <mat-option *ngFor="let item of tabenum5 " value="{{item}}">{{item}}</mat-option>
       </mat-select>
     </mat-form-field>
@@ -197,19 +206,20 @@
   </div>
 </div>
 
-<br><hr><br>
+<br>
+<hr><br>
 
 <div id="conteneur2">
 
   <div>
 
     <span class="label"><strong>BOM :</strong></span>
-<mat-form-field appearance="fill">
-  <mat-label>BOM </mat-label>
-  <mat-select [(ngModel)]="enum8" ngModel name="BOM" required>
-    <mat-option *ngFor="let item of tabenum6 " value="{{item}}">{{item}}</mat-option>
-  </mat-select>
-</mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>BOM </mat-label>
+      <mat-select [(ngModel)]="fiche4.bom" ngModel name="BOM" required (selectionChange)="onChangeFiche4()">
+        <mat-option *ngFor="let item of tabenum6 " value="{{item}}">{{item}}</mat-option>
+      </mat-select>
+    </mat-form-field>
 
   </div>
 
@@ -217,12 +227,11 @@
 
     <span class="label">Pourcentage d'adipocytes :</span>
     <mat-form-field>
-      <input type="text" matInput placeholder="Pourcentage d'adipocytes" ngModel name="PourcentageAdipocytes" required
-        [(ngModel)]="pourcAdi" #pourcAdiInput="ngModel">
+      <input type="number" matInput placeholder="Pourcentage d'adipocytes" ngModel name="PourcentageAdipocytes" required
+        (ngModelChange)="onChangeFiche4()" [(ngModel)]="fiche4.pourcenAdipo" #pourcAdiInput="ngModel">
       <mat-error *ngIf="pourcAdiInput.hasError('required')">Erythroblastes du début must not be empty.</mat-error>
     </mat-form-field> <span class="label">%</span>
 
   </div>
 
 </div>
-

@@ -9,7 +9,7 @@
     <span class="label">Taille :</span>
     <mat-form-field appearance="fill">
       <mat-label>Taille </mat-label>
-      <mat-select [(ngModel)]="el1" ngModel name="taille" required>
+      <mat-select [(ngModel)]="fiche3.tailleNaiss" ngModel name="taille" required (selectionChange)="onChangeFiche3()">
         <mat-option *ngFor="let item of tab " value="{{item}}">{{item}}</mat-option>
       </mat-select>
     </mat-form-field>
@@ -24,7 +24,7 @@
     <span class="label">Poids :</span>
     <mat-form-field appearance="fill">
       <mat-label>Poids </mat-label>
-      <mat-select [(ngModel)]="el2" ngModel name="poids" required>
+      <mat-select [(ngModel)]="fiche3.poidsNaiss" ngModel name="poids" required (selectionChange)="onChangeFiche3()">
         <mat-option *ngFor="let item of tab2 " value="{{item}}">{{item}}</mat-option>
       </mat-select>
     </mat-form-field>
@@ -39,7 +39,8 @@
     <span class="label">Hypotrophie :</span>
     <mat-form-field appearance="fill">
       <mat-label>Hypotrophie </mat-label>
-      <mat-select [(ngModel)]="enum11" ngModel name="hypotrophie" required>
+      <mat-select [(ngModel)]="fiche3.hypotrophie" ngModel name="hypotrophie" required
+        (selectionChange)="onChangeFiche3()">
         <mat-option *ngFor="let item of tabenum1 " value="{{item}}">{{item}}</mat-option>
       </mat-select>
     </mat-form-field>
@@ -55,7 +56,8 @@
 <span class="label"><strong>Trouble de la croissance :</strong></span>
 <mat-form-field appearance="fill">
   <mat-label>Trouble de la croissance </mat-label>
-  <mat-select [(ngModel)]="enum111" ngModel name="troubleCroissance" required>
+  <mat-select [(ngModel)]="fiche3.troubleCroi" ngModel name="troubleCroissance" required
+    (selectionChange)="onChangeFiche3()">
     <mat-option *ngFor="let item of tabenum1 " value="{{item}}">{{item}}</mat-option>
   </mat-select>
 </mat-form-field>
@@ -67,7 +69,8 @@
     <span class="label">Age chronologique au diagnostique :</span>
     <mat-form-field appearance="fill">
       <mat-label>Age chronologique au diagnostique </mat-label>
-      <mat-select [(ngModel)]="el33" ngModel name="ageChronoDiag" required>
+      <mat-select [(ngModel)]="fiche3.aageChDiag" ngModel name="ageChronoDiag" required
+        (selectionChange)="onChangeFiche3()">
         <mat-option *ngFor="let item of tab3 " value="{{item}}">{{item}}</mat-option>
       </mat-select>
     </mat-form-field>
@@ -78,7 +81,8 @@
     <span class="label">Age osseux :</span>
     <mat-form-field appearance="fill">
       <mat-label>Age osseux </mat-label>
-      <mat-select [(ngModel)]="el3" ngModel name="ageOsseux" required>
+      <mat-select [(ngModel)]="fiche3.aageOssDiag" ngModel name="ageOsseux" required
+        (selectionChange)="onChangeFiche3()">
         <mat-option *ngFor="let item of tab3 " value="{{item}}">{{item}}</mat-option>
       </mat-select>
     </mat-form-field>
@@ -89,7 +93,7 @@
     <span class="label">Retard par rapport à l'age chronologique :</span>
     <mat-form-field appearance="fill">
       <mat-label>Retard par rapport à l'age chronologique </mat-label>
-      <mat-select [(ngModel)]="el4o" ngModel name="rpralc" required>
+      <mat-select [(ngModel)]="fiche3.ageRetard" ngModel name="rpralc" required (selectionChange)="onChangeFiche3()">
         <mat-option *ngFor="let item of tab4 " value="{{item}}">{{item}}</mat-option>
       </mat-select>
     </mat-form-field>
@@ -100,7 +104,7 @@
     <span class="label">Poids :</span>
     <mat-form-field appearance="fill">
       <mat-label>Poids </mat-label>
-      <mat-select [(ngModel)]="el5" ngModel name="po" required>
+      <mat-select [(ngModel)]="fiche3.poids" ngModel name="po" required (selectionChange)="onChangeFiche3()">
         <mat-option *ngFor="let item of tab5 " value="{{item}}">{{item}}</mat-option>
       </mat-select>
     </mat-form-field>
@@ -111,7 +115,7 @@
     <span class="label">Taille :</span>
     <mat-form-field appearance="fill">
       <mat-label>Taille </mat-label>
-      <mat-select [(ngModel)]="el6" ngModel name="taille" required>
+      <mat-select [(ngModel)]="fiche3.taille" ngModel name="taille" required (selectionChange)="onChangeFiche3()">
         <mat-option *ngFor="let item of tab6 " value="{{item}}">{{item}}</mat-option>
       </mat-select>
     </mat-form-field>
@@ -124,7 +128,8 @@
 
     <mat-form-field appearance="fill">
       <mat-label>mAgeChDiag</mat-label>
-      <mat-select [(ngModel)]="el4" ngModel name="mAgeChDiag" required>
+      <mat-select [(ngModel)]="fiche3.mageChDiag" ngModel name="mAgeChDiag" required
+        (selectionChange)="onChangeFiche3()">
         <mat-option *ngFor="let item of tab4 " value="{{item}}">{{item}}</mat-option>
       </mat-select>
     </mat-form-field>
@@ -136,7 +141,8 @@
 
     <mat-form-field appearance="fill">
       <mat-label>mAgeOssDiag</mat-label>
-      <mat-select [(ngModel)]="el44" ngModel name="mAgeOssDiag" required>
+      <mat-select [(ngModel)]="fiche3.mageOssDiag" ngModel name="mAgeOssDiag" required
+        (selectionChange)="onChangeFiche3()">
         <mat-option *ngFor="let item of tab4 " value="{{item}}">{{item}}</mat-option>
       </mat-select>
     </mat-form-field>
@@ -147,7 +153,7 @@
     <span class="label">DS :</span>
     <mat-form-field appearance="fill">
       <mat-label>poidsDS</mat-label>
-      <mat-select [(ngModel)]="elDS" ngModel name="poidsDS" required>
+      <mat-select [(ngModel)]="fiche3.poidsDS" ngModel name="poidsDS" required (selectionChange)="onChangeFiche3()">
         <mat-option *ngFor="let item of tabDS " value="{{item}}">{{item}}</mat-option>
       </mat-select>
     </mat-form-field>
@@ -157,7 +163,7 @@
     <span class="label">DS :</span>
     <mat-form-field appearance="fill">
       <mat-label>tailleDS</mat-label>
-      <mat-select [(ngModel)]="elDS1" ngModel name="tailleDS" required>
+      <mat-select [(ngModel)]="fiche3.tailleDS" ngModel name="tailleDS" required (selectionChange)="onChangeFiche3()">
         <mat-option *ngFor="let item of tabDS " value="{{item}}">{{item}}</mat-option>
       </mat-select>
     </mat-form-field>
@@ -175,7 +181,8 @@
 <span class="label"><strong>Atteinte cutanée :</strong></span>
 <mat-form-field appearance="fill">
   <mat-label>Atteinte cutanée </mat-label>
-  <mat-select [(ngModel)]="enum1122" ngModel name="AtteinteCutanee" required>
+  <mat-select [(ngModel)]="fiche3.atteinteCut" ngModel name="AtteinteCutanee" required
+    (selectionChange)="onChangeFiche3()">
     <mat-option *ngFor="let item of tabenum1 " value="{{item}}">{{item}}</mat-option>
   </mat-select>
 </mat-form-field>
@@ -184,12 +191,12 @@
 <span class="label">Tache(s) café au lait :</span>
 <mat-form-field appearance="fill">
   <mat-label>Tache(s) café au lait</mat-label>
-  <mat-select [(ngModel)]="enum112" ngModel name="tachecafalait" required>
+  <mat-select [(ngModel)]="fiche3.tacheCaf" ngModel name="tachecafalait" required (selectionChange)="onChangeFiche3()">
     <mat-option *ngFor="let item of tabenum1 " value="{{item}}">{{item}}</mat-option>
   </mat-select>
 </mat-form-field><br>
 
-<div *ngIf="enum112=='Oui'">
+<div *ngIf="fiche3.tacheCaf=='Oui'">
 
   <div class="row1">
     <div class="column1 left1">
@@ -201,7 +208,7 @@
       <span class="label">Dos :</span>
       <mat-form-field appearance="fill">
         <mat-label>Dos</mat-label>
-        <mat-select [(ngModel)]="enum113" ngModel name="dos" required>
+        <mat-select [(ngModel)]="fiche3.dos" ngModel name="dos" required (selectionChange)="onChangeFiche3()">
           <mat-option *ngFor="let item of tabenum1 " value="{{item}}">{{item}}</mat-option>
         </mat-select>
       </mat-form-field><br>
@@ -209,7 +216,7 @@
       <span class="label">Ventre :</span>
       <mat-form-field appearance="fill">
         <mat-label>Ventre</mat-label>
-        <mat-select [(ngModel)]="enum114" ngModel name="ventre" required>
+        <mat-select [(ngModel)]="fiche3.ventre" ngModel name="ventre" required (selectionChange)="onChangeFiche3()">
           <mat-option *ngFor="let item of tabenum1 " value="{{item}}">{{item}}</mat-option>
         </mat-select>
       </mat-form-field><br>
@@ -217,7 +224,7 @@
       <span class="label">Membres supérieurs :</span>
       <mat-form-field appearance="fill">
         <mat-label>Membres supérieurs</mat-label>
-        <mat-select [(ngModel)]="enum115" ngModel name="memsup" required>
+        <mat-select [(ngModel)]="fiche3.membreSup" ngModel name="memsup" required (selectionChange)="onChangeFiche3()">
           <mat-option *ngFor="let item of tabenum1 " value="{{item}}">{{item}}</mat-option>
         </mat-select>
       </mat-form-field><br>
@@ -225,7 +232,7 @@
       <span class="label">Membres inférieurs :</span>
       <mat-form-field appearance="fill">
         <mat-label>Membres inférieurs</mat-label>
-        <mat-select [(ngModel)]="enum116" ngModel name="meminf" required>
+        <mat-select [(ngModel)]="fiche3.membreInf" ngModel name="meminf" required (selectionChange)="onChangeFiche3()">
           <mat-option *ngFor="let item of tabenum1 " value="{{item}}">{{item}}</mat-option>
         </mat-select>
       </mat-form-field><br>
@@ -233,7 +240,7 @@
       <span class="label">Visage :</span>
       <mat-form-field appearance="fill">
         <mat-label>Visage</mat-label>
-        <mat-select [(ngModel)]="enum117" ngModel name="visage" required>
+        <mat-select [(ngModel)]="fiche3.visage" ngModel name="visage" required (selectionChange)="onChangeFiche3()">
           <mat-option *ngFor="let item of tabenum1 " value="{{item}}">{{item}}</mat-option>
         </mat-select>
       </mat-form-field><br>
@@ -241,7 +248,7 @@
       <span class="label">Thorax :</span>
       <mat-form-field appearance="fill">
         <mat-label>Thorax</mat-label>
-        <mat-select [(ngModel)]="enum118" ngModel name="thorax" required>
+        <mat-select [(ngModel)]="fiche3.thorax" ngModel name="thorax" required (selectionChange)="onChangeFiche3()">
           <mat-option *ngFor="let item of tabenum1 " value="{{item}}">{{item}}</mat-option>
         </mat-select>
       </mat-form-field>
@@ -253,7 +260,8 @@
 <span class="label">Hyperpigmentation :</span>
 <mat-form-field appearance="fill">
   <mat-label>Hyperpigmentation</mat-label>
-  <mat-select [(ngModel)]="enum119" ngModel name="hyperpigmentation" required>
+  <mat-select [(ngModel)]="fiche3.hyperPig" ngModel name="hyperpigmentation" required
+    (selectionChange)="onChangeFiche3()">
     <mat-option *ngFor="let item of tabenum1 " value="{{item}}">{{item}}</mat-option>
   </mat-select>
 </mat-form-field><br>
@@ -261,14 +269,14 @@
 <span class="label">Couleur de la peau :</span>
 <mat-form-field>
   <input type="text" matInput placeholder="Couleur de la peau" ngModel name="Couleur_de_la_peau" required
-    [(ngModel)]="colorPeau" #colorInput="ngModel">
+    (ngModelChange)="onChangeFiche3()" [(ngModel)]="fiche3.couleurPeau" #colorInput="ngModel">
   <mat-error *ngIf="colorInput.hasError('required')">color must not be empty.</mat-error>
 </mat-form-field><br>
 
 <span class="label">Autre :</span>
 <mat-form-field>
-  <input type="text" matInput placeholder="Autre" ngModel name="Autre" required [(ngModel)]="autre"
-    #autreInput="ngModel">
+  <input type="text" matInput placeholder="Autre" ngModel name="Autre" required (ngModelChange)="onChangeFiche3()"
+    [(ngModel)]="fiche3.autreAtCut" #autreInput="ngModel">
   <mat-error *ngIf="autreInput.hasError('required')">autre must not be empty.</mat-error>
 </mat-form-field>
 
@@ -278,7 +286,8 @@
 <span class="label"><strong>Atteinte de la téte :</strong></span>
 <mat-form-field appearance="fill">
   <mat-label>Atteinte de la téte </mat-label>
-  <mat-select [(ngModel)]="enum12" ngModel name="AtteinteTete" required>
+  <mat-select [(ngModel)]="fiche3.atteinteTete" ngModel name="AtteinteTete" required
+    (selectionChange)="onChangeFiche3()">
     <mat-option *ngFor="let item of tabenum1 " value="{{item}}">{{item}}</mat-option>
   </mat-select>
 </mat-form-field>
@@ -290,7 +299,8 @@
       <span class="label">Microséphalie :</span>
       <mat-form-field appearance="fill">
         <mat-label>Microséphalie </mat-label>
-        <mat-select [(ngModel)]="enum13" ngModel name="microséphalie" required>
+        <mat-select [(ngModel)]="fiche3.microcephalie" ngModel name="microséphalie" required
+          (selectionChange)="onChangeFiche3()">
           <mat-option *ngFor="let item of tabenum1 " value="{{item}}">{{item}}</mat-option>
         </mat-select>
       </mat-form-field>
@@ -300,7 +310,8 @@
       <span class="label">Faciès triangulaire :</span>
       <mat-form-field appearance="fill">
         <mat-label>Faciès triangulaire </mat-label>
-        <mat-select [(ngModel)]="enum14" ngModel name="faciesTriang" required>
+        <mat-select [(ngModel)]="fiche3.facieTrig" ngModel name="faciesTriang" required
+          (selectionChange)="onChangeFiche3()">
           <mat-option *ngFor="let item of tabenum1 " value="{{item}}">{{item}}</mat-option>
         </mat-select>
       </mat-form-field>
@@ -310,7 +321,8 @@
       <span class="label">Traits fins :</span>
       <mat-form-field appearance="fill">
         <mat-label>Traits fins </mat-label>
-        <mat-select [(ngModel)]="enum15" ngModel name="traitsFins" required>
+        <mat-select [(ngModel)]="fiche3.traitsFin" ngModel name="traitsFins" required
+          (selectionChange)="onChangeFiche3()">
           <mat-option *ngFor="let item of tabenum1 " value="{{item}}">{{item}}</mat-option>
         </mat-select>
       </mat-form-field>
@@ -320,7 +332,8 @@
       <span class="label">Microphtalmie : </span>
       <mat-form-field appearance="fill">
         <mat-label>Microphtalmie</mat-label>
-        <mat-select [(ngModel)]="enum16" ngModel name="Microphtalmie" required>
+        <mat-select [(ngModel)]="fiche3.microphtalmie" ngModel name="Microphtalmie" required
+          (selectionChange)="onChangeFiche3()">
           <mat-option *ngFor="let item of tabenum1 " value="{{item}}">{{item}}</mat-option>
         </mat-select>
       </mat-form-field>
@@ -329,8 +342,8 @@
     <td width="20%">
       <span class="label">Autre :</span>
       <mat-form-field>
-        <input type="text" matInput placeholder="Autre" ngModel name="Autre1" required [(ngModel)]="autre1"
-          #autre1Input="ngModel">
+        <input type="text" matInput placeholder="Autre" ngModel name="Autre1" required
+          (ngModelChange)="onChangeFiche3()" [(ngModel)]="fiche3.autreAtTete" #autre1Input="ngModel">
         <mat-error *ngIf="autre1Input.hasError('required')">autre must not be empty.</mat-error>
       </mat-form-field>
     </td>
@@ -345,7 +358,7 @@
 <span class="label"><strong>Malformation urogénitale :</strong></span>
 <mat-form-field appearance="fill">
   <mat-label>Malformation urogénitale </mat-label>
-  <mat-select [(ngModel)]="enum17" ngModel name="AtteinteTete" required>
+  <mat-select [(ngModel)]="fiche3.malUro" ngModel name="AtteinteTete" required (selectionChange)="onChangeFiche3()">
     <mat-option *ngFor="let item of tabenum1 " value="{{item}}">{{item}}</mat-option>
   </mat-select>
 </mat-form-field>
@@ -359,7 +372,7 @@
     <span class="label">UIV :</span>
     <mat-form-field appearance="fill">
       <mat-label>UIV </mat-label>
-      <mat-select [(ngModel)]="enum18" ngModel name="uiv" required>
+      <mat-select [(ngModel)]="fiche3.uiv" ngModel name="uiv" required (selectionChange)="onChangeFiche3()">
         <mat-option *ngFor="let item of tabenum2 " value="{{item}}">{{item}}</mat-option>
       </mat-select>
     </mat-form-field>
@@ -369,7 +382,7 @@
     <span class="label">Echo :</span>
     <mat-form-field appearance="fill">
       <mat-label>Echo</mat-label>
-      <mat-select [(ngModel)]="enum19" ngModel name="echo" required>
+      <mat-select [(ngModel)]="fiche3.echo" ngModel name="echo" required (selectionChange)="onChangeFiche3()">
         <mat-option *ngFor="let item of tabenum2 " value="{{item}}">{{item}}</mat-option>
       </mat-select>
     </mat-form-field>
@@ -381,16 +394,16 @@
 <span class="label">Rein ectopique</span>
 <mat-form-field appearance="fill">
   <mat-label>Rein ectopique </mat-label>
-  <mat-select [(ngModel)]="enum20" ngModel name="reinEctopique" required>
+  <mat-select [(ngModel)]="fiche3.reinEctop" ngModel name="reinEctopique" required (selectionChange)="onChangeFiche3()">
     <mat-option *ngFor="let item of tabenum1 " value="{{item}}">{{item}}</mat-option>
   </mat-select>
 </mat-form-field>
 
-<div *ngIf="enum20=='Oui'">
+<div *ngIf="fiche3.reinEctop=='Oui'">
   <div style="width: 50%; float:right"><span class="label">Siége d'ectopie :</span>
     <mat-form-field>
       <input type="text" matInput placeholder="Siége d'ectopie" ngModel name="Siége_d_ectopie" required
-        [(ngModel)]="siegeEcto" #siegeInput="ngModel">
+        (ngModelChange)="onChangeFiche3()" [(ngModel)]="fiche3.siegeEctopie" #siegeInput="ngModel">
       <mat-error *ngIf="siegeInput.hasError('required')">Siege must not be empty.</mat-error>
     </mat-form-field>
   </div>
@@ -404,7 +417,8 @@
     <span class="label">Rein en fer à cheval</span>
     <mat-form-field appearance="fill">
       <mat-label>Rein en fer à cheval</mat-label>
-      <mat-select [(ngModel)]="enum21" ngModel name="reinFerChev" required>
+      <mat-select [(ngModel)]="fiche3.reinFerChev" ngModel name="reinFerChev" required
+        (selectionChange)="onChangeFiche3()">
         <mat-option *ngFor="let item of tabenum1 " value="{{item}}">{{item}}</mat-option>
       </mat-select>
     </mat-form-field>
@@ -416,7 +430,7 @@
     <span class="label">Petit rein</span>
     <mat-form-field appearance="fill">
       <mat-label>Petit rein</mat-label>
-      <mat-select [(ngModel)]="enum22" ngModel name="petitRein" required>
+      <mat-select [(ngModel)]="fiche3.petitRein" ngModel name="petitRein" required (selectionChange)="onChangeFiche3()">
         <mat-option *ngFor="let item of tabepRein " value="{{item}}">{{item}}</mat-option>
       </mat-select>
     </mat-form-field>
@@ -429,7 +443,8 @@
     <span class="label">Rein unique</span>
     <mat-form-field appearance="fill">
       <mat-label>Rein unique </mat-label>
-      <mat-select [(ngModel)]="enum23" ngModel name="reinUnique" required>
+      <mat-select [(ngModel)]="fiche3.reinUnique" ngModel name="reinUnique" required
+        (selectionChange)="onChangeFiche3()">
         <mat-option *ngFor="let item of tabenum1 " value="{{item}}">{{item}}</mat-option>
       </mat-select>
     </mat-form-field>
@@ -440,7 +455,7 @@
 <span class="label">Ectopie testiculaire :</span>
 <mat-form-field appearance="fill">
   <mat-label>Ectopie testiculaire </mat-label>
-  <mat-select [(ngModel)]="enum24" ngModel name="EctTest" required>
+  <mat-select [(ngModel)]="fiche3.ectopTest" ngModel name="EctTest" required (selectionChange)="onChangeFiche3()">
     <mat-option *ngFor="let item of tabEctoTest " value="{{item}}">{{item}}</mat-option>
   </mat-select>
 </mat-form-field>
@@ -449,7 +464,7 @@
 <span class="label">Anomalie de la verge :</span>
 <mat-form-field appearance="fill">
   <mat-label>Anomalie de la verge</mat-label>
-  <mat-select [(ngModel)]="enum25" ngModel name="AnomVerg" required>
+  <mat-select [(ngModel)]="fiche3.anomVerge" ngModel name="AnomVerg" required (selectionChange)="onChangeFiche3()">
     <mat-option *ngFor="let item of tabAnomVerg " value="{{item}}">{{item}}</mat-option>
   </mat-select>
 </mat-form-field>
@@ -459,16 +474,16 @@
 <span class="label">Anomalie des voies urinaires :</span>
 <mat-form-field appearance="fill">
   <mat-label>Anomalie des voies urinaires</mat-label>
-  <mat-select [(ngModel)]="enum26" ngModel name="anomalieVUr" required>
+  <mat-select [(ngModel)]="fiche3.anomVoisUri" ngModel name="anomalieVUr" required (selectionChange)="onChangeFiche3()">
     <mat-option *ngFor="let item of tabenum1 " value="{{item}}">{{item}}</mat-option>
   </mat-select>
 </mat-form-field>
 
-<div *ngIf="enum26=='Oui'">
+<div *ngIf="fiche3.anomVoisUri=='Oui'">
   <div style="width: 50%; float:right"><span class="label">Type d'Anomalie :</span>
     <mat-form-field>
       <input type="text" matInput placeholder="Type d'Anomalie" ngModel name="Type_d_Anomalie" required
-        [(ngModel)]="typeAnom" #typeanomalieInput="ngModel">
+        (ngModelChange)="onChangeFiche3()" [(ngModel)]="fiche3.typeAnomVoisUri" #typeanomalieInput="ngModel">
       <mat-error *ngIf="typeanomalieInput.hasError('required')">Type anomalie must not be empty.</mat-error>
     </mat-form-field>
   </div>
@@ -477,12 +492,13 @@
 <span class="label">Retard pubertaire :</span>
 <mat-form-field appearance="fill">
   <mat-label>Retard pubertaire</mat-label>
-  <mat-select [(ngModel)]="enum27" ngModel name="RetardPub" required>
+  <mat-select [(ngModel)]="fiche3.retardPubertaire" ngModel name="RetardPub" required
+    (selectionChange)="onChangeFiche3()">
     <mat-option *ngFor="let item of tabenum1 " value="{{item}}">{{item}}</mat-option>
   </mat-select>
 </mat-form-field>
 
-<table width="100%" *ngIf="enum27=='Oui'">
+<table width="100%" *ngIf="fiche3.retardPubertaire=='Oui'">
   <tr>
     <td width="12%"></td>
 
@@ -492,7 +508,8 @@
 
       <span class="label">M</span>
       <mat-form-field>
-        <input type="text" matInput placeholder="M" ngModel name="M" required [(ngModel)]="m" #MInput="ngModel">
+        <input type="text" matInput placeholder="M" ngModel name="M" required (ngModelChange)="onChangeFiche3()"
+          [(ngModel)]="fiche3.mtanner" #MInput="ngModel">
         <mat-error *ngIf="MInput.hasError('required')">M must not be empty.</mat-error>
       </mat-form-field>
 
@@ -502,7 +519,8 @@
 
       <span class="label">P</span>
       <mat-form-field>
-        <input type="text" matInput placeholder="P" ngModel name="P" required [(ngModel)]="p" #PInput="ngModel">
+        <input type="text" matInput placeholder="P" ngModel name="P" required (ngModelChange)="onChangeFiche3()"
+          [(ngModel)]="fiche3.ptanner" #PInput="ngModel">
         <mat-error *ngIf="PInput.hasError('required')">P must not be empty.</mat-error>
       </mat-form-field>
 
@@ -512,7 +530,8 @@
 
       <span class="label">T</span>
       <mat-form-field>
-        <input type="text" matInput placeholder="T" ngModel name="T" required [(ngModel)]="t" #TInput="ngModel">
+        <input type="text" matInput placeholder="T" ngModel name="T" required (ngModelChange)="onChangeFiche3()"
+          [(ngModel)]="fiche3.ttanner" #TInput="ngModel">
         <mat-error *ngIf="TInput.hasError('required')">T must not be empty.</mat-error>
       </mat-form-field>
 
@@ -523,8 +542,8 @@
 
 <span class="label">Autre :</span>
 <mat-form-field>
-  <input type="text" matInput placeholder="Autre" ngModel name="Autrel" required [(ngModel)]="autrem"
-    #AutremInput="ngModel">
+  <input type="text" matInput placeholder="Autre" ngModel name="Autrel" required (ngModelChange)="onChangeFiche3()"
+    [(ngModel)]="fiche3.autreUrogenital" #AutremInput="ngModel">
   <mat-error *ngIf="AutremInput.hasError('required')">Autre must not be empty.</mat-error>
 </mat-form-field>
 
@@ -534,7 +553,7 @@
 <span class="label"><strong>Atteinte osseuse :</strong></span>
 <mat-form-field appearance="fill">
   <mat-label>Atteinte osseuse </mat-label>
-  <mat-select [(ngModel)]="enum28" ngModel name="Atteinteos" required>
+  <mat-select [(ngModel)]="fiche3.atteinteOss" ngModel name="Atteinteos" required (selectionChange)="onChangeFiche3()">
     <mat-option *ngFor="let item of tabenum1 " value="{{item}}">{{item}}</mat-option>
   </mat-select>
 </mat-form-field>
@@ -544,7 +563,8 @@
     <span class="label">Anomalie de pouce :</span>
     <mat-form-field appearance="fill">
       <mat-label>Anomalie de pouce </mat-label>
-      <mat-select [(ngModel)]="enum29" ngModel name="AnomaliePouce" required>
+      <mat-select [(ngModel)]="fiche3.anomPouce" ngModel name="AnomaliePouce" required
+        (selectionChange)="onChangeFiche3()">
         <mat-option *ngFor="let item of tabenum1 " value="{{item}}">{{item}}</mat-option>
       </mat-select>
     </mat-form-field>
@@ -554,13 +574,14 @@
     <span class="label">Anomalie des autres doigts :</span>
     <mat-form-field appearance="fill">
       <mat-label>Anomalie des autres doigts </mat-label>
-      <mat-select [(ngModel)]="enum30" ngModel name="AnomalieDoigts" required>
+      <mat-select [(ngModel)]="fiche3.anomAutreDoigts" ngModel name="AnomalieDoigts" required
+        (selectionChange)="onChangeFiche3()">
         <mat-option *ngFor="let item of tabenum1 " value="{{item}}">{{item}}</mat-option>
       </mat-select>
     </mat-form-field>
     <br>
 
-    <div style="width: 90%; float:right" *ngIf="enum30=='Oui'">
+    <div style="width: 90%; float:right" *ngIf="fiche3.anomAutreDoigts=='Oui'">
 
       <table width="100%">
         <tr>
@@ -569,7 +590,8 @@
             <span class="label">Courts et trapus :</span>
             <mat-form-field appearance="fill">
               <mat-label>Courts et trapus </mat-label>
-              <mat-select [(ngModel)]="enum31" ngModel name="courttrap" required>
+              <mat-select [(ngModel)]="fiche3.courtsTrapus" ngModel name="courttrap" required
+                (selectionChange)="onChangeFiche3()">
                 <mat-option *ngFor="let item of tabenum1 " value="{{item}}">{{item}}</mat-option>
               </mat-select>
             </mat-form-field>
@@ -581,7 +603,8 @@
             <span class="label">Syndactylie :</span>
             <mat-form-field appearance="fill">
               <mat-label>Syndactylie</mat-label>
-              <mat-select [(ngModel)]="enum32" ngModel name="Syndactylie" required>
+              <mat-select [(ngModel)]="fiche3.syndactylie" ngModel name="Syndactylie" required
+                (selectionChange)="onChangeFiche3()">
                 <mat-option *ngFor="let item of tabenum1 " value="{{item}}">{{item}}</mat-option>
               </mat-select>
             </mat-form-field>
@@ -592,8 +615,8 @@
 
             <span class="label">Autre :</span>
             <mat-form-field>
-              <input type="text" matInput placeholder="Autre" ngModel name="Autrev" required [(ngModel)]="autrev"
-                #AutrevInput="ngModel">
+              <input type="text" matInput placeholder="Autre" ngModel name="Autrev" required
+                (ngModelChange)="onChangeFiche3()" [(ngModel)]="fiche3.autreAnomAutreDoigts" #AutrevInput="ngModel">
               <mat-error *ngIf="AutremInput.hasError('required')">Autre must not be empty.</mat-error>
             </mat-form-field>
 
@@ -608,7 +631,8 @@
     <span class="label">Agénésie du radius :</span>
     <mat-form-field appearance="fill">
       <mat-label>Agénésie du radius </mat-label>
-      <mat-select [(ngModel)]="enum33" ngModel name="AgénésieRadius" required>
+      <mat-select [(ngModel)]="fiche3.agenesieRadius" ngModel name="AgénésieRadius" required
+        (selectionChange)="onChangeFiche3()">
         <mat-option *ngFor="let item of tabenum1 " value="{{item}}">{{item}}</mat-option>
       </mat-select>
     </mat-form-field>
@@ -617,18 +641,19 @@
     <span class="label">Anomalie des orteils :</span>
     <mat-form-field appearance="fill">
       <mat-label>Anomalie des orteils </mat-label>
-      <mat-select [(ngModel)]="enum34" ngModel name="AnomalieOrteils" required>
+      <mat-select [(ngModel)]="fiche3.anomOrteil" ngModel name="AnomalieOrteils" required
+        (selectionChange)="onChangeFiche3()">
         <mat-option *ngFor="let item of tabenum1 " value="{{item}}">{{item}}</mat-option>
       </mat-select>
     </mat-form-field>
     <br>
 
-    <div style="width: 90%; float:right" *ngIf="enum34=='Oui'">
+    <div style="width: 90%; float:right" *ngIf="fiche3.anomOrteil=='Oui'">
 
       <span class="label">Type d'anomalie(s) :</span>
       <mat-form-field>
         <input type="text" matInput placeholder="Type d'anomalie(s) " ngModel name="TypeAnomalie " required
-          [(ngModel)]="typeAnomomalie" #typeAnomomalieInput="ngModel">
+          (ngModelChange)="onChangeFiche3()" [(ngModel)]="fiche3.typeAnomOrteil" #typeAnomomalieInput="ngModel">
         <mat-error *ngIf="typeAnomomalieInput.hasError('required')">Type d'anomalie(s) must not be empty.</mat-error>
       </mat-form-field>
 
@@ -642,7 +667,8 @@
         <span class="label">Spina Bifida :</span>
         <mat-form-field appearance="fill">
           <mat-label>Spina Bifida </mat-label>
-          <mat-select [(ngModel)]="enum35" ngModel name="SpinaBifida" required>
+          <mat-select [(ngModel)]="fiche3.bifide" ngModel name="SpinaBifida" required
+            (selectionChange)="onChangeFiche3()">
             <mat-option *ngFor="let item of tabenum1 " value="{{item}}">{{item}}</mat-option>
           </mat-select>
         </mat-form-field>
@@ -651,7 +677,8 @@
         <span class="label">Luxation congénitale de la hanche :</span>
         <mat-form-field appearance="fill">
           <mat-label>Luxation congénitale de la hanche </mat-label>
-          <mat-select [(ngModel)]="enum36" ngModel name="LuxationConj" required>
+          <mat-select [(ngModel)]="fiche3.luxCongHanche" ngModel name="LuxationConj" required
+            (selectionChange)="onChangeFiche3()">
             <mat-option *ngFor="let item of tabenum1 " value="{{item}}">{{item}}</mat-option>
           </mat-select>
         </mat-form-field>
@@ -664,7 +691,8 @@
         <span class="label">Autre(s) anomalie(s) du rachis (Présiser) :</span>
         <mat-form-field>
           <input type="text" matInput placeholder="Autre(s) anomalie(s) du rachis " ngModel name="AnomalieRachis"
-            required [(ngModel)]="anomomalieRachis" #AnomomalieRachisInput="ngModel">
+            required (ngModelChange)="onChangeFiche3()" [(ngModel)]="fiche3.anomRachis"
+            #AnomomalieRachisInput="ngModel">
           <mat-error *ngIf="AnomomalieRachisInput.hasError('required')">anomalie(s) du rachis must not be empty.
           </mat-error>
         </mat-form-field><br>
@@ -672,7 +700,8 @@
         <span class="label">Autre(s) anomalie(s) osseuse(s) (Présiser) :</span>
         <mat-form-field>
           <input type="text" matInput placeholder="Autre(s) anomalie(s) osseuse(s)" ngModel name="AnomalieOsseuse"
-            required [(ngModel)]="anomalieOsseuse" #anomalieOsseuseInput="ngModel">
+            required (ngModelChange)="onChangeFiche3()" [(ngModel)]="fiche3.autreAnomOss"
+            #anomalieOsseuseInput="ngModel">
           <mat-error *ngIf="anomalieOsseuseInput.hasError('required')">anomalie(s) osseuse(s) must not be empty.
           </mat-error>
         </mat-form-field>
@@ -696,7 +725,7 @@
 <span class="label"><strong>Anomalie neurologique :</strong></span>
 <mat-form-field appearance="fill">
   <mat-label>Anomalie neurologique </mat-label>
-  <mat-select [(ngModel)]="enum37" ngModel name="AnomalieNeuro" required>
+  <mat-select [(ngModel)]="fiche3.anomNeuro" ngModel name="AnomalieNeuro" required (selectionChange)="onChangeFiche3()">
     <mat-option *ngFor="let item of tabenum1 " value="{{item}}">{{item}}</mat-option>
   </mat-select>
 </mat-form-field>
@@ -712,7 +741,8 @@
           <span class="label">Retard Mental :</span>
           <mat-form-field appearance="fill">
             <mat-label>Retard Mental </mat-label>
-            <mat-select [(ngModel)]="enum38" ngModel name="RetardMental" required>
+            <mat-select [(ngModel)]="fiche3.retardMent" ngModel name="RetardMental" required
+              (selectionChange)="onChangeFiche3()">
               <mat-option *ngFor="let item of tabenum1 " value="{{item}}">{{item}}</mat-option>
             </mat-select>
           </mat-form-field>
@@ -722,7 +752,8 @@
           <span class="label">Performance scolaire :</span>
           <mat-form-field appearance="fill">
             <mat-label>Performance scolaire</mat-label>
-            <mat-select [(ngModel)]="enum39" ngModel name="PerformanceScolaire" required>
+            <mat-select [(ngModel)]="fiche3.performanceScolaire" ngModel name="PerformanceScolaire" required
+              (selectionChange)="onChangeFiche3()">
               <mat-option *ngFor="let item of tabperfSco " value="{{item}}">{{item}}</mat-option>
             </mat-select>
           </mat-form-field>
@@ -734,15 +765,16 @@
           <span class="label">Hypoacousie :</span>
           <mat-form-field appearance="fill">
             <mat-label>Hypoacousie</mat-label>
-            <mat-select [(ngModel)]="enum40" ngModel name="Hypoacousie" required>
+            <mat-select [(ngModel)]="fiche3.hypoacousie" ngModel name="Hypoacousie" required
+              (selectionChange)="onChangeFiche3()">
               <mat-option *ngFor="let item of tabenum1 " value="{{item}}">{{item}}</mat-option>
             </mat-select>
           </mat-form-field><br>
 
           <span class="label">Autre :</span>
           <mat-form-field>
-            <input type="text" matInput placeholder="Autre" ngModel name="Autrew" required [(ngModel)]="Autrew"
-              #AutrewInput="ngModel">
+            <input type="text" matInput placeholder="Autre" ngModel name="Autrew" required
+              (ngModelChange)="onChangeFiche3()" [(ngModel)]="fiche3.autreAnomNeuro" #AutrewInput="ngModel">
             <mat-error *ngIf="AutrewInput.hasError('required')">autre must not be empty.
             </mat-error>
           </mat-form-field>
@@ -754,7 +786,8 @@
           <span class="label">Strabisme :</span>
           <mat-form-field appearance="fill">
             <mat-label>Strabisme</mat-label>
-            <mat-select [(ngModel)]="enum41" ngModel name="Strabisme" required>
+            <mat-select [(ngModel)]="fiche3.strabisme" ngModel name="Strabisme" required
+              (selectionChange)="onChangeFiche3()">
               <mat-option *ngFor="let item of tabenum1 " value="{{item}}">{{item}}</mat-option>
             </mat-select>
           </mat-form-field>
@@ -776,7 +809,8 @@
 <span class="label"><strong>Anomalie Cardio-Vasculaire :</strong></span>
 <mat-form-field appearance="fill">
   <mat-label>Anomalie Cardio-Vasculaire</mat-label>
-  <mat-select [(ngModel)]="enum42" ngModel name="Anomalie_Cardio_Vasculaire" required>
+  <mat-select [(ngModel)]="fiche3.anomCardVas" ngModel name="Anomalie_Cardio_Vasculaire" required
+    (selectionChange)="onChangeFiche3()">
     <mat-option *ngFor="let item of tabenum1 " value="{{item}}">{{item}}</mat-option>
   </mat-select>
 </mat-form-field>
@@ -788,19 +822,20 @@
     <span class="label">Echo coeur faite</span>
     <mat-form-field appearance="fill">
       <mat-label>Echo coeur faite</mat-label>
-      <mat-select [(ngModel)]="enum43" ngModel name="Echo_coeur_faite" required>
+      <mat-select [(ngModel)]="fiche3.echoCoeur" ngModel name="Echo_coeur_faite" required
+        (selectionChange)="onChangeFiche3()">
         <mat-option *ngFor="let item of tabenum1 " value="{{item}}">{{item}}</mat-option>
       </mat-select>
     </mat-form-field>
 
-    <div id="gg" *ngIf="enum43=='Oui'">
+    <div id="gg" *ngIf="fiche3.echoCoeur=='Oui'">
       <div style="width: 90%; float:right">
 
 
         <span class="label">Présiser les anomalies :</span>
         <mat-form-field>
           <input type="text" matInput placeholder="Présiser les anomalies" ngModel name="Panomalie" required
-            [(ngModel)]="panom" #panomInput="ngModel">
+            (ngModelChange)="onChangeFiche3()" [(ngModel)]="fiche3.preciseAnomCardio" #panomInput="ngModel">
           <mat-error *ngIf="panomInput.hasError('required')">anomalies must not be empty.
           </mat-error>
         </mat-form-field>
@@ -824,19 +859,20 @@
 <span class="label"><strong>Anomalie Digestive :</strong></span>
 <mat-form-field appearance="fill">
   <mat-label>Anomalie Digestive</mat-label>
-  <mat-select [(ngModel)]="enum44" ngModel name="Anomalie_Digestive" required>
+  <mat-select [(ngModel)]="fiche3.anomDig" ngModel name="Anomalie_Digestive" required
+    (selectionChange)="onChangeFiche3()">
     <mat-option *ngFor="let item of tabenum1 " value="{{item}}">{{item}}</mat-option>
   </mat-select>
 </mat-form-field>
 <br>
 
-<div id="gg" *ngIf="enum44=='Oui'">
+<div id="gg" *ngIf="fiche3.anomDig=='Oui'">
   <div style="width: 90%; float:right">
 
     <span class="label">Présiser les anomalies :</span>
     <mat-form-field>
       <input type="text" matInput placeholder="Présiser les anomalies" ngModel name="Panomalie" required
-        [(ngModel)]="panom1" #panom1Input="ngModel">
+        (ngModelChange)="onChangeFiche3()" [(ngModel)]="fiche3.preciseAnomDig" #panom1Input="ngModel">
       <mat-error *ngIf="panom1Input.hasError('required')">anomalies must not be empty.
       </mat-error>
     </mat-form-field>
@@ -857,13 +893,14 @@
 <span class="label"><strong>Endocrinopathie :</strong></span>
 <mat-form-field appearance="fill">
   <mat-label>Endocrinopathie</mat-label>
-  <mat-select [(ngModel)]="enum45" ngModel name="Endocrinopathiee" required>
+  <mat-select [(ngModel)]="fiche3.endocrinopathie" ngModel name="Endocrinopathiee" required
+    (selectionChange)="onChangeFiche3()">
     <mat-option *ngFor="let item of tabenum1 " value="{{item}}">{{item}}</mat-option>
   </mat-select>
 </mat-form-field>
 <br>
 
-<table style="width: 100%;" *ngIf="enum45=='Oui'">
+<table style="width: 100%;" *ngIf="fiche3.endocrinopathie=='Oui'">
   <tr>
 
     <td style="width: 33%;">
@@ -871,7 +908,7 @@
       <span class="label">Diabéte :</span>
       <mat-form-field appearance="fill">
         <mat-label>Diabéte</mat-label>
-        <mat-select [(ngModel)]="enum46" ngModel name="Diabéte" required>
+        <mat-select [(ngModel)]="fiche3.diabete" ngModel name="Diabéte" required (selectionChange)="onChangeFiche3()">
           <mat-option *ngFor="let item of tabenum1 " value="{{item}}">{{item}}</mat-option>
         </mat-select>
       </mat-form-field><br>
@@ -879,7 +916,8 @@
       <span class="label">Hypothyroidie :</span>
       <mat-form-field appearance="fill">
         <mat-label>Hypothyroidie</mat-label>
-        <mat-select [(ngModel)]="enum47" ngModel name="Hypothyroidie" required>
+        <mat-select [(ngModel)]="fiche3.hypothyroidie" ngModel name="Hypothyroidie" required
+          (selectionChange)="onChangeFiche3()">
           <mat-option *ngFor="let item of tabenum1 " value="{{item}}">{{item}}</mat-option>
         </mat-select>
       </mat-form-field>
@@ -890,8 +928,8 @@
 
       <span class="label">Age de découverte :</span>
       <mat-form-field>
-        <input type="text" matInput placeholder="Age de découverte" ngModel name="Age_de_decouverte" required
-          [(ngModel)]="aged" #agedInput="ngModel">
+        <input type="number" matInput placeholder="Age de découverte" ngModel name="Age_de_decouverte" required
+          (ngModelChange)="onChangeFiche3()" [(ngModel)]="fiche3.ageDecouverte" #agedInput="ngModel">
         <mat-error *ngIf="agedInput.hasError('required')">Age de découverte must not be empty.
         </mat-error>
       </mat-form-field><br>
@@ -899,7 +937,7 @@
       <span class="label">Autres symptomes endociniens:</span>
       <mat-form-field>
         <input type="text" matInput placeholder="Autres symptomes endociniens" ngModel name="autresSymp" required
-          [(ngModel)]="autresSymp" #autresSympInput="ngModel">
+          (ngModelChange)="onChangeFiche3()" [(ngModel)]="fiche3.autreSympEndo" #autresSympInput="ngModel">
         <mat-error *ngIf="autresSympInput.hasError('required')">symptomes must not be empty.
         </mat-error>
       </mat-form-field>
@@ -913,7 +951,8 @@
       <span class="label">Déficites en GH :</span>
       <mat-form-field appearance="fill">
         <mat-label>Déficites en GH</mat-label>
-        <mat-select [(ngModel)]="enum48" ngModel name="Déficites_en_GH" required>
+        <mat-select [(ngModel)]="fiche3.deficiteGH" ngModel name="Déficites_en_GH" required
+          (selectionChange)="onChangeFiche3()">
           <mat-option *ngFor="let item of tabenum1 " value="{{item}}">{{item}}</mat-option>
         </mat-select>
       </mat-form-field>
@@ -929,7 +968,7 @@
 <span class="label"><strong>Autre(s) anomalie(s) congénital(s) :</strong></span>
 <mat-form-field>
   <input type="text" matInput placeholder="Autre(s) anomalie(s) congénital(s)" ngModel name="autresanoCong" required
-    [(ngModel)]="autresanoCong" #autresanoCongInput="ngModel">
+    (ngModelChange)="onChangeFiche3()" [(ngModel)]="fiche3.autreAnomCong" #autresanoCongInput="ngModel">
   <mat-error *ngIf="autresanoCongInput.hasError('required')">anomalies must not be empty.
   </mat-error>
 </mat-form-field>

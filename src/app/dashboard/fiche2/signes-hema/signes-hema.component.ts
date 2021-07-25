@@ -1,4 +1,6 @@
+import { EventEmitter, Output } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
+import { Fiche } from 'src/model/fiche';
 
 @Component({
   selector: 'fiche2-signes-hema',
@@ -7,55 +9,32 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SignesHemaComponent implements OnInit {
 
-  hb:any;
-
-  leuco:any;
-
-  vgm:any;
-
-  pnn:any;
-
-  retic:any;
-
-  plq:any;
-
-  agedeb:any;
-
-  hbf:any;
-
-  Erythroblastes:any;
-
-  pourcAdi:any;
+  fiche4!: Fiche;
+  @Output() fiche4Change: EventEmitter<Fiche> = new EventEmitter<Fiche>();
 
   tabenum1 = ['Oui', 'Non', 'NP', 'moin1'];
 
-  tabenum2=['Faite', 'Nonfaite', 'Moin1', 'NP'];
+  tabenum2 = ['Faite', 'Nonfaite', 'Moin1', 'NP'];
 
-  tabenum4=['Normale', 'Diminuee', 'Moin1', 'NP'];
+  tabenum4 = ['Normale', 'Diminuee', 'Moin1', 'NP'];
 
-  tabenum5=['Normale', 'Dysplasie', 'Moin1'];
+  tabenum5 = ['Normale', 'Dysplasie', 'Moin1'];
 
-  tabenum6=['Nonfaite', 'Normale', 'Hypoplasie', 'Aplasie', 'Moin1'];
+  tabenum6 = ['Nonfaite', 'Normale', 'Hypoplasie', 'Aplasie', 'Moin1'];
 
-  enum1='NP';
+  constructor() {
+    this.fiche4 = {
+      hbInf: 'NP', plq_inf: 'NP', pnnInf: 'NP', electrophoreseHb: 'NP', myelogramme: 'NP', cellularite: 'NP', morphologie: 'Moin1', bom: 'Moin1',
+      hb:0,vgm:0,retic:0,leuco:0,pnn:0,plq:0,ageDebutManiHema:0,hbf:0,erythroblaste:0,pourcenAdipo:0
 
-  enum2='NP';
-
-  enum3='NP';
-
-  enum4='NP';
-
-  enum5='NP';
-
-  enum6='NP';
-
-  enum7='Moin1';
-
-  enum8='Moin1';
-
-  constructor() { }
+    } as Fiche;
+  }
 
   ngOnInit(): void {
+  }
+
+  public onChangeFiche4() {
+    this.fiche4Change.emit(this.fiche4);
   }
 
 }

@@ -10,7 +10,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 export class OrganismeDialogComponent implements OnInit {
 
   constructor(public dialogRef: MatDialogRef<OrganismeDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: Organisme) { }
+    @Inject(MAT_DIALOG_DATA) public organisme: Organisme) { }
 
   ngOnInit(): void {
   }
@@ -22,7 +22,7 @@ export class OrganismeDialogComponent implements OnInit {
 
   }
 
-  todo(a:any){
+  todo(a:Organisme){
     console.log(a,"mokhtar");
   }
 

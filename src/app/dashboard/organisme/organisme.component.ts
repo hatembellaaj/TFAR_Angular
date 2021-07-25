@@ -10,33 +10,25 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { OrganismeService } from '../../services/organisme.service';
 import { OrganismeDialogComponent } from './organisme-dialog/organisme-dialog.component';
 import { OrganismeDtDialogComponent } from './organisme-dt-dialog/organisme-dt-dialog.component';
-import { OrganismeType } from 'src/app/enumeration/OrganismeType';
 
 @Component({
   selector: 'app-organisme',
   templateUrl: './organisme.component.html',
   styleUrls: ['./organisme.component.css']
 })
-export class OrganismeComponent implements OnInit,AfterViewInit,DoCheck {
+export class OrganismeComponent implements OnInit, AfterViewInit, DoCheck {
 
 
-  organismes$!:Observable<Organisme[]>;
-  dataSource!: MatTableDataSource<Organisme> ;
-  displayedColumns: string[] = ['code', 'nom','adresse','tel','contact','email','type','detail','update','delete'];
+  organismes$!: Observable<Organisme[]>;
+  dataSource!: MatTableDataSource<Organisme>;
+  displayedColumns: string[] = ['code', 'nom', 'adresse', 'tel', 'contact', 'email', 'type', 'detail', 'update', 'delete'];
   searchKey!: string;
   @ViewChild(MatSort) sort!: MatSort;
-  @ViewChild(MatPaginator) paginator!:MatPaginator;
-  code!:number;
-  nom!:string;
-  adresse!:string;
-  tel!:string;
-  contact!:string;
-  email!:string;
-  type!:OrganismeType;
-  bool :boolean=false;
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
+  bool: boolean = false;
 
 
-  constructor(private dialog:MatDialog,private organismeService :OrganismeService,private _snackBar: MatSnackBar) { }
+  constructor(private dialog: MatDialog, private organismeService: OrganismeService, private _snackBar: MatSnackBar) { }
 
 
   ngOnInit(): void {
@@ -47,10 +39,10 @@ export class OrganismeComponent implements OnInit,AfterViewInit,DoCheck {
 
   ngDoCheck() {
 
-    if (this.bool==true){
+    if (this.bool == true) {
 
       this.getData();
-      this.bool=false;
+      this.bool = false;
 
     }
   }
@@ -61,18 +53,18 @@ export class OrganismeComponent implements OnInit,AfterViewInit,DoCheck {
     this.getAllorganismes();
   }
 
-  openSnackBar(message: string, action: string,duration:number) {
-    this._snackBar.open(message, action,{duration:duration});
+  openSnackBar(message: string, action: string, duration: number) {
+    this._snackBar.open(message, action, { duration: duration });
   }
 
-  sort1(){
-    if (this.dataSource!=undefined){
+  sort1() {
+    if (this.dataSource != undefined) {
       this.dataSource.sort = this.sort;
     }
   }
 
-  paginator1(){
-    if (this.dataSource!=undefined){
+  paginator1() {
+    if (this.dataSource != undefined) {
       this.dataSource.paginator = this.paginator;
 
     }
@@ -81,7 +73,7 @@ export class OrganismeComponent implements OnInit,AfterViewInit,DoCheck {
 
 
 
-  getData(){
+  getData() {
     this.organismeService.getAllOrganismes().subscribe(data => {
       this.dataSource = new MatTableDataSource(data);
       this.sort1();
@@ -103,126 +95,123 @@ export class OrganismeComponent implements OnInit,AfterViewInit,DoCheck {
     this.dataSource.filter = this.searchKey.trim().toLowerCase();
   }
 
-  onCreate(){
-    const dialogConfig =new MatDialogConfig();
+  onCreate() {
+    const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
     dialogConfig.width = "60%";
-    dialogConfig.data = {code : this.code, nom : this.nom ,adresse : this.adresse,tel : this.tel,contact : this.contact,email : this.email,type:this.type};
-    const dialogRef =this.dialog.open(OrganismeDialogComponent,dialogConfig);
+    dialogConfig.data = { nom: '', adresse: '', tel: '', contact: '', email: '', type: 'Hopital' } as Organisme;
+    const dialogRef = this.dialog.open(OrganismeDialogComponent, dialogConfig);
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
-      if (result != undefined){
+      if (result != undefined) {
 
         console.log(result);
         console.log(result.code);
         console.log(result.nom);
 
-      this.organismeService.saveOrganisme(result).subscribe(
-        res =>{
+        this.organismeService.saveOrganisme(result).subscribe(
+          res => {
             console.log(res);
-            this.bool=true;
+            this.bool = true;
 
 
 
-        },
-        err => {
+          },
+          err => {
             console.log(err.message);
-        }
-    );
+          }
+        );
       }
-     });
+    });
 
   }
 
-  onDelete(organisme:Organisme){
+  onDelete(organisme: Organisme) {
 
     this.organismeService.deleteOrganisme(organisme).subscribe(
-      res =>{
-          console.log(res);
+      res => {
+        console.log(res);
 
       },
       err => {
-          console.log(err.message);
-          this.bool=true;
-          console.log(err.status)
-          if (err.status==500){
-            this.openSnackBar("You must delete the associated users before delete", "Delete fail",2800);
+        console.log(err.message);
+        this.bool = true;
+        console.log(err.status)
+        if (err.status == 500) {
+          this.openSnackBar("You must delete the associated users before delete", "Delete fail", 2800);
 
-          }
+        }
 
 
       }
-  );
+    );
     console.log("ondelete!!!!")
-    console.log(organisme,"aaaaaa");
+    console.log(organisme, "aaaaaa");
   }
 
 
-  onDetails(organisme:Organisme){
+  onDetails(organisme: Organisme) {
 
-    const dialogConfig =new MatDialogConfig();
+    const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
     dialogConfig.width = "60%";
-    dialogConfig.data = {code : organisme.code, nom : organisme.nom ,adresse : organisme.adresse,tel : organisme.tel,contact : organisme.contact,email : organisme.email,type:organisme.type};
-    console.log("["+organisme.code+", "+organisme.nom + "]");
-    const dialogRef =this.dialog.open(OrganismeDtDialogComponent,dialogConfig);
+    dialogConfig.data = organisme;
+    console.log("[" + organisme.code + ", " + organisme.nom + "]");
+    const dialogRef = this.dialog.open(OrganismeDtDialogComponent, dialogConfig);
 
   }
 
 
-  onUpdate(organisme:Organisme){
+  onUpdate(organisme: Organisme) {
 
-    const dialogConfig =new MatDialogConfig();
+    const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
     dialogConfig.width = "60%";
-    dialogConfig.data = {code : organisme.code, nom : organisme.nom ,adresse : organisme.adresse,tel : organisme.tel,contact : organisme.contact,email : organisme.email,type:organisme.type};
-    console.log("["+organisme.code+", "+organisme.nom + "]");
-    const dialogRef =this.dialog.open(OrganismeDialogComponent,dialogConfig);
+    dialogConfig.data = organisme;
+    console.log("[" + organisme.code + ", " + organisme.nom + "]");
+    const dialogRef = this.dialog.open(OrganismeDialogComponent, dialogConfig);
 
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed update');
-      if (result == undefined){
+      if (result == undefined) {
+
+        this.getData();
 
         console.log("vous avez clicker sur cancel");
       }
-      else if (result.code == organisme.code){
+      else if (result.code == organisme.code) {
 
         console.log("rrrrrrrrrrrrrrrrrrrrrrrrr")
         console.log(result.code);
         console.log("update sucsess");
         console.log(organisme.code)
         this.organismeService.updateOrganisme(result).subscribe(
-          res =>{
-              console.log(res);
-              this.bool=true;
+          res => {
+            console.log(res);
+            this.bool = true;
 
           },
           err => {
-              console.log(err.message);
+            console.log(err.message);
 
           }
-      );
+        );
 
       }
-      /*else {
 
-        console.log("il ne faut pas changer le code organisme");
-
-        this.openSnackBar("You  mustn't change the code organisme", "Update fail",2800);
-
-      }*/
     });
 
   }
 
-  getAllorganismes(){
+  getAllorganismes() {
 
-    this.organismes$ = this.organismeService.getAllOrganismes().pipe(map(data=>{
-      console.log(data); return data}));
+    this.organismes$ = this.organismeService.getAllOrganismes().pipe(map(data => {
+      console.log(data); return data
+    }));
 
   }
 

@@ -1,0 +1,18 @@
+<mat-form-field class="example-full-width">
+  <mat-label>Mois</mat-label>
+
+  <mat-select [(ngModel)]="androgene.mois" ngModel name="mois" required (selectionChange)="onChangeAndrogene()">
+    <mat-option *ngFor="let item of mois " value="{{item}}">{{item}}</mat-option>
+  </mat-select>
+
+</mat-form-field><br>
+
+
+<mat-form-field class="example-full-width">
+  <mat-label>Reponse</mat-label>
+
+  <mat-select [(ngModel)]="androgene.reponse" ngModel name="response" required (selectionChange)="onChangeAndrogene()">
+    <mat-option *ngFor="let item of response " value="{{item}}">{{item}}</mat-option>
+  </mat-select>
+
+</mat-form-field>

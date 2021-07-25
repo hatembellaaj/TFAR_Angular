@@ -1,36 +1,49 @@
 import { Laboratoire } from './../../../../model/laboratoire';
 import { Observable } from 'rxjs';
-import { Component, OnInit, DoCheck } from '@angular/core';
+import { Component, OnInit, DoCheck, EventEmitter } from '@angular/core';
 import { LaboratoireService } from 'src/app/services/laboratoire.service';
 import { map } from 'rxjs/operators';
+import { Fiche } from 'src/model/fiche';
+import { Output } from '@angular/core';
 
 @Component({
   selector: 'fiche2-congelation-cell',
   templateUrl: './congelation-cell.component.html',
   styleUrls: ['./congelation-cell.component.css']
 })
-export class CongelationCellComponent implements OnInit,DoCheck {
+export class CongelationCellComponent implements OnInit, DoCheck {
 
-  tabenum2=['Faite', 'Nonfaite', 'Moin1', 'NP'];
+  fiche6!: Fiche;
+  @Output() fiche6Change: EventEmitter<Fiche> = new EventEmitter<Fiche>();
 
-  enum22='NP';
+  tabenum2 = ['Faite', 'Nonfaite', 'Moin1', 'NP'];
+
+  enum22 = 'NP';
 
   //lab=['Pasteur','Sousse','Sfax',''];
 
-  lab1='';
+  lab1 = '';
 
-  typePre:any;
+  typePre: any;
 
-  laboratoires$!:Observable<Laboratoire[]>;
+  laboratoires$!: Observable<Laboratoire[]>;
 
 
-  constructor(private laboratoireService :LaboratoireService) { }
+  constructor(private laboratoireService: LaboratoireService) {
+    this.fiche6 = { congelationCellule: 'NP' } as Fiche;
+  }
+
+  public onChangeFiche6() {
+    this.fiche6Change.emit(this.fiche6);
+  }
+
+
   ngDoCheck(): void {
 
-    if (this.enum22!='Faite'){
+    if (this.fiche6.congelationCellule != 'Faite') {
 
-      this.lab1='';
-      this.typePre='';
+      this.fiche6.labo = '';
+      this.fiche6.typePrelevement = '';
 
 
     }
@@ -41,10 +54,11 @@ export class CongelationCellComponent implements OnInit,DoCheck {
     this.getAlllaboratoires();
   }
 
-  getAlllaboratoires(){
+  getAlllaboratoires() {
 
-    this.laboratoires$ = this.laboratoireService.getAllLaboratoires().pipe( map ( data=>{
-      console.log(data); return data}));
+    this.laboratoires$ = this.laboratoireService.getAllLaboratoires().pipe(map(data => {
+      console.log(data); return data
+    }));
 
   }
 
