@@ -9,7 +9,6 @@ import { Fiche } from 'src/model/fiche';
 export class BiologieMoleculaireComponent implements OnInit {
 
   fiche5!: Fiche;
-  @Output() fiche5Change: EventEmitter<Fiche> = new EventEmitter<Fiche>();
 
   tabenum1 = ['Oui', 'Non', 'NP', 'moin1'];
 
@@ -22,8 +21,9 @@ export class BiologieMoleculaireComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  public onChangeFiche5() {
-    this.fiche5Change.emit(this.fiche5);
+
+  saveBioMolecInformations(){
+    return this.fiche5;
   }
 
 }

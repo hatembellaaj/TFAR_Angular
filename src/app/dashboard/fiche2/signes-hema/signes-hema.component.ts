@@ -10,7 +10,6 @@ import { Fiche } from 'src/model/fiche';
 export class SignesHemaComponent implements OnInit {
 
   fiche4!: Fiche;
-  @Output() fiche4Change: EventEmitter<Fiche> = new EventEmitter<Fiche>();
 
   tabenum1 = ['Oui', 'Non', 'NP', 'moin1'];
 
@@ -33,8 +32,9 @@ export class SignesHemaComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  public onChangeFiche4() {
-    this.fiche4Change.emit(this.fiche4);
+
+  saveSigneHemaInformations(){
+    return this.fiche4;
   }
 
 }

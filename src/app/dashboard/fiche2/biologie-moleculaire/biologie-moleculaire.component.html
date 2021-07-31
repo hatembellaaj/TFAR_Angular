@@ -1,7 +1,7 @@
 <span class="label"><strong>Test d'Ubiquitination FANCD2 </strong></span>
 <mat-form-field appearance="fill">
   <mat-label>Test d'Ubiquitination FANCD2 </mat-label>
-  <mat-select [(ngModel)]="fiche5.ubiquitination" ngModel name="tdf" required (selectionChange)="onChangeFiche5()">
+  <mat-select [(ngModel)]="fiche5.ubiquitination" ngModel name="tdf" required>
     <mat-option *ngFor="let item of tabenum1 " value="{{item}}">{{item}}</mat-option>
   </mat-select>
 </mat-form-field>
@@ -11,8 +11,7 @@
 <span class="label">Résultat</span>
 <mat-form-field appearance="fill">
   <mat-label>Résultat </mat-label>
-  <mat-select [(ngModel)]="fiche5.resUbiquitination" ngModel name="resultat" required
-    (selectionChange)="onChangeFiche5()">
+  <mat-select [(ngModel)]="fiche5.resUbiquitination" ngModel name="resultat" required>
     <mat-option *ngFor="let item of tabenum7 " value="{{item}}">{{item}}</mat-option>
   </mat-select>
 </mat-form-field>
@@ -21,7 +20,7 @@
 <span class="label">Groupe de complémentation</span>
 <mat-form-field>
   <input type="text" matInput placeholder="Groupe de complémentation" ngModel name="Groupe_de_complémentation" required
-    (ngModelChange)="onChangeFiche5()" [(ngModel)]="fiche5.groupComp" #nomHInput="ngModel">
+   [(ngModel)]="fiche5.groupComp" #nomHInput="ngModel">
   <mat-error *ngIf="nomHInput.hasError('required')">groupe must not be empty.</mat-error>
 </mat-form-field>
 
@@ -29,6 +28,6 @@
 <span class="label">Mutation du géne FANC</span>
 <mat-form-field>
   <input type="text" matInput placeholder="Mutation du géne FANC" ngModel name="Mutation_du_géne_FANC" required
-    (ngModelChange)="onChangeFiche5()" [(ngModel)]="fiche5.mutationFANC" #nomHInput="ngModel">
+   [(ngModel)]="fiche5.mutationFANC" #nomHInput="ngModel">
   <mat-error *ngIf="nomHInput.hasError('required')">mutation must not be empty.</mat-error>
 </mat-form-field>

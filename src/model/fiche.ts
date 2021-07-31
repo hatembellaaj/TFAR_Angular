@@ -1,3 +1,7 @@
+import { Cytogenetique } from './cytogenetique';
+import { Frere } from './frere';
+import { Androgene } from 'src/model/androgene';
+import { Patient } from './patient';
 
 import { Enum2 } from 'src/app/enumeration/enum2';
 import { Enum3 } from 'src/app/enumeration/enum3';
@@ -12,17 +16,19 @@ import { Enum9 } from 'src/app/enumeration/enum9';
 import { Enum10 } from 'src/app/enumeration/enum10';
 import { Enum11 } from 'src/app/enumeration/enum11';
 import { Statut } from 'src/app/enumeration/statut';
+import { Cousin } from './cousin';
 
 
 export interface Fiche {
 
   idFiche?: number;
 
+
   ndossierFiche?: string;
 
   dateDiagnostique?: Date;
 
-  dateEnregistrement?: Date;
+  dateEnregistrement?: Date;  //3
 
   //histoire familiale:
 
@@ -44,7 +50,7 @@ export interface Fiche {
 
   arbreGenealogique?: string;
 
-  arbreGenealogiqueCancer?: string;
+  arbreGenealogiqueCancer?: string;  //10
 
   // circon de decouverte :
 
@@ -62,7 +68,7 @@ export interface Fiche {
 
   typeCancer?: string;
 
-  autreCirDec?: string;
+  autreCirDec?: string;   //8
 
   //sandrome malformatif :
 
@@ -150,15 +156,6 @@ export interface Fiche {
 
   typeAnomVoisUri?:string;
 
-  //hypochromique?: string //Enum1;
-
-  //empreinteDigitiforme?: string //Enum1;
-  /*
-
-  vergeInsuf?: string;
-
-  autreAnomVerge?: string;*/
-
   retardPubertaire?: string //Enum1;
 
   mtanner?: string;
@@ -166,10 +163,6 @@ export interface Fiche {
   ptanner?: string;
 
   ttanner?: string;
-
-  /*anomUrin?: string //Enum1;
-
-  typeAnomUrin?: string;*/
 
   autreUrogenital?: string;
 
@@ -189,7 +182,7 @@ export interface Fiche {
 
   anomOrteil?: string //Enum1;
 
-  typeAnomOrteil?: string //Enum1;
+  typeAnomOrteil?: string;
 
   bifide?: string //Enum1;
 
@@ -447,102 +440,23 @@ export interface Fiche {
   /* 64 */
 
 
-
-
-
   codeUser?: number;
 
 
 
+  // new attributs  :
 
 
+  patient?:Patient;
 
+  androgene?:Androgene;
 
-  radiosFaites?: string;
+  cousin?:Cousin;
 
-  surnumerarie?: string //Enum1;
+  frere?:Frere;
 
-  agenesiePouce?: string //Enum1;
+  cytogenetique?:Cytogenetique;
 
-  hypoPouce?: string //Enum1;
-
-  aspectPouce?: string //Enum1;
-
-  hypoEminence?: string //Enum1;
-
-  absenceRadial?: string //Enum1;
-
-  pouceBas?: string //Enum1;
-
-  autreAnomPouce?: string;
-
-  anomAutDoigts?: string //Enum1;
-
-  autreAnomDoigts?: string;
-
-  autreAnomalieMembreSup?: string;
-
-  preciseAnomOrt?: string;
-
-  lch?: string //Enum1;
-
-  autreAnomalieMembreInf?: string;
-
-  preciseAnomRac?: string;
-
-  insulinoDep?: string //Enum1;
-
-  autreEndocrinopathie?: string;
-
-  dateNumSanguine?: Date;
-
-  age?: number;
-
-  morphologieEryth?: Enum5;
-
-  morphologieGran?: Enum5;
-
-  morphologieMega?: Enum5;
-
-  granuleux?: number;
-
-  dysmyelopoiese?: string //Enum1;
-
-  megacaryocytes?: Enum4;
-
-  blaste?: number;
-
-  excesBlastes?: string //Enum1;
-
-  adipocytes?: number;
-
-  danatrol?: string //Enum1;
-
-  doseCyclo?: number;
-
-  doseFlu?: number;
-
-  doseBus?: number;
-
-  doseTotaleIrr?: number;
-
-  lam?: string //Enum1;
-
-  critereDiagLAM?: string;
-
-  traitementLAM?: string;
-
-  causeDeces?: string;
-
-  autreCauseD?: string;
-
-  code?: number;
-
-  dateMAJ?: Date;
-
-  nombreTacheCafe?: number;
-
-  nombreTacheHypo?: number;
 
 }
 

@@ -9,7 +9,6 @@ import { Fiche } from 'src/model/fiche';
 export class SyndromeMalformatifComponent implements OnInit, DoCheck {
 
   fiche3!: Fiche;
-  @Output() fiche3Change: EventEmitter<Fiche> = new EventEmitter<Fiche>();
 
   tab: number[] = [];
 
@@ -50,10 +49,6 @@ export class SyndromeMalformatifComponent implements OnInit, DoCheck {
 
 
 
-  }
-
-  public onChangeFiche3() {
-    this.fiche3Change.emit(this.fiche3);
   }
 
   ngDoCheck(): void {
@@ -164,6 +159,10 @@ export class SyndromeMalformatifComponent implements OnInit, DoCheck {
   fct(i: number) {
     return Math.round(i * 10) / 10;
 
+  }
+
+  saveSandMalInformations(){
+    return this.fiche3;
   }
 
 

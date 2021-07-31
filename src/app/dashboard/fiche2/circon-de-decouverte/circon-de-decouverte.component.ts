@@ -10,14 +10,7 @@ import { Fiche } from 'src/model/fiche';
 export class CirconDeDecouverteComponent implements OnInit {
 
   fiche2!: Fiche;
-  @Output() fiche2Change: EventEmitter<Fiche> = new EventEmitter<Fiche>();
-
-
-
   tabenum1 = ['Oui', 'Non', 'NP', 'moin1'];
-
-
-
   typeCancer: any;
 
   //autres:any;
@@ -32,8 +25,8 @@ export class CirconDeDecouverteComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  public onChangeFiche2() {
-    this.fiche2Change.emit(this.fiche2);
+  saveCirDecInformations(){
+    return this.fiche2;
   }
 
 }

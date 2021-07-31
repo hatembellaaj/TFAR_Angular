@@ -11,24 +11,16 @@ export class HistoireFamilialeComponent implements OnInit, DoCheck {
 
 
   fiche1!: Fiche;
-  @Output() fiche1Change: EventEmitter<Fiche> = new EventEmitter<Fiche>();
 
+  tab2: number[] = [0,1,2,3,4,5];
 
-  tab: number[] = [];
-
-  tab2: number[] = [];
+  tab: number[] = [0,1,2,3,4,5,6,7,8,9,10];
 
 
 
   dConsanguiniteParent = ['NP', 'Absence', 'Endogamme', 'Lointaine', 'Double cousins germains (2 eme degre)', 'Cousins germains(3 eme degre)'];
 
-
-  public onChangeFiche1() {
-    this.fiche1Change.emit(this.fiche1);
-  }
-
   constructor() {
-    this.fiche1 = { degConsang: 'NP' } as Fiche;
   }
 
 
@@ -38,13 +30,14 @@ export class HistoireFamilialeComponent implements OnInit, DoCheck {
   }
 
   ngOnInit(): void {
-    this.rempTab();
-    this.rempTab2();
+    /*this.rempTab();
+    this.rempTab2();*/
 
+    this.fiche1 = { degConsang: 'NP'} as Fiche;
 
   }
 
-  rempTab() {
+  /*rempTab() {
     for (let i = 0; i <= 10; i++) {
       this.tab.push(i);
     }
@@ -57,5 +50,9 @@ export class HistoireFamilialeComponent implements OnInit, DoCheck {
 
 
 
+  }*/
+
+  saveFamille(){
+    return this.fiche1;
   }
 }

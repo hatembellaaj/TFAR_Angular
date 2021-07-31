@@ -10,7 +10,6 @@ import { Fiche } from 'src/model/fiche';
 export class ScoreCliniqueComponent implements OnInit {
 
   fiche7!: Fiche;
-  @Output() fiche7Change: EventEmitter<Fiche> = new EventEmitter<Fiche>();
 
   score = ['Limite', 'Extensif', 'Moin1'];
 
@@ -18,11 +17,11 @@ export class ScoreCliniqueComponent implements OnInit {
     this.fiche7 = { score: 'Moin1', scoreClinique: 0, scoreEBMT: 0 } as Fiche;
   }
 
-  public onChangeFiche7() {
-    this.fiche7Change.emit(this.fiche7);
+  ngOnInit(): void {
   }
 
-  ngOnInit(): void {
+  saveScoreCliInformations(){
+    return this.fiche7;
   }
 
 }

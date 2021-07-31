@@ -11,16 +11,13 @@ import { EtudeCytoDialogComponent } from './etude-cyto-dialog/etude-cyto-dialog.
 export class EtudeCytoComponent implements OnInit {
 
   cytogenetique1!: Cytogenetique;
-  @Output() cyto1Change: EventEmitter<Cytogenetique> = new EventEmitter<Cytogenetique>();
 
   constructor(private dialog:MatDialog) { }
 
   ngOnInit(): void {
   }
 
-  public onChangecyto1() {
-    this.cyto1Change.emit(this.cytogenetique1);
-  }
+
 
   onCreate(){
     const dialogConfig =new MatDialogConfig();
@@ -37,11 +34,15 @@ export class EtudeCytoComponent implements OnInit {
 
         console.log(result);
 
-        this.onChangecyto1();
+
 
       }
      });
 
+  }
+
+  saveCytoInformations(){
+    return this.cytogenetique1;
   }
 
 }

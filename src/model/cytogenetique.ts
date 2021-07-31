@@ -5,8 +5,8 @@ import { Lymphocytes } from "src/app/enumeration/lymphocytes";
 
 export interface Cytogenetique {
 
-  //netudeCyto?: number;
-  
+  netudeCyto?: number;
+
 
   lymphocytes?: string //Lymphocytes;
 

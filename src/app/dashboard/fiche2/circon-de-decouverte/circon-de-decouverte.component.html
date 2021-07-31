@@ -6,7 +6,7 @@
     <span class="label">Syndrome anemyque</span>
     <mat-form-field appearance="fill">
       <mat-label>Syndrome anemyque </mat-label>
-      <mat-select [(ngModel)]="fiche2.syndromeAnemique" ngModel name="sa" required (selectionChange)="onChangeFiche2()">
+      <mat-select [(ngModel)]="fiche2.syndromeAnemique" ngModel name="sa" required>
         <mat-option *ngFor="let item of tabenum1" value="{{item}}">{{item}}</mat-option>
       </mat-select>
     </mat-form-field>
@@ -16,7 +16,7 @@
     <span class="label">Enquette familliale</span>
     <mat-form-field appearance="fill">
       <mat-label>Enquette familliale </mat-label>
-      <mat-select [(ngModel)]="fiche2.enqueteFam" ngModel name="ef" required (selectionChange)="onChangeFiche2()">
+      <mat-select [(ngModel)]="fiche2.enqueteFam" ngModel name="ef" required>
         <mat-option *ngFor="let item of tabenum1" value="{{item}}">{{item}}</mat-option>
       </mat-select>
     </mat-form-field>
@@ -31,7 +31,6 @@
         ngModel
         name="Type_Cancer"
         required
-        (ngModelChange)="onChangeFiche2()"
         [(ngModel)]="fiche2.typeCancer"
         #nomHInput="ngModel">
         <mat-error *ngIf="nomHInput.hasError('required')">type must not be empty.</mat-error>
@@ -49,7 +48,7 @@
     <span class="label">Syndrome hémorragique</span>
     <mat-form-field appearance="fill">
       <mat-label>Syndrome hémorragique </mat-label>
-      <mat-select [(ngModel)]="fiche2.syndromeHem" ngModel name="sh" required (selectionChange)="onChangeFiche2()">
+      <mat-select [(ngModel)]="fiche2.syndromeHem" ngModel name="sh" required>
         <mat-option *ngFor="let item of tabenum1" value="{{item}}">{{item}}</mat-option>
       </mat-select>
     </mat-form-field>
@@ -59,7 +58,7 @@
     <span class="label">Découverte fortuite</span>
     <mat-form-field appearance="fill">
       <mat-label>Découverte fortuite</mat-label>
-      <mat-select [(ngModel)]="fiche2.decouverteFort" ngModel name="df" required (selectionChange)="onChangeFiche2()">
+      <mat-select [(ngModel)]="fiche2.decouverteFort" ngModel name="df" required>
         <mat-option *ngFor="let item of tabenum1" value="{{item}}">{{item}}</mat-option>
       </mat-select>
     </mat-form-field>
@@ -74,7 +73,6 @@
         ngModel
         name="Autres"
         required
-        (ngModelChange)="onChangeFiche2()"
         [(ngModel)]="fiche2.autreCirDec"
         #nomHInput="ngModel">
         <mat-error *ngIf="nomHInput.hasError('required')">autres must not be empty.</mat-error>
@@ -91,7 +89,7 @@
     <span class="label">Syndrome infectieux</span>
     <mat-form-field appearance="fill">
       <mat-label>Syndrome infectieux</mat-label>
-      <mat-select [(ngModel)]="fiche2.syndromeInf" ngModel name="si" required (selectionChange)="onChangeFiche2()">
+      <mat-select [(ngModel)]="fiche2.syndromeInf" ngModel name="si" required>
         <mat-option *ngFor="let item of tabenum1" value="{{item}}">{{item}}</mat-option>
       </mat-select>
     </mat-form-field>
@@ -101,7 +99,7 @@
     <span class="label">Cancer</span>
     <mat-form-field appearance="fill">
       <mat-label>Cancer</mat-label>
-      <mat-select [(ngModel)]="fiche2.cancer" ngModel name="cancer" required (selectionChange)="onChangeFiche2()">
+      <mat-select [(ngModel)]="fiche2.cancer" ngModel name="cancer" required>
         <mat-option *ngFor="let item of tabenum1" value="{{item}}">{{item}}</mat-option>
       </mat-select>
     </mat-form-field>

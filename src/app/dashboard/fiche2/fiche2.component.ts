@@ -1,3 +1,4 @@
+import { Fiche } from './../../../model/fiche';
 import { Cytogenetique } from 'src/model/cytogenetique';
 import { Androgene } from './../../../model/androgene';
 import { Patient } from './../../../model/patient';
@@ -5,14 +6,25 @@ import { Departement } from '../../../model/departement';
 import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { MatAccordion } from '@angular/material/expansion';
 import { Observable } from 'rxjs';
-import { OrganismeService } from 'src/app/services/organisme.service';
 import { Organisme } from 'src/model/organisme';
 import { map } from 'rxjs/operators';
-import { DepartementService } from 'src/app/services/departement.service';
 import { Router } from '@angular/router';
 import { UserService } from 'src/app/services/user.service';
 import { User } from 'src/model/user';
-import { Fiche } from 'src/model/fiche';
+import { FormControl } from '@angular/forms';
+import { FicheService } from 'src/app/services/fiche.service';
+import { PatientComponent } from './patient/patient.component';
+import { HistoireFamilialeComponent } from './histoire-familiale/histoire-familiale.component';
+import { AndrogeneComponent } from './androgene/androgene.component';
+import { CirconDeDecouverteComponent } from './circon-de-decouverte/circon-de-decouverte.component';
+import { SyndromeMalformatifComponent } from './syndrome-malformatif/syndrome-malformatif.component';
+import { EtudeCytoComponent } from './etude-cyto/etude-cyto.component';
+import { SignesHemaComponent } from './signes-hema/signes-hema.component';
+import { BiologieMoleculaireComponent } from './biologie-moleculaire/biologie-moleculaire.component';
+import { CongelationCellComponent } from './congelation-cell/congelation-cell.component';
+import { ScoreCliniqueComponent } from './score-clinique/score-clinique.component';
+import { TraitementComponent } from './traitement/traitement.component';
+
 
 @Component({
   selector: 'app-fiche2',
@@ -21,6 +33,20 @@ import { Fiche } from 'src/model/fiche';
 })
 export class Fiche2Component implements OnInit, OnDestroy {
 
+
+  @ViewChild(PatientComponent) patientComponent!: PatientComponent;
+  @ViewChild(AndrogeneComponent) androgeneComponent!: AndrogeneComponent;
+  @ViewChild(HistoireFamilialeComponent) histoireFamilialeComponent!: HistoireFamilialeComponent;
+  @ViewChild(CirconDeDecouverteComponent) circonDeDecouverteComponent!: CirconDeDecouverteComponent;
+  @ViewChild(SyndromeMalformatifComponent) syndromeMalformatifComponent!: SyndromeMalformatifComponent;
+  @ViewChild(EtudeCytoComponent) etudeCytoComponent!: EtudeCytoComponent;
+  @ViewChild(SignesHemaComponent) SignesHemaComponent!: SignesHemaComponent;
+  @ViewChild(BiologieMoleculaireComponent) biologieMoleculaireComponent!: BiologieMoleculaireComponent;
+  @ViewChild(CongelationCellComponent) congelationCellComponent!: CongelationCellComponent;
+  @ViewChild(ScoreCliniqueComponent) ScoreCliniqueComponent!: ScoreCliniqueComponent;
+  @ViewChild(TraitementComponent) TraitementComponent!: TraitementComponent;
+
+
   selectedDepartement: any;
   selectedOrganisme: any;
   selectedUser: any;
@@ -28,95 +54,108 @@ export class Fiche2Component implements OnInit, OnDestroy {
   departements$!: Observable<Departement[]>;
   users$!: Observable<User[]>;
   ndfiche: any;
-  fich1FromChild!: Fiche;
-  fich2FromChild!: Fiche;
-  fich3FromChild!: Fiche;
-  fich4FromChild!: Fiche;
-  fich5FromChild!: Fiche;
-  fich6FromChild!: Fiche;
-  fich7FromChild!: Fiche;
-  fich8FromChild!: Fiche;
-  patientFromChild!:Patient;
-  androgeneFromChild!:Androgene;
-  etudeCytoFromChild!:Cytogenetique;
+  ficheI!: Fiche;
+  date1 = new FormControl(new Date());
+  date2 = new FormControl(new Date());
+
+
+
 
 
 
   @ViewChild(MatAccordion) accordion!: MatAccordion;
 
-  constructor(private organismeService: OrganismeService, private departementService: DepartementService, private router: Router, private userService: UserService) {
-    this.fich1FromChild = {} as Fiche;
-    this.fich2FromChild = {} as Fiche;
-    this.fich3FromChild = {} as Fiche;
-    this.fich4FromChild = {} as Fiche;
-    this.fich5FromChild = {} as Fiche;
-    this.fich6FromChild = {} as Fiche;
-    this.fich7FromChild = {} as Fiche;
-    this.fich8FromChild = {} as Fiche;
-    this.patientFromChild={} as Patient;
-    this.androgeneFromChild={} as Androgene;
-    this.etudeCytoFromChild={} as Cytogenetique;
-  }
-  ngOnDestroy(): void {
-    console.log("histoire-familiale",this.fich1FromChild);
-    console.log("circon-de-decouverte",this.fich2FromChild);
-    console.log("syndrome-malformatif",this.fich3FromChild);
-    console.log("syndrome-malformatif length ",Object.keys(this.fich3FromChild).length);
-    console.log("signe_hema",this.fich4FromChild);
-    console.log("signe_hema length ",Object.keys(this.fich4FromChild).length);
-    console.log("biologie-moleculaire",this.fich5FromChild);
-    console.log("biologie-moleculaire length ",Object.keys(this.fich5FromChild).length);
-    console.log("congelation cell",this.fich6FromChild);
-    console.log("congelation cell length ",Object.keys(this.fich6FromChild).length);
-    console.log("score clinique",this.fich7FromChild);
-    console.log("score clinique length ",Object.keys(this.fich7FromChild).length);
-    console.log("traitement",this.fich8FromChild);
-    console.log("traitement length ",Object.keys(this.fich8FromChild).length);
-    console.log(typeof(this.fich8FromChild.androDebut));
-    console.log("patient",this.patientFromChild);
-    console.log("patient length ",Object.keys(this.patientFromChild).length);
-    console.log("androgene",this.androgeneFromChild);
-    console.log("androgene length ",Object.keys(this.androgeneFromChild).length);
-    console.log("etudeCyto",this.etudeCytoFromChild);
-    console.log("etudeCyto length ",Object.keys(this.etudeCytoFromChild).length);
+  constructor(private ficheService: FicheService, private router: Router, private userService: UserService) {
 
-  }
+
+
+
+
+    }
+  ngOnDestroy(): void {
+
+
+    }
 
   ngOnInit(): void {
-    this.getAllOrganismes();
-    this.getAllDepartements();
-    this.getAllUsers();
+      this.getAllUsers();
+      this.userService.getAllUsers().subscribe(data => this.selectedUser = data[0]?.code);
 
-    this.organismeService.getAllOrganismes().subscribe(data => this.selectedOrganisme = data[0].nom);
-
-    this.departementService.getAllDepartements().subscribe(data => this.selectedDepartement = data[0].nom);
-
-    this.userService.getAllUsers().subscribe(data => this.selectedUser = data[0].nom);
+      this.ficheI = { dateDiagnostique: this.date1.value, dateEnregistrement: this.date2.value, codeUser: this.selectedUser } as Fiche;
 
 
-  }
+    }
 
-  getAllOrganismes() {
-    this.organismes$ = this.organismeService.getAllOrganismes().pipe(map(data => {
-      console.log(data); return data
-    }));
-  }
-
-  getAllDepartements() {
-    this.departements$ = this.departementService.getAllDepartements().pipe(map(data => {
-      console.log(data); return data
-    }));
-  }
 
   getAllUsers() {
-    this.users$ = this.userService.getAllUsers().pipe(map(data => {
-      console.log(data, "mpmpmp"); return data
-    }));
-  }
+      this.users$ = this.userService.getAllUsers().pipe(map(data => {
+        console.log(data, "mpmpmp"); return data
+      }));
+    }
+
+    saveFiche(){
+      let ficheToSave = {} as Fiche;
+      Object.assign(ficheToSave , this.ficheI);
+
+      let patient= this.patientComponent.savePatientInformations();
+      ficheToSave.patient=patient;
+      //Object.assign(ficheToSave , patient);
+      //ficheToSave.patient = patient;
+
+      let histoireFamiliale = this.histoireFamilialeComponent.saveFamille();
+      Object.assign(ficheToSave , histoireFamiliale);
+
+      let circonstanceDecouverte= this.circonDeDecouverteComponent.saveCirDecInformations();
+      Object.assign(ficheToSave , circonstanceDecouverte);
+
+      let SyndromeMalformatif=this.syndromeMalformatifComponent.saveSandMalInformations();
+      Object.assign(ficheToSave , SyndromeMalformatif);
+
+      let EtudeCyto=this.etudeCytoComponent.saveCytoInformations();
+      ficheToSave.cytogenetique=EtudeCyto;
+
+      let androgene=this.androgeneComponent.saveAndrogeneInformations();
+      ficheToSave.androgene=androgene;
+
+      let SignesHema=this.SignesHemaComponent.saveSigneHemaInformations();
+      Object.assign(ficheToSave , SignesHema);
+
+      let BiologieMoleculaire=this.biologieMoleculaireComponent.saveBioMolecInformations();
+      Object.assign(ficheToSave , BiologieMoleculaire);
+
+      let CongelationCell=this.congelationCellComponent.saveCongCellInformations();
+      Object.assign(ficheToSave , CongelationCell);
+
+      let ScoreClinique=this.ScoreCliniqueComponent.saveScoreCliInformations();
+      Object.assign(ficheToSave , ScoreClinique);
+
+      let Traitement=this.TraitementComponent.saveTraitInformations();
+      Object.assign(ficheToSave , Traitement);
+
+      console.log(ficheToSave,"mokkkkkk")
+
+
+      this.ficheService.saveFiche(ficheToSave).subscribe(
+        res => {
+          console.log(res)
+          this.router.navigate(["dashboard/fiche"]);
+        },
+        err => { console.log(err.message); }
+      );
+    }
+
+
 
   toFiche() {
-    this.router.navigate(["dashboard/fiche"]);
-  }
+      this.router.navigate(["dashboard/fiche"]);
+    }
+
+  do () {
+      console.log(this.ficheI.dateEnregistrement, "ddddoooo");
+
+      console.log(typeof (this.ficheI.dateEnregistrement), "ddddoooo1");
+    }
 
 }
+
 

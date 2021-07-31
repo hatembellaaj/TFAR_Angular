@@ -5,7 +5,7 @@ export interface Patient {
 
   idPatient: number;
 
-  nDPatient: string;
+  ndPatient: string;
 
   nom: string;
 

@@ -1,7 +1,7 @@
 <span class="label"><strong>Transfusion :</strong></span>
 <mat-form-field appearance="fill">
   <mat-label>Transfusion</mat-label>
-  <mat-select [(ngModel)]="fiche8.transfusion" ngModel name="Transfusion" required (selectionChange)="onChangeFiche8()">
+  <mat-select [(ngModel)]="fiche8.transfusion" ngModel name="Transfusion" required>
     <mat-option *ngFor="let item of tabenum1 " value="{{item}}">{{item}}</mat-option>
   </mat-select>
 </mat-form-field>
@@ -13,7 +13,7 @@
     <span class="label">Age de la premiere transfusion :</span>
     <mat-form-field>
       <input type="number" matInput placeholder="Age de la premiere transfusion" ngModel name="Agepret" required
-        (ngModelChange)="onChangeFiche8()" [(ngModel)]="fiche8.ageTransf" #AgepretInput="ngModel">
+       [(ngModel)]="fiche8.ageTransf" #AgepretInput="ngModel">
       <mat-error *ngIf="AgepretInput.hasError('required')">age must not be empty.</mat-error>
     </mat-form-field>
     <span class="label">ans</span><br>
@@ -21,7 +21,7 @@
     <span class="label">NbCG :</span>
     <mat-form-field appearance="fill">
       <mat-label>NbCG</mat-label>
-      <mat-select [(ngModel)]="fiche8.nbCG" ngModel name="NbCG" required (selectionChange)="onChangeFiche8()">
+      <mat-select [(ngModel)]="fiche8.nbCG" ngModel name="NbCG" required>
         <mat-option *ngFor="let item of tabenum8 " value="{{item}}">{{item}}</mat-option>
       </mat-select>
     </mat-form-field><br>
@@ -29,8 +29,7 @@
     <span class="label">chélation du fer :</span>
     <mat-form-field appearance="fill">
       <mat-label>chélation du fer</mat-label>
-      <mat-select [(ngModel)]="fiche8.chelationFer" ngModel name="chélation_du_fer" required
-        (selectionChange)="onChangeFiche8()">
+      <mat-select [(ngModel)]="fiche8.chelationFer" ngModel name="chélation_du_fer" required>
         <mat-option *ngFor="let item of tabenum1 " value="{{item}}">{{item}}</mat-option>
       </mat-select>
     </mat-form-field>
@@ -44,7 +43,7 @@
     <span class="label">Delai par rapport au diagnostic :</span>
     <mat-form-field>
       <input type="number" matInput placeholder="Delai par rapport au diagnostic" ngModel name="delaiprad" required
-        (ngModelChange)="onChangeFiche8()" [(ngModel)]="fiche8.delaiDiag" #delaipradInput="ngModel">
+       [(ngModel)]="fiche8.delaiDiag" #delaipradInput="ngModel">
       <mat-error *ngIf="delaipradInput.hasError('required')">Delai must not be empty.</mat-error>
     </mat-form-field>
     <span class="label">mois</span><br>
@@ -52,7 +51,7 @@
     <span class="label">NbCP :</span>
     <mat-form-field appearance="fill">
       <mat-label>NbCP</mat-label>
-      <mat-select [(ngModel)]="fiche8.nbCP" ngModel name="NbCP" required (selectionChange)="onChangeFiche8()">
+      <mat-select [(ngModel)]="fiche8.nbCP" ngModel name="NbCP" required>
         <mat-option *ngFor="let item of tabenum8 " value="{{item}}">{{item}}</mat-option>
       </mat-select>
     </mat-form-field>
@@ -67,7 +66,7 @@
   <span class="label">Chélateur :</span>
   <mat-form-field>
     <input type="text" matInput placeholder="Chélateur" ngModel name="Chélateur" required
-      (ngModelChange)="onChangeFiche8()" [(ngModel)]="fiche8.chelateur" #ChelateurInput="ngModel">
+     [(ngModel)]="fiche8.chelateur" #ChelateurInput="ngModel">
     <mat-error *ngIf="ChelateurInput.hasError('required')">Chélateur must not be empty.</mat-error>
   </mat-form-field>
 
@@ -91,7 +90,7 @@
     <span class="label">Nilvar :</span>
     <mat-form-field appearance="fill">
       <mat-label>Nilvar</mat-label>
-      <mat-select [(ngModel)]="fiche8.nilevar" ngModel name="Nilvar" required (selectionChange)="onChangeFiche8()">
+      <mat-select [(ngModel)]="fiche8.nilevar" ngModel name="Nilvar" required>
         <mat-option *ngFor="let item of tabenum1 " value="{{item}}">{{item}}</mat-option>
       </mat-select>
     </mat-form-field>
@@ -104,8 +103,7 @@
     <span class="label">Oxymétholone :</span>
     <mat-form-field appearance="fill">
       <mat-label>Oxymétholone</mat-label>
-      <mat-select [(ngModel)]="fiche8.oxymetholone" ngModel name="Oxymétholone" required
-        (selectionChange)="onChangeFiche8()">
+      <mat-select [(ngModel)]="fiche8.oxymetholone" ngModel name="Oxymétholone" required>
         <mat-option *ngFor="let item of tabenum1 " value="{{item}}">{{item}}</mat-option>
       </mat-select>
     </mat-form-field>
@@ -118,8 +116,7 @@
     <span class="label">Androtordyl :</span>
     <mat-form-field appearance="fill">
       <mat-label>Androtordyl</mat-label>
-      <mat-select [(ngModel)]="fiche8.androtordyl" ngModel name="Androtordyl" required
-        (selectionChange)="onChangeFiche8()">
+      <mat-select [(ngModel)]="fiche8.androtordyl" ngModel name="Androtordyl" required>
         <mat-option *ngFor="let item of tabenum1 " value="{{item}}">{{item}}</mat-option>
       </mat-select>
     </mat-form-field>
@@ -131,7 +128,7 @@
 
     <span class="label">Autre :</span>
     <mat-form-field>
-      <input type="text" matInput placeholder="Autre" ngModel name="Autre" required (ngModelChange)="onChangeFiche8()"
+      <input type="text" matInput placeholder="Autre" ngModel name="Autre" required
         [(ngModel)]="fiche8.autreAndrogene" #autremokInput="ngModel">
       <mat-error *ngIf="autremokInput.hasError('required')">Autre must not be empty.</mat-error>
     </mat-form-field>
@@ -153,17 +150,10 @@
 
   <div>
 
-    <!--<mat-form-field appearance="fill" class="item">
-      <input matInput [matDatepicker]="androDebut" [(ngModel)]="fiche8.androDebut" (ngModelChange)="onChangeFiche8()">
-      <mat-datepicker-toggle matSuffix [for]="androDebut"></mat-datepicker-toggle>
-      <mat-datepicker #androDebut></mat-datepicker>
-    </mat-form-field>-->
-
-
     <mat-form-field appearance="fill" class="item">
-      <input matInput [matDatepicker]="picker" (dateInput)="onDate($event.value)">
-      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-      <mat-datepicker #picker></mat-datepicker>
+      <input matInput [matDatepicker]="androD" [(ngModel)]="fiche8.androDebut">
+      <mat-datepicker-toggle matSuffix [for]="androD"></mat-datepicker-toggle>
+      <mat-datepicker #androD></mat-datepicker>
     </mat-form-field>
 
 
@@ -181,7 +171,7 @@
   <div>
 
     <mat-form-field appearance="fill" class="item">
-      <input matInput [matDatepicker]="androFin" [(ngModel)]="fiche8.androFin" (ngModelChange)="onChangeFiche8()">
+      <input matInput [matDatepicker]="androFin" [(ngModel)]="fiche8.androFin">
       <mat-datepicker-toggle matSuffix [for]="androFin"></mat-datepicker-toggle>
       <mat-datepicker #androFin></mat-datepicker>
     </mat-form-field>
@@ -208,8 +198,7 @@
 
     <mat-form-field appearance="fill">
       <mat-label>Observance</mat-label>
-      <mat-select [(ngModel)]="fiche8.observance" ngModel name="Observance" required
-        (selectionChange)="onChangeFiche8()">
+      <mat-select [(ngModel)]="fiche8.observance" ngModel name="Observance" required>
         <mat-option *ngFor="let item of tab " value="{{item}}">{{item}}</mat-option>
       </mat-select>
     </mat-form-field>
@@ -229,7 +218,7 @@
     <span class="label"><strong>Toxicité :</strong></span>
     <mat-form-field appearance="fill">
       <mat-label>Toxicité</mat-label>
-      <mat-select [(ngModel)]="fiche8.toxicite" ngModel name="Toxicite" required (selectionChange)="onChangeFiche8()">
+      <mat-select [(ngModel)]="fiche8.toxicite" ngModel name="Toxicite" required>
         <mat-option *ngFor="let item of toxicite " value="{{item}}">{{item}}</mat-option>
       </mat-select>
     </mat-form-field>
@@ -241,7 +230,7 @@
 
     <span class="label">Autre :</span>
     <mat-form-field>
-      <input type="text" matInput placeholder="Autre" ngModel name="Autre" required (ngModelChange)="onChangeFiche8()"
+      <input type="text" matInput placeholder="Autre" ngModel name="Autre" required
         [(ngModel)]="fiche8.autreToxicite" #autremok1Input="ngModel">
       <mat-error *ngIf="autremok1Input.hasError('required')">Autre must not be empty.</mat-error>
     </mat-form-field>
@@ -263,8 +252,7 @@
     <span class="label"><strong>Enquete HLA :</strong></span>
     <mat-form-field appearance="fill">
       <mat-label>Enquete HLA</mat-label>
-      <mat-select [(ngModel)]="fiche8.enqueteHLA" ngModel name="Enquete_HLA" required
-        (selectionChange)="onChangeFiche8()">
+      <mat-select [(ngModel)]="fiche8.enqueteHLA" ngModel name="Enquete_HLA" required>
         <mat-option *ngFor="let item of tabenum1 " value="{{item}}">{{item}}</mat-option>
       </mat-select>
     </mat-form-field>
@@ -278,7 +266,7 @@
     <span class="label">Pourquoi :</span>
     <mat-form-field>
       <input type="text" matInput placeholder="Pourquoi" ngModel name="Pourquoi" required
-        (ngModelChange)="onChangeFiche8()" [(ngModel)]="fiche8.pourquoiEnqHLA" #PourquoiInput="ngModel">
+       [(ngModel)]="fiche8.pourquoiEnqHLA" #PourquoiInput="ngModel">
       <mat-error *ngIf="PourquoiInput.hasError('required')">Pourquoi must not be empty.</mat-error>
     </mat-form-field>
 
@@ -294,7 +282,7 @@
     <span class="label">Nombre de fraterie typé(s) :</span>
     <mat-form-field>
       <input type="number" matInput placeholder="Nombre de fraterie typé(s)" ngModel name="nbreFratType" required
-        (ngModelChange)="onChangeFiche8()" [(ngModel)]="fiche8.nbFratTyp" #nbreFratTypeInput="ngModel">
+     [(ngModel)]="fiche8.nbFratTyp" #nbreFratTypeInput="ngModel">
       <mat-error *ngIf="nbreFratTypeInput.hasError('required')">nbreFratType must not be empty.</mat-error>
     </mat-form-field>
   </div>
@@ -304,7 +292,7 @@
     <span class="label">Nombre de fraterie non typé(s) :</span>
     <mat-form-field>
       <input type="number" matInput placeholder="Nombre de fraterie non typé(s)" ngModel name="nbreFratnType" required
-        (ngModelChange)="onChangeFiche8()" [(ngModel)]="fiche8.nbFratNTyp" #nbreFratnTypeInput="ngModel">
+      [(ngModel)]="fiche8.nbFratNTyp" #nbreFratnTypeInput="ngModel">
       <mat-error *ngIf="nbreFratnTypeInput.hasError('required')">nbreFratType must not be empty.</mat-error>
     </mat-form-field>
 
@@ -318,8 +306,7 @@
     <span class="label">Donneur compatible(s) :</span>
     <mat-form-field appearance="fill">
       <mat-label>Donneur compatible(s)</mat-label>
-      <mat-select [(ngModel)]="fiche8.donneurComp" ngModel name="Donneur_compatible" required
-        (selectionChange)="onChangeFiche8()">
+      <mat-select [(ngModel)]="fiche8.donneurComp" ngModel name="Donneur_compatible" required>
         <mat-option *ngFor="let item of tableau " value="{{item}}">{{item}}</mat-option>
       </mat-select>
     </mat-form-field>
@@ -329,7 +316,7 @@
     <span class="label">Présiser :</span>
     <mat-form-field>
       <input type="text" matInput placeholder="Présiser" ngModel name="Présiser" required
-        (ngModelChange)="onChangeFiche8()" [(ngModel)]="fiche8.preciseDonneur" #presiserInput="ngModel">
+     [(ngModel)]="fiche8.preciseDonneur" #presiserInput="ngModel">
       <mat-error *ngIf="presiserInput.hasError('required')">presiser must not be empty.</mat-error>
     </mat-form-field>
   </div>
@@ -339,7 +326,7 @@
 <span class="label">Donneur :</span>
 <mat-form-field appearance="fill">
   <mat-label>Donneur </mat-label>
-  <mat-select [(ngModel)]="fiche8.donneur" ngModel name="Donneur" required (selectionChange)="onChangeFiche8()">
+  <mat-select [(ngModel)]="fiche8.donneur" ngModel name="Donneur" required>
     <mat-option *ngFor="let item of donneur " value="{{item}}">{{item}}</mat-option>
   </mat-select>
 </mat-form-field>
@@ -351,8 +338,7 @@
     <span class="label">Greffe faite :</span>
     <mat-form-field appearance="fill">
       <mat-label>Greffe faite</mat-label>
-      <mat-select [(ngModel)]="fiche8.greffeFaite" ngModel name="Greffe_faite" required
-        (selectionChange)="onChangeFiche8()">
+      <mat-select [(ngModel)]="fiche8.greffeFaite" ngModel name="Greffe_faite" required>
         <mat-option *ngFor="let item of tabenum1 " value="{{item}}">{{item}}</mat-option>
       </mat-select>
     </mat-form-field>
@@ -364,7 +350,7 @@
     <span class="label">Délai par rapport au diagnostic :</span>
     <mat-form-field>
       <input type="number" matInput placeholder="Délai par rapport au diagnostic" ngModel name="delaiprad" required
-        (ngModelChange)="onChangeFiche8()" [(ngModel)]="fiche8.delaiRappDiag" #delaipradInput="ngModel">
+       [(ngModel)]="fiche8.delaiRappDiag" #delaipradInput="ngModel">
       <mat-error *ngIf="delaipradInput.hasError('required')">Délai must not be empty.</mat-error>
     </mat-form-field>
     <span class="label">mois</span>
@@ -376,7 +362,7 @@
 <span class="label">Si non faite pourquoi :</span>
 <mat-form-field appearance="fill">
   <mat-label>pourquoi</mat-label>
-  <mat-select [(ngModel)]="fiche8.pourquoiNfaite" ngModel name="pourquoi" required (selectionChange)="onChangeFiche8()">
+  <mat-select [(ngModel)]="fiche8.pourquoiNfaite" ngModel name="pourquoi" required>
     <mat-option *ngFor="let item of tabp " value="{{item}}">{{item}}</mat-option>
   </mat-select>
 </mat-form-field><br>
@@ -385,8 +371,7 @@
 <span class="label">Cyclophophamide</span>
 <mat-form-field appearance="fill">
   <mat-label>Cyclophophamide</mat-label>
-  <mat-select [(ngModel)]="fiche8.cyclophosphamide" ngModel name="Cyclophophamide" required
-    (selectionChange)="onChangeFiche8()">
+  <mat-select [(ngModel)]="fiche8.cyclophosphamide" ngModel name="Cyclophophamide" required>
     <mat-option *ngFor="let item of tabenum1 " value="{{item}}">{{item}}</mat-option>
   </mat-select>
 </mat-form-field>
@@ -396,7 +381,7 @@
   <span class="label">Dose cumulative :</span>
   <mat-form-field>
     <input type="number" matInput placeholder="Dose cumulative" ngModel name="Dose_cumulative" required
-      (ngModelChange)="onChangeFiche8()" [(ngModel)]="fiche8.doseCum1" #doseCumuInput="ngModel">
+    [(ngModel)]="fiche8.doseCum1" #doseCumuInput="ngModel">
     <mat-error *ngIf="doseCumuInput.hasError('required')">Dose cumulative must not be empty.</mat-error>
   </mat-form-field>
   <span class="label">mg/kg</span>
@@ -406,7 +391,7 @@
 <span class="label">Fludarabine</span>
 <mat-form-field appearance="fill">
   <mat-label>Fludarabine</mat-label>
-  <mat-select [(ngModel)]="fiche8.fludarabine" ngModel name="Fludarabine" required (selectionChange)="onChangeFiche8()">
+  <mat-select [(ngModel)]="fiche8.fludarabine" ngModel name="Fludarabine" required>
     <mat-option *ngFor="let item of tabenum1 " value="{{item}}">{{item}}</mat-option>
   </mat-select>
 </mat-form-field>
@@ -416,7 +401,7 @@
   <span class="label">Dose cumulative :</span>
   <mat-form-field>
     <input type="number" matInput placeholder="Dose cumulative" ngModel name="Dose_cumulative" required
-      (ngModelChange)="onChangeFiche8()" [(ngModel)]="fiche8.doseCum2" #fluInput="ngModel">
+     [(ngModel)]="fiche8.doseCum2" #fluInput="ngModel">
     <mat-error *ngIf="fluInput.hasError('required')">Dose cumulative must not be empty.</mat-error>
   </mat-form-field>
   <span class="label">mg/kg</span>
@@ -426,7 +411,7 @@
 <span class="label">Busulfan</span>
 <mat-form-field appearance="fill">
   <mat-label>Busulfan</mat-label>
-  <mat-select [(ngModel)]="fiche8.busulfan" ngModel name="Busulfan" required (selectionChange)="onChangeFiche8()">
+  <mat-select [(ngModel)]="fiche8.busulfan" ngModel name="Busulfan" required>
     <mat-option *ngFor="let item of tabenum1 " value="{{item}}">{{item}}</mat-option>
   </mat-select>
 </mat-form-field>
@@ -436,7 +421,7 @@
   <span class="label">Dose cumulative :</span>
   <mat-form-field>
     <input type="number" matInput placeholder="Dose cumulative" ngModel name="Dose_cumulative" required
-      (ngModelChange)="onChangeFiche8()" [(ngModel)]="fiche8.doseCum3" #doseCumu1Input="ngModel">
+     [(ngModel)]="fiche8.doseCum3" #doseCumu1Input="ngModel">
     <mat-error *ngIf="doseCumu1Input.hasError('required')">Dose cumulative must not be empty.</mat-error>
   </mat-form-field>
   <span class="label">mg/kg</span>
@@ -445,7 +430,7 @@
 
 <span class="label">Autre :</span>
 <mat-form-field>
-  <input type="text" matInput placeholder="Autre" ngModel name="Autregh" required (ngModelChange)="onChangeFiche8()"
+  <input type="text" matInput placeholder="Autre" ngModel name="Autregh" required
     [(ngModel)]="fiche8.autreConditionnement" #autreghInput="ngModel">
   <mat-error *ngIf="autreghInput.hasError('required')">Délai must not be empty.</mat-error>
 </mat-form-field>
@@ -455,8 +440,7 @@
   <span class="label">Irradiation</span>
   <mat-form-field appearance="fill">
     <mat-label>Irradiation</mat-label>
-    <mat-select [(ngModel)]="fiche8.irradiation" ngModel name="Irradiation" required
-      (selectionChange)="onChangeFiche8()">
+    <mat-select [(ngModel)]="fiche8.irradiation" ngModel name="Irradiation" required>
       <mat-option *ngFor="let item of tabirr " value="{{item}}">{{item}}</mat-option>
     </mat-select>
   </mat-form-field>
@@ -468,8 +452,7 @@
   <span class="label">Sérothérapie</span>
   <mat-form-field appearance="fill">
     <mat-label>Sérothérapie</mat-label>
-    <mat-select [(ngModel)]="fiche8.serotherapie" ngModel name="Serotherapie" required
-      (selectionChange)="onChangeFiche8()">
+    <mat-select [(ngModel)]="fiche8.serotherapie" ngModel name="Serotherapie" required>
       <mat-option *ngFor="let item of tabenum2 " value="{{item}}">{{item}}</mat-option>
     </mat-select>
   </mat-form-field>
@@ -481,7 +464,7 @@
   <span class="label">SAL</span>
   <mat-form-field appearance="fill">
     <mat-label>SAL</mat-label>
-    <mat-select [(ngModel)]="fiche8.sal" ngModel name="SAL" required (selectionChange)="onChangeFiche8()">
+    <mat-select [(ngModel)]="fiche8.sal" ngModel name="SAL" required>
       <mat-option *ngFor="let item of tabenum1 " value="{{item}}">{{item}}</mat-option>
     </mat-select>
   </mat-form-field><br><br>
@@ -490,7 +473,7 @@
 
     <span class="label">Dose :</span>
     <mat-form-field>
-      <input type="number" matInput placeholder="Dose" ngModel name="Dose" required (ngModelChange)="onChangeFiche8()"
+      <input type="number" matInput placeholder="Dose" ngModel name="Dose" required
         [(ngModel)]="fiche8.doseSAL" #dose1Input="ngModel">
       <mat-error *ngIf="dose1Input.hasError('required')">Dose cumulative must not be empty.</mat-error>
     </mat-form-field>
@@ -504,8 +487,7 @@
 <span class="label">source de cellule souche</span>
 <mat-form-field appearance="fill">
   <mat-label>source de cellule souche</mat-label>
-  <mat-select [(ngModel)]="fiche8.sourceCellule" ngModel name="sourceCelluleSouche" required
-    (selectionChange)="onChangeFiche8()">
+  <mat-select [(ngModel)]="fiche8.sourceCellule" ngModel name="sourceCelluleSouche" required>
     <mat-option *ngFor="let item of tabSouche " value="{{item}}">{{item}}</mat-option>
   </mat-select>
 </mat-form-field><br>
@@ -513,8 +495,7 @@
 <span class="label">Sortie d'aplasie J :</span>
 <mat-form-field appearance="fill">
   <mat-label>Sortie d'aplasie J</mat-label>
-  <mat-select [(ngModel)]="fiche8.sortieAplasie" ngModel name="SortieAplasieJ" required
-    (selectionChange)="onChangeFiche8()">
+  <mat-select [(ngModel)]="fiche8.sortieAplasie" ngModel name="SortieAplasieJ" required>
     <mat-option *ngFor="let item of tableau1 " value="{{item}}">{{item}}</mat-option>
   </mat-select>
 </mat-form-field>
@@ -531,8 +512,7 @@
     <span class="label">aGvH : Grade :</span>
     <mat-form-field appearance="fill">
       <mat-label>aGvH : Grade</mat-label>
-      <mat-select [(ngModel)]="fiche8.gradeaGvH" ngModel name="aGvH_Grade" required
-        (selectionChange)="onChangeFiche8()">
+      <mat-select [(ngModel)]="fiche8.gradeaGvH" ngModel name="aGvH_Grade" required>
         <mat-option *ngFor="let item of tabenum9 " value="{{item}}">{{item}}</mat-option>
       </mat-select>
     </mat-form-field>
@@ -545,7 +525,7 @@
     <span class="label">cGvH :</span>
     <mat-form-field appearance="fill">
       <mat-label>cGvH</mat-label>
-      <mat-select [(ngModel)]="fiche8.cgvH" ngModel name="cGvH" required (selectionChange)="onChangeFiche8()">
+      <mat-select [(ngModel)]="fiche8.cgvH" ngModel name="cGvH" required>
         <mat-option *ngFor="let item of tabenum10 " value="{{item}}">{{item}}</mat-option>
       </mat-select>
     </mat-form-field>
@@ -558,7 +538,7 @@
     <span class="label">MVO :</span>
     <mat-form-field appearance="fill">
       <mat-label>MVO</mat-label>
-      <mat-select [(ngModel)]="fiche8.mvo" ngModel name="MVO" required (selectionChange)="onChangeFiche8()">
+      <mat-select [(ngModel)]="fiche8.mvo" ngModel name="MVO" required>
         <mat-option *ngFor="let item of tabenum1 " value="{{item}}">{{item}}</mat-option>
       </mat-select>
     </mat-form-field>
@@ -570,8 +550,7 @@
     <span class="label">Complication pulminaire :</span>
     <mat-form-field appearance="fill">
       <mat-label>Complication pulminaire</mat-label>
-      <mat-select [(ngModel)]="fiche8.complicationPulmonaire" ngModel name="ComplicationPulminaire" required
-        (selectionChange)="onChangeFiche8()">
+      <mat-select [(ngModel)]="fiche8.complicationPulmonaire" ngModel name="ComplicationPulminaire" required>
         <mat-option *ngFor="let item of tabenum1 " value="{{item}}">{{item}}</mat-option>
       </mat-select>
     </mat-form-field>
@@ -586,7 +565,7 @@
   <span class="label">Preciser :</span>
   <mat-form-field>
     <input type="text" matInput placeholder="Preciser" ngModel name="Preciser" required
-      (ngModelChange)="onChangeFiche8()" [(ngModel)]="fiche8.preciseCompPulm" #PreciserInput="ngModel">
+     [(ngModel)]="fiche8.preciseCompPulm" #PreciserInput="ngModel">
     <mat-error *ngIf="PreciserInput.hasError('required')">Preciser cumulative must not be empty.</mat-error>
   </mat-form-field>
 
@@ -596,7 +575,7 @@
 <span class="label">Survie : J 100 post greffe :</span>
 <mat-form-field appearance="fill">
   <mat-label>Survie : J 100 post greffe</mat-label>
-  <mat-select [(ngModel)]="fiche8.survieJ100" ngModel name="surviej100" required (selectionChange)="onChangeFiche8()">
+  <mat-select [(ngModel)]="fiche8.survieJ100" ngModel name="surviej100" required>
     <mat-option *ngFor="let item of tabenum1 " value="{{item}}">{{item}}</mat-option>
   </mat-select>
 </mat-form-field>
@@ -613,7 +592,7 @@
     <span class="label">SMD :</span>
     <mat-form-field appearance="fill">
       <mat-label>SMD</mat-label>
-      <mat-select [(ngModel)]="fiche8.smd" ngModel name="SMD" required (selectionChange)="onChangeFiche8()">
+      <mat-select [(ngModel)]="fiche8.smd" ngModel name="SMD" required>
         <mat-option *ngFor="let item of tabenum1 " value="{{item}}">{{item}}</mat-option>
       </mat-select>
     </mat-form-field>
@@ -626,7 +605,7 @@
     <span class="label">Critéres diagnostic :</span>
     <mat-form-field>
       <input type="text" matInput placeholder="Critéres diagnostic" ngModel name="Critéres_diagnostic" required
-        (ngModelChange)="onChangeFiche8()" [(ngModel)]="fiche8.critereDiagSMD" #cridiagInput="ngModel">
+      [(ngModel)]="fiche8.critereDiagSMD" #cridiagInput="ngModel">
       <mat-error *ngIf="cridiagInput.hasError('required')">Critéres diagnostic must not be empty.</mat-error>
     </mat-form-field>
 
@@ -638,7 +617,7 @@
     <span class="label">Traitement :</span>
     <mat-form-field>
       <input type="text" matInput placeholder="Traitement" ngModel name="Traitement" required
-        (ngModelChange)="onChangeFiche8()" [(ngModel)]="fiche8.traitementSMD" #TraitementInput="ngModel">
+      [(ngModel)]="fiche8.traitementSMD" #TraitementInput="ngModel">
       <mat-error *ngIf="TraitementInput.hasError('required')">Traitement cumulative must not be empty.</mat-error>
     </mat-form-field>
 
@@ -652,7 +631,7 @@
   <span class="label">Age au diagnostic de SMD :</span>
   <mat-form-field>
     <input type="number" matInput placeholder="Age au diagnostic de SMD" ngModel name="AgeDiagnosticSMD" required
-      (ngModelChange)="onChangeFiche8()" [(ngModel)]="fiche8.ageDiagSMD" #agediagSMDInput="ngModel">
+     [(ngModel)]="fiche8.ageDiagSMD" #agediagSMDInput="ngModel">
     <mat-error *ngIf="agediagSMDInput.hasError('required')">agediagSMD must not be empty.</mat-error>
   </mat-form-field>
 
@@ -663,8 +642,7 @@
   <span class="label">Transformation aigue :</span>
   <mat-form-field appearance="fill">
     <mat-label>Transformation aigue</mat-label>
-    <mat-select [(ngModel)]="fiche8.transformationAigue" ngModel name="Transformation_aigue" required
-      (selectionChange)="onChangeFiche8()">
+    <mat-select [(ngModel)]="fiche8.transformationAigue" ngModel name="Transformation_aigue" required>
       <mat-option *ngFor="let item of taigue " value="{{item}}">{{item}}</mat-option>
     </mat-select>
   </mat-form-field>
@@ -677,7 +655,7 @@
   <span class="label">Age au diagnostic LA :</span>
   <mat-form-field>
     <input type="number" matInput placeholder="Age au diagnostic LA" ngModel name="AgeDiagnosticLA" required
-      (ngModelChange)="onChangeFiche8()" [(ngModel)]="fiche8.ageDiagLA" #agediagLAInput="ngModel">
+    [(ngModel)]="fiche8.ageDiagLA" #agediagLAInput="ngModel">
     <mat-error *ngIf="agediagLAInput.hasError('required')">agediagLA must not be empty.</mat-error>
   </mat-form-field>
   <span class="label">ans</span>
@@ -689,8 +667,7 @@
   <span class="label">Traitement de la LA :</span>
   <mat-form-field appearance="fill">
     <mat-label>Traitement de la LA</mat-label>
-    <mat-select [(ngModel)]="fiche8.traitementLA" ngModel name="TraitementLA" required
-      (selectionChange)="onChangeFiche8()">
+    <mat-select [(ngModel)]="fiche8.traitementLA" ngModel name="TraitementLA" required>
       <mat-option *ngFor="let item of tabenum1 " value="{{item}}">{{item}}</mat-option>
     </mat-select>
   </mat-form-field>
@@ -703,7 +680,7 @@
   <span class="label">Cancer :</span>
   <mat-form-field appearance="fill">
     <mat-label>Cancer</mat-label>
-    <mat-select [(ngModel)]="fiche8.cancerE" ngModel name="Cancer" required (selectionChange)="onChangeFiche8()">
+    <mat-select [(ngModel)]="fiche8.cancerE" ngModel name="Cancer" required>
       <mat-option *ngFor="let item of tabenum1 " value="{{item}}">{{item}}</mat-option>
     </mat-select>
   </mat-form-field>
@@ -717,7 +694,7 @@
     <span class="label">Localisation :</span>
     <mat-form-field>
       <input type="text" matInput placeholder="Localisation" ngModel name="Localisation" required
-        (ngModelChange)="onChangeFiche8()" [(ngModel)]="fiche8.localisation" #LocalisationInput="ngModel">
+       [(ngModel)]="fiche8.localisation" #LocalisationInput="ngModel">
       <mat-error *ngIf="LocalisationInput.hasError('required')">Localisation must not be empty.</mat-error>
     </mat-form-field>
 
@@ -729,7 +706,7 @@
     <span class="label">Type histologique :</span>
     <mat-form-field>
       <input type="text" matInput placeholder="Type histologique" ngModel name="TypeHistologique" required
-        (ngModelChange)="onChangeFiche8()" [(ngModel)]="fiche8.typeHistologique" #typeHistoInput="ngModel">
+       [(ngModel)]="fiche8.typeHistologique" #typeHistoInput="ngModel">
       <mat-error *ngIf="typeHistoInput.hasError('required')">Type histologique must not be empty.</mat-error>
     </mat-form-field>
 
@@ -741,8 +718,7 @@
     <span class="label">Traitement :</span>
     <mat-form-field appearance="fill">
       <mat-label>Traitement</mat-label>
-      <mat-select [(ngModel)]="fiche8.traitementCancer" ngModel name="Traitement" required
-        (selectionChange)="onChangeFiche8()">
+      <mat-select [(ngModel)]="fiche8.traitementCancer" ngModel name="Traitement" required>
         <mat-option *ngFor="let item of tabenum1 " value="{{item}}">{{item}}</mat-option>
       </mat-select>
     </mat-form-field><br><br>
@@ -752,7 +728,7 @@
       <span class="label">Présiser :</span>
       <mat-form-field>
         <input type="text" matInput placeholder="Présiser" ngModel name="Presiser" required
-          (ngModelChange)="onChangeFiche8()" [(ngModel)]="fiche8.preciseTraitement" #presisertInput="ngModel">
+         [(ngModel)]="fiche8.preciseTraitement" #presisertInput="ngModel">
         <mat-error *ngIf="presisertInput.hasError('required')">Présiser must not be empty.</mat-error>
       </mat-form-field>
 
@@ -770,8 +746,7 @@
   <span class="label">Evolution cytogénétique clonale :</span>
   <mat-form-field appearance="fill">
     <mat-label>Evolution cytogénétique clonale</mat-label>
-    <mat-select [(ngModel)]="fiche8.evolution_cyto" ngModel name="EvolutionCytogClonale" required
-      (selectionChange)="onChangeFiche8()">
+    <mat-select [(ngModel)]="fiche8.evolution_cyto" ngModel name="EvolutionCytogClonale" required>
       <mat-option *ngFor="let item of tabenum1 " value="{{item}}">{{item}}</mat-option>
     </mat-select>
   </mat-form-field>
@@ -786,7 +761,7 @@
     <span class="label">Formule chromosomique médullaire :</span>
     <mat-form-field>
       <input type="text" matInput placeholder="Formule chromosomique médullaire" ngModel name="FormuleChromoMédullaire"
-        required (ngModelChange)="onChangeFiche8()" [(ngModel)]="fiche8.formuleChrom" #fchromoMInput="ngModel">
+        required [(ngModel)]="fiche8.formuleChrom" #fchromoMInput="ngModel">
       <mat-error *ngIf="fchromoMInput.hasError('required')">fchromoM histologique must not be empty.</mat-error>
     </mat-form-field>
   </div>
@@ -796,7 +771,7 @@
     <span class="label">Age au moment de l'evolution :</span>
     <mat-form-field>
       <input type="number" matInput placeholder="Age au moment de l'evolution" ngModel name="AgeMomentEvolution"
-        required (ngModelChange)="onChangeFiche8()" [(ngModel)]="fiche8.ageE" #agemeInput="ngModel">
+        required  [(ngModel)]="fiche8.ageE" #agemeInput="ngModel">
       <mat-error *ngIf="agemeInput.hasError('required')">Age histologique must not be empty.</mat-error>
     </mat-form-field>
   </div>
@@ -807,7 +782,7 @@
 
   <span class="label">Autre :</span>
   <mat-form-field>
-    <input type="text" matInput placeholder="Autre" ngModel name="Autre" required (ngModelChange)="onChangeFiche8()"
+    <input type="text" matInput placeholder="Autre" ngModel name="Autre" required
       [(ngModel)]="fiche8.autresCancers" #autrezzInput="ngModel">
     <mat-error *ngIf="autrezzInput.hasError('required')">Age histologique must not be empty.</mat-error>
   </mat-form-field>
@@ -818,7 +793,7 @@
 
   <span class="label">DDN</span>
   <mat-form-field appearance="fill" class="item">
-    <input matInput [matDatepicker]="pickeryt" [(ngModel)]="fiche8.ddn" (ngModelChange)="onChangeFiche8()">
+    <input matInput [matDatepicker]="pickeryt" [(ngModel)]="fiche8.ddn">
     <mat-datepicker-toggle matSuffix [for]="pickeryt"></mat-datepicker-toggle>
     <mat-datepicker #pickeryt></mat-datepicker>
   </mat-form-field>
@@ -830,7 +805,7 @@
   <span class="label">Statut :</span>
   <mat-form-field appearance="fill">
     <mat-label>Statut</mat-label>
-    <mat-select [(ngModel)]="fiche8.statut" ngModel name="Statut" required (selectionChange)="onChangeFiche8()">
+    <mat-select [(ngModel)]="fiche8.statut" ngModel name="Statut" required>
       <mat-option *ngFor="let item of tabstatut " value="{{item}}">{{item}}</mat-option>
     </mat-select>
   </mat-form-field>
@@ -842,7 +817,7 @@
   <span class="label">Survie globale :</span>
   <mat-form-field>
     <input type="number" matInput placeholder="Survie globale" ngModel name="SurvieGlobale" required
-      (ngModelChange)="onChangeFiche8()" [(ngModel)]="fiche8.survieGlobale" #survieGlobaleInput="ngModel">
+    [(ngModel)]="fiche8.survieGlobale" #survieGlobaleInput="ngModel">
     <mat-error *ngIf="survieGlobaleInput.hasError('required')">survieGlobale must not be empty.</mat-error>
   </mat-form-field>
 

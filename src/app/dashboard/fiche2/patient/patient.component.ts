@@ -1,5 +1,6 @@
 import { Patient } from './../../../../model/patient';
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'fiche2-patient',
@@ -9,11 +10,12 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 export class PatientComponent implements OnInit {
 
   patient!: Patient;
-  @Output() patientChange: EventEmitter<Patient> = new EventEmitter<Patient>();
 
   gouvernorat = ['Ariana', 'Beja', 'BenArous', 'Bizerte', 'Gabes', 'Gafsa', 'Jendouba'
     , 'Kairouan', 'Kasserine', 'Kebili', 'LeKef', 'Mahdia', 'LaManouba',
     'Medenine', 'Monastir', 'Nabeul', 'Sfax', 'SidiBouzid', 'Siliana', 'Sousse', 'Tataouine', 'Tozeur', 'Tunis', 'Zaghouan', 'NP'];
+
+  date = new FormControl(new Date());
 
 
 
@@ -23,20 +25,19 @@ export class PatientComponent implements OnInit {
 
 
   constructor() {
-    this.patient = { sexe: this.chosenItem, gouvernorat: 'NP' } as Patient;
+    this.patient = { sexe: this.chosenItem, gouvernorat: 'NP', dateNaissance: this.date.value } as Patient;
   }
 
   ngOnInit(): void {
   }
 
-  public onChangePatient() {
-    this.patientChange.emit(this.patient);
-  }
-
   radioChange() {
     this.patient.sexe = this.chosenItem;
-    this.onChangePatient();
 
+  }
+
+  savePatientInformations() {
+    return this.patient;
   }
 
 }

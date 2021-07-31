@@ -9,7 +9,6 @@ import { Androgene } from 'src/model/androgene';
 export class AndrogeneComponent implements OnInit {
 
   androgene!: Androgene;
-  @Output() androgeneChange: EventEmitter<Androgene> = new EventEmitter<Androgene>();
 
   mois = ['Janvier', 'Fevrier', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Aout', 'Septembre', 'Octobre', 'Novembre', 'Decembre'];
 
@@ -22,8 +21,9 @@ export class AndrogeneComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  public onChangeAndrogene() {
-    this.androgeneChange.emit(this.androgene);
+
+  saveAndrogeneInformations() {
+    return this.androgene;
   }
 
 }

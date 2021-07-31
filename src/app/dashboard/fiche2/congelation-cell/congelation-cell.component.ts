@@ -14,7 +14,6 @@ import { Output } from '@angular/core';
 export class CongelationCellComponent implements OnInit, DoCheck {
 
   fiche6!: Fiche;
-  @Output() fiche6Change: EventEmitter<Fiche> = new EventEmitter<Fiche>();
 
   tabenum2 = ['Faite', 'Nonfaite', 'Moin1', 'NP'];
 
@@ -33,9 +32,6 @@ export class CongelationCellComponent implements OnInit, DoCheck {
     this.fiche6 = { congelationCellule: 'NP' } as Fiche;
   }
 
-  public onChangeFiche6() {
-    this.fiche6Change.emit(this.fiche6);
-  }
 
 
   ngDoCheck(): void {
@@ -60,6 +56,10 @@ export class CongelationCellComponent implements OnInit, DoCheck {
       console.log(data); return data
     }));
 
+  }
+
+  saveCongCellInformations(){
+    return this.fiche6;
   }
 
 }
