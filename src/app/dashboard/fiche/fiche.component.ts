@@ -108,15 +108,37 @@ export class FicheComponent implements OnInit {
 
   onDelete(fiche:Fiche){
 
+    this.ficheService.deleteFiche(fiche).subscribe(
+      res => {
+        console.log(res);
+
+      },
+      err => {
+        console.log(err.message);
+        this.bool = true;
+        console.log(err.status)
+        if (err.status == 500) {
+          this.openSnackBar("Delete fail", "Delete fail", 2800);
+
+        }
+
+      }
+    );
+
   }
 
 
   onDetails(fiche:Fiche){
 
+
   }
 
 
-  onUpdate(departement:Departement){
+  onUpdate(fiche:Fiche){
+
+    this.router.navigate(["dashboard/fiche2"]);
+
+
 
   }
 

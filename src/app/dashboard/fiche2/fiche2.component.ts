@@ -1,7 +1,4 @@
 import { Fiche } from './../../../model/fiche';
-import { Cytogenetique } from 'src/model/cytogenetique';
-import { Androgene } from './../../../model/androgene';
-import { Patient } from './../../../model/patient';
 import { Departement } from '../../../model/departement';
 import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { MatAccordion } from '@angular/material/expansion';
@@ -24,6 +21,7 @@ import { BiologieMoleculaireComponent } from './biologie-moleculaire/biologie-mo
 import { CongelationCellComponent } from './congelation-cell/congelation-cell.component';
 import { ScoreCliniqueComponent } from './score-clinique/score-clinique.component';
 import { TraitementComponent } from './traitement/traitement.component';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 
 @Component({
@@ -65,7 +63,7 @@ export class Fiche2Component implements OnInit, OnDestroy {
 
   @ViewChild(MatAccordion) accordion!: MatAccordion;
 
-  constructor(private ficheService: FicheService, private router: Router, private userService: UserService) {
+  constructor(private ficheService: FicheService, private router: Router, private userService: UserService,private _snackBar: MatSnackBar) {
 
 
 
@@ -84,6 +82,10 @@ export class Fiche2Component implements OnInit, OnDestroy {
       this.ficheI = { dateDiagnostique: this.date1.value, dateEnregistrement: this.date2.value, codeUser: this.selectedUser } as Fiche;
 
 
+    }
+
+    openSnackBar(message: string, action: string, duration: number) {
+      this._snackBar.open(message, action, { duration: duration });
     }
 
 
@@ -140,7 +142,14 @@ export class Fiche2Component implements OnInit, OnDestroy {
           console.log(res)
           this.router.navigate(["dashboard/fiche"]);
         },
-        err => { console.log(err.message); }
+        err => { console.log(err.message);
+
+          if (err.status == 500) {
+            this.openSnackBar("You must enter the required attributes", "Submit data fail", 3000);
+
+          }
+
+        }
       );
     }
 

@@ -42,7 +42,9 @@ export class TraitementComponent implements OnInit, DoCheck {
 
   taigue = ['', 'Myeloblastique', 'Lymphoplastique', 'NP'];
 
-  tabstatut = ['', 'PDV', 'Vivant en RC', 'Vivant en RP', 'Vivant en RM', 'Echec', 'Decede', 'Manque d information'];
+  //tabstatut = ['', 'PDV', 'Vivant en RC', 'Vivant en RP', 'Vivant en RM', 'Echec', 'Decede', 'Manque d information'];
+
+  tabstatut=['RC', 'RP', 'Echec', 'RM', 'Decede', 'Moin1', 'PDV', 'MqInfo'];
 
   date1 = new FormControl(new Date());
   date2 = new FormControl(new Date());
