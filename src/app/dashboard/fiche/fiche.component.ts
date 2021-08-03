@@ -1,15 +1,16 @@
 import { FicheList } from './../../../model/FicheList';
 import { Fiche } from './../../../model/fiche';
-import {  Component, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, Output, ViewChild, EventEmitter } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatSort } from '@angular/material/sort';
-import {MatTableDataSource} from '@angular/material/table';
+import { MatTableDataSource } from '@angular/material/table';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { FicheService } from 'src/app/services/fiche.service';
-import { Departement } from 'src/model/departement';
-import {  Router } from '@angular/router';
+import { Router } from '@angular/router';
+import jsPDF from 'jspdf'
+import autoTable from 'jspdf-autotable';
 
 @Component({
   selector: 'app-fiche',
@@ -18,21 +19,25 @@ import {  Router } from '@angular/router';
 })
 export class FicheComponent implements OnInit {
 
-  fiches$!:Observable<Fiche[]>;
-  dataSource!: MatTableDataSource<FicheList> ;
+  fiches$!: Observable<Fiche[]>;
+  fiche$!: Observable<Fiche>;
+
+  fichen!:Fiche;
+  dataSource!: MatTableDataSource<FicheList>;
   //displayedColumns: string[] = ['code', 'num dossier','nom','prenom','date diagnostique','date d enregistrement','organisme','departement','impression','detail','update','delete'];
 
-  displayedColumns: string[] = ['code','num_dossier','nom','prenom','date_diagnostic','date_enregistrement','organisme','departement','detail','update','delete'];
+  displayedColumns: string[] = ['code', 'num_dossier', 'nom', 'prenom', 'date_diagnostic', 'date_enregistrement', 'organisme', 'departement', 'detail', 'update', 'delete'];
 
+  //@Output() eventFiche:EventEmitter<Observable<Fiche>>=new EventEmitter<Observable<Fiche>>();
   searchKey!: string;
   @ViewChild(MatSort) sort!: MatSort;
-  @ViewChild(MatPaginator) paginator!:MatPaginator;
-  code!:number;
-  nom!:string;
-  bool:boolean=false;
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
+  code!: number;
+  nom!: string;
+  bool: boolean = false;
 
 
-  constructor(private router:Router,private ficheService :FicheService,private _snackBar: MatSnackBar) { }
+  constructor(private router: Router, private ficheService: FicheService, private _snackBar: MatSnackBar) { }
 
 
 
@@ -43,9 +48,9 @@ export class FicheComponent implements OnInit {
   }
 
   ngDoCheck(): void {
-    if (this.bool==true){
+    if (this.bool == true) {
       this.getData();
-      this.bool=false;
+      this.bool = false;
 
     }
   }
@@ -56,18 +61,18 @@ export class FicheComponent implements OnInit {
     this.getAlldepartements();
   }
 
-  openSnackBar(message: string, action: string,duration:number) {
-    this._snackBar.open(message, action,{duration:duration});
+  openSnackBar(message: string, action: string, duration: number) {
+    this._snackBar.open(message, action, { duration: duration });
   }
 
-  sort1(){
-    if (this.dataSource!=undefined){
+  sort1() {
+    if (this.dataSource != undefined) {
       this.dataSource.sort = this.sort;
     }
   }
 
-  paginator1(){
-    if (this.dataSource!=undefined){
+  paginator1() {
+    if (this.dataSource != undefined) {
       this.dataSource.paginator = this.paginator;
 
     }
@@ -76,7 +81,7 @@ export class FicheComponent implements OnInit {
 
 
 
-  getData(){
+  getData() {
     this.ficheService.getAllFicheLists().subscribe(data => {
       this.dataSource = new MatTableDataSource(data);
       this.sort1();
@@ -98,7 +103,7 @@ export class FicheComponent implements OnInit {
     this.dataSource.filter = this.searchKey.trim().toLowerCase();
   }
 
-  onCreate(){
+  onCreate() {
 
     this.router.navigate(["dashboard/fiche2"]);
 
@@ -106,7 +111,7 @@ export class FicheComponent implements OnInit {
 
   }
 
-  onDelete(fiche:Fiche){
+  onDelete(fiche: FicheList) {
 
     this.ficheService.deleteFiche(fiche).subscribe(
       res => {
@@ -128,24 +133,65 @@ export class FicheComponent implements OnInit {
   }
 
 
-  onDetails(fiche:Fiche){
+  onDetails(fiche: FicheList) {
 
 
+    let doc = new jsPDF();
+    const columns = [["Attribut", "Value"]];
+    const data = [
+      ["Code Fiche", String(fiche.idFiche)],
+      ["NumDossier Fiche", String(fiche.ndossierFiche)],
+      ["Nom Patient", String(fiche.nomPatient)],
+      ["Prenom Patient", String(fiche.prenomPatient)],
+      ["Date Diagnostique", String(fiche.dateDiagnostique)],
+      ["Date d enregistrement", String(fiche.dateEnregistrement)],
+      ["Organisme", String(fiche.nomOrgUserOfFiche)],
+      ["Departement", String(fiche.nomDepUserOfFiche)]
+    ];
+
+    autoTable(doc, {
+      head: columns,
+      body: data,
+      didDrawPage: (dataArg) => {
+        doc.text('Detail of Fiche', dataArg.settings.margin.left, 10);
+      }
+    });
+
+    doc.output("dataurlnewwindow");
   }
 
 
-  onUpdate(fiche:Fiche){
+  onUpdate(ficheList: FicheList) {
+
+    //let fiche={} as Fiche;
+
+    this.fiche$=this.ficheService.findFicheById(ficheList);
+
+    //this.eventFiche.emit(this.fiche$);
+
+    this.fiche$.subscribe(data=>{
+      console.log(data,"000000000000000000000000");
+      this.fichen=data;
+    },err=>{
+      console.log(err.message)
+    }
+    )
 
     this.router.navigate(["dashboard/fiche2"]);
 
 
 
+
+
+
   }
 
-  getAlldepartements(){
 
-    this.fiches$ = this.ficheService.getAllFiches().pipe( map ( data=>{
-      console.log(data); return data}));
+  getAlldepartements() {
+
+    this.fiches$ = this.ficheService.getAllFiches().pipe(map(data => {
+      console.log(data); return data
+    }));
 
   }
 

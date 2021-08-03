@@ -40,8 +40,12 @@ export class FicheService {
     return this.http.put<Fiche>(this.baseUrl+"/api/fiches/save/"+fiche.idFiche,fiche,{ headers: this.headers });
   }
 
-  deleteFiche(fiche: Fiche): Observable<void> {
+  deleteFiche(fiche: FicheList): Observable<void> {
     return this.http.delete<void>(this.baseUrl+"/api/fiches/delete/"+fiche.idFiche,{ headers: this.headers });
+  }
+
+  findFicheById(ficheList: FicheList): Observable<Fiche> {
+    return this.http.get<Fiche>(this.baseUrl+"/api/fiches/find/"+ficheList.idFiche,{ headers: this.headers });
   }
 
 

@@ -1,14 +1,16 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild, DoCheck } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
+import { FicheComponent } from './fiche/fiche.component';
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css']
 })
-export class DashboardComponent {
+export class DashboardComponent  {
+
 
   menuItems = ['organisme', 'departement', 'user', 'fiche', 'statistique'];
 
@@ -18,6 +20,9 @@ export class DashboardComponent {
       shareReplay()
     );
 
-  constructor(private breakpointObserver: BreakpointObserver) {}
+  constructor(private breakpointObserver: BreakpointObserver) {
+
+  }
+
 
 }

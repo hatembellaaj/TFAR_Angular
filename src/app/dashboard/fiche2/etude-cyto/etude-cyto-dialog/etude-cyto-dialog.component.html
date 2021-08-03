@@ -20,8 +20,8 @@
   <span class="label">Laboratoire de cytogenetique</span>
   <mat-form-field appearance="fill">
     <mat-label>Labo Cyto </mat-label>
-    <mat-select [(ngModel)]="cytogenetique.idLaboratoire" ngModel name="idLabo" required>
-      <mat-option *ngFor="let item of laboratoires$ | async" value="{{item.id}}">{{item.nom}}</mat-option>
+    <mat-select [(value)]="cytogenetique.idLaboratoire"  name="idLabo" required>
+      <mat-option *ngFor="let item of laboratoires$ | async" [value]="item.id">{{item.nom}}</mat-option>
     </mat-select>
   </mat-form-field>
 

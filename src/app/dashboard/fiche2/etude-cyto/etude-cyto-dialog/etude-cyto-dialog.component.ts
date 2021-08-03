@@ -30,6 +30,9 @@ export class EtudeCytoDialogComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAlllaboratoires();
+
+    this.laboratoireService.getAllLaboratoires().subscribe(data => {
+      console.log(data,"sssssssssssss");   this.cytogenetique.idLaboratoire= data[0].id});
   }
 
   onNoClick() {

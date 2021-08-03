@@ -1,6 +1,6 @@
 import { Fiche } from './../../../model/fiche';
 import { Departement } from '../../../model/departement';
-import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { Component, Injector, OnDestroy, OnInit, ViewChild, DoCheck } from '@angular/core';
 import { MatAccordion } from '@angular/material/expansion';
 import { Observable } from 'rxjs';
 import { Organisme } from 'src/model/organisme';
@@ -22,6 +22,7 @@ import { CongelationCellComponent } from './congelation-cell/congelation-cell.co
 import { ScoreCliniqueComponent } from './score-clinique/score-clinique.component';
 import { TraitementComponent } from './traitement/traitement.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { DashboardComponent } from '../dashboard.component';
 
 
 @Component({
@@ -29,7 +30,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   templateUrl: './fiche2.component.html',
   styleUrls: ['./fiche2.component.css']
 })
-export class Fiche2Component implements OnInit, OnDestroy {
+export class Fiche2Component implements OnInit, OnDestroy{
 
 
   @ViewChild(PatientComponent) patientComponent!: PatientComponent;
@@ -55,6 +56,9 @@ export class Fiche2Component implements OnInit, OnDestroy {
   ficheI!: Fiche;
   date1 = new FormControl(new Date());
   date2 = new FormControl(new Date());
+  ficheb!: Fiche;
+
+  parentComponent!:any;
 
 
 
@@ -69,7 +73,12 @@ export class Fiche2Component implements OnInit, OnDestroy {
 
 
 
+
+
     }
+
+
+
   ngOnDestroy(): void {
 
 

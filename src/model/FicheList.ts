@@ -2,7 +2,7 @@ export interface FicheList {
 
   idFiche: number;
 
-  nDossierFiche: string;
+  ndossierFiche: string;
 
   dateDiagnostique: Date;
 

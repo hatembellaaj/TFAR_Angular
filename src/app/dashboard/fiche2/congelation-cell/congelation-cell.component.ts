@@ -38,8 +38,8 @@ export class CongelationCellComponent implements OnInit, DoCheck {
 
     if (this.fiche6.congelationCellule != 'Faite') {
 
-      this.fiche6.labo = '';
       this.fiche6.typePrelevement = '';
+      this.fiche6.labo='';
 
 
     }

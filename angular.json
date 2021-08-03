@@ -17,6 +17,11 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "allowedCommonJsDependencies": [
+              "jspdf",
+              "raf",
+              "@babel/runtime-corejs3","chart.js"
+            ],
             "outputPath": "dist/frontProject",
             "index": "src/index.html",
             "main": "src/main.ts",
@@ -35,7 +40,6 @@
             "scripts": [
               "node_modules/jquery/dist/jquery.min.js",
               "node_modules/bootstrap/dist/js/bootstrap.min.js"
-
             ]
           },
           "configurations": {
