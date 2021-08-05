@@ -76,7 +76,7 @@
         </mat-panel-title>
       </mat-expansion-panel-header>
 
-      <fiche2-patient></fiche2-patient>
+      <fiche2-patient [patientUpd]='patientupdate'></fiche2-patient>
 
     </mat-expansion-panel>
 
@@ -88,7 +88,7 @@
         </mat-panel-title>
       </mat-expansion-panel-header>
 
-      <fiche2-histoire-familiale></fiche2-histoire-familiale>
+      <fiche2-histoire-familiale [histoireFam]='HistoireFamiliale'></fiche2-histoire-familiale>
 
     </mat-expansion-panel>
 
@@ -101,7 +101,7 @@
         </mat-panel-title>
       </mat-expansion-panel-header>
 
-      <fiche2-circon-de-decouverte></fiche2-circon-de-decouverte>
+      <fiche2-circon-de-decouverte [circonstanceDec]='circonstanceDecouverte'></fiche2-circon-de-decouverte>
 
     </mat-expansion-panel>
 
@@ -113,7 +113,7 @@
         </mat-panel-title>
       </mat-expansion-panel-header>
 
-      <fiche2-syndrome-malformatif></fiche2-syndrome-malformatif>
+      <fiche2-syndrome-malformatif [SyndromeMalf]='SyndromeMalformatif'></fiche2-syndrome-malformatif>
     </mat-expansion-panel>
 
 
@@ -125,7 +125,7 @@
         </mat-panel-title>
       </mat-expansion-panel-header>
 
-      <fiche2-etude-cyto></fiche2-etude-cyto>
+      <fiche2-etude-cyto [etudeCytoUpd]='EtudeCyto'></fiche2-etude-cyto>
 
     </mat-expansion-panel>
 
@@ -136,7 +136,7 @@
         </mat-panel-title>
       </mat-expansion-panel-header>
 
-      <fiche2-androgene></fiche2-androgene>
+      <fiche2-androgene [androgeneUpd]='androgene'></fiche2-androgene>
 
     </mat-expansion-panel>
 
@@ -148,7 +148,7 @@
         </mat-panel-title>
       </mat-expansion-panel-header>
 
-      <fiche2-signes-hema></fiche2-signes-hema>
+      <fiche2-signes-hema [SignesHemaUpd]='SignesHema'></fiche2-signes-hema>
 
     </mat-expansion-panel>
 
@@ -160,7 +160,7 @@
         </mat-panel-title>
       </mat-expansion-panel-header>
 
-      <fiche2-biologie-moleculaire></fiche2-biologie-moleculaire>
+      <fiche2-biologie-moleculaire [BiologieMole]='BiologieMoleculaire'></fiche2-biologie-moleculaire>
 
     </mat-expansion-panel>
 
@@ -172,7 +172,7 @@
         </mat-panel-title>
       </mat-expansion-panel-header>
 
-      <fiche2-congelation-cell></fiche2-congelation-cell>
+      <fiche2-congelation-cell [CongelationCellUpd]='CongelationCell'></fiche2-congelation-cell>
     </mat-expansion-panel>
 
     <mat-expansion-panel>
@@ -182,7 +182,7 @@
         </mat-panel-title>
       </mat-expansion-panel-header>
 
-      <fiche2-score-clinique></fiche2-score-clinique>
+      <fiche2-score-clinique [ScoreCliniqueUpd]='ScoreClinique'></fiche2-score-clinique>
     </mat-expansion-panel>
 
     <mat-expansion-panel>
@@ -192,7 +192,7 @@
         </mat-panel-title>
       </mat-expansion-panel-header>
 
-      <fiche2-traitement></fiche2-traitement>
+      <fiche2-traitement [traitementUpd]='Traitement'></fiche2-traitement>
     </mat-expansion-panel>
 
 
@@ -200,6 +200,6 @@
 </form>
 <div fxLayoutAlign="center center">
 
-  <button mat-raised-button color="primary" (click)="saveFiche()">Ajouter</button>
+  <button mat-raised-button color="primary" (click)="saveFiche()" [disabled]='this.var==false'>Ajouter</button>
   <button mat-raised-button color="warn" (click)="toFiche()">Quitter</button>
 </div>

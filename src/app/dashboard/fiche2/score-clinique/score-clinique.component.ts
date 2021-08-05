@@ -1,4 +1,4 @@
-import { EventEmitter, Output } from '@angular/core';
+import { EventEmitter, Output, DoCheck, Input } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
 import { Fiche } from 'src/model/fiche';
 
@@ -7,7 +7,9 @@ import { Fiche } from 'src/model/fiche';
   templateUrl: './score-clinique.component.html',
   styleUrls: ['./score-clinique.component.css']
 })
-export class ScoreCliniqueComponent implements OnInit {
+export class ScoreCliniqueComponent implements OnInit,DoCheck {
+
+  @Input('ScoreCliniqueUpd') ScoreCliniqueUpd: Fiche | undefined;
 
   fiche7!: Fiche;
 
@@ -15,6 +17,15 @@ export class ScoreCliniqueComponent implements OnInit {
 
   constructor() {
     this.fiche7 = { score: 'Moin1', scoreClinique: 0, scoreEBMT: 0 } as Fiche;
+  }
+  ngDoCheck(): void {
+
+    if (this.ScoreCliniqueUpd!=undefined){
+
+      this.fiche7=this.ScoreCliniqueUpd;
+
+    }
+
   }
 
   ngOnInit(): void {

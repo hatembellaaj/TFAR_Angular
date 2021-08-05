@@ -1,23 +1,24 @@
 import { FicheList } from './../../../model/FicheList';
 import { Fiche } from './../../../model/fiche';
-import { Component, ElementRef, OnInit, Output, ViewChild, EventEmitter } from '@angular/core';
+import { Component, ElementRef, OnInit, Output, ViewChild, EventEmitter, OnDestroy } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { FicheService } from 'src/app/services/fiche.service';
 import { Router } from '@angular/router';
 import jsPDF from 'jspdf'
 import autoTable from 'jspdf-autotable';
+import { Fiche2Service } from 'src/app/services/fiche2.service';
 
 @Component({
   selector: 'app-fiche',
   templateUrl: './fiche.component.html',
   styleUrls: ['./fiche.component.css']
 })
-export class FicheComponent implements OnInit {
+export class FicheComponent implements OnInit{
 
   fiches$!: Observable<Fiche[]>;
   fiche$!: Observable<Fiche>;
@@ -37,7 +38,9 @@ export class FicheComponent implements OnInit {
   bool: boolean = false;
 
 
-  constructor(private router: Router, private ficheService: FicheService, private _snackBar: MatSnackBar) { }
+
+  constructor(private router: Router, private ficheService: FicheService, private _snackBar: MatSnackBar,private fiche2Service:Fiche2Service) { }
+
 
 
 
@@ -162,6 +165,7 @@ export class FicheComponent implements OnInit {
 
 
   onUpdate(ficheList: FicheList) {
+    console.log('fichelist  :  ',ficheList)
 
     //let fiche={} as Fiche;
 
@@ -172,6 +176,7 @@ export class FicheComponent implements OnInit {
     this.fiche$.subscribe(data=>{
       console.log(data,"000000000000000000000000");
       this.fichen=data;
+      this.fiche2Service.sendFiche(this.fichen);
     },err=>{
       console.log(err.message)
     }

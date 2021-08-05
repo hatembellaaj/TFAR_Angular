@@ -307,7 +307,7 @@
     <mat-form-field appearance="fill">
       <mat-label>Donneur compatible(s)</mat-label>
       <mat-select [(ngModel)]="fiche8.donneurComp" ngModel name="Donneur_compatible" required>
-        <mat-option *ngFor="let item of tableau " value="{{item}}">{{item}}</mat-option>
+        <mat-option *ngFor="let item of tableau " [value]="item">{{item}}</mat-option>
       </mat-select>
     </mat-form-field>
   </div>
@@ -496,7 +496,7 @@
 <mat-form-field appearance="fill">
   <mat-label>Sortie d'aplasie J</mat-label>
   <mat-select [(ngModel)]="fiche8.sortieAplasie" ngModel name="SortieAplasieJ" required>
-    <mat-option *ngFor="let item of tableau1 " value="{{item}}">{{item}}</mat-option>
+    <mat-option *ngFor="let item of tableau1 " [value]="item">{{item}}</mat-option>
   </mat-select>
 </mat-form-field>
 

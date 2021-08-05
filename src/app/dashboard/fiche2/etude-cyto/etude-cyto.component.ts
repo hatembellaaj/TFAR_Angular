@@ -1,5 +1,6 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, DoCheck, ViewChild } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { EtudeCytoService } from 'src/app/services/etude-cyto.service';
 import { Cytogenetique } from 'src/model/cytogenetique';
 import { EtudeCytoDialogComponent } from './etude-cyto-dialog/etude-cyto-dialog.component';
 
@@ -8,11 +9,19 @@ import { EtudeCytoDialogComponent } from './etude-cyto-dialog/etude-cyto-dialog.
   templateUrl: './etude-cyto.component.html',
   styleUrls: ['./etude-cyto.component.css']
 })
-export class EtudeCytoComponent implements OnInit {
+export class EtudeCytoComponent implements OnInit,DoCheck {
 
-  cytogenetique1!: Cytogenetique;
+  @Input('etudeCytoUpd') etudeCytoUpd: Cytogenetique | undefined;
 
-  constructor(private dialog:MatDialog) { }
+  cytogenetique1!: Cytogenetique ;
+
+  bool=false;
+
+  constructor(private dialog:MatDialog,private etudeCytoService :EtudeCytoService) { }
+  ngDoCheck(): void {
+
+
+  }
 
   ngOnInit(): void {
   }
@@ -20,11 +29,15 @@ export class EtudeCytoComponent implements OnInit {
 
 
   onCreate(){
+    this.bool=true;
     const dialogConfig =new MatDialogConfig();
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
     dialogConfig.width = "60%";
-    dialogConfig.data = { } as Cytogenetique;
+    //dialogConfig.data = { } as Cytogenetique;
+    dialogConfig.data = this.etudeCytoUpd!=undefined?this.etudeCytoUpd:{} as Cytogenetique;
+    console.log("etude cyto update",this.etudeCytoUpd)
+    this.etudeCytoService.sendCytogenetique(this.etudeCytoUpd)
     const dialogRef =this.dialog.open(EtudeCytoDialogComponent,dialogConfig);
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');

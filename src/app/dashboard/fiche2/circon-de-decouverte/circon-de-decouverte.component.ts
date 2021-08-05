@@ -1,4 +1,5 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+
+import { Component, EventEmitter, Input, OnInit, Output, DoCheck } from '@angular/core';
 import { Fiche } from 'src/model/fiche';
 
 
@@ -7,7 +8,9 @@ import { Fiche } from 'src/model/fiche';
   templateUrl: './circon-de-decouverte.component.html',
   styleUrls: ['./circon-de-decouverte.component.css']
 })
-export class CirconDeDecouverteComponent implements OnInit {
+export class CirconDeDecouverteComponent implements OnInit,DoCheck {
+
+  @Input('circonstanceDec') circonstanceDec: Fiche | undefined;
 
   fiche2!: Fiche;
   tabenum1 = ['Oui', 'Non', 'NP', 'moin1'];
@@ -20,6 +23,16 @@ export class CirconDeDecouverteComponent implements OnInit {
     this.fiche2 = {
       syndromeAnemique: 'NP', syndromeHem: 'NP', syndromeInf: 'NP', decouverteFort: 'NP', enqueteFam: 'NP', typeCancer: '', cancer: 'NP'
     } as Fiche;
+  }
+  ngDoCheck(): void {
+
+    if (this.circonstanceDec!=undefined){
+
+      this.fiche2=this.circonstanceDec
+
+    }
+
+
   }
 
   ngOnInit(): void {

@@ -9,6 +9,8 @@ import { Component, OnInit, DoCheck, Input, Output, EventEmitter, OnDestroy } fr
 })
 export class HistoireFamilialeComponent implements OnInit, DoCheck {
 
+  @Input('histoireFam') histoireFam: Fiche | undefined;
+
 
   fiche1!: Fiche;
 
@@ -26,6 +28,12 @@ export class HistoireFamilialeComponent implements OnInit, DoCheck {
 
   ngDoCheck(): void {
 
+    if (this.histoireFam!=undefined){
+
+      this.fiche1=this.histoireFam
+
+    }
+
 
   }
 
@@ -33,7 +41,7 @@ export class HistoireFamilialeComponent implements OnInit, DoCheck {
     /*this.rempTab();
     this.rempTab2();*/
 
-    this.fiche1 = { degConsang: 'NP'} as Fiche;
+    this.fiche1 = { degConsang: 'NP',nbVivant:0,placeEnfant:0,nbMort:0,mortNe:0,avortement:0,nbCousin:0,nbMembre:0} as Fiche;
 
   }
 

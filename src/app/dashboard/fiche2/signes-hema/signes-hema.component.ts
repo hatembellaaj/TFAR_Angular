@@ -1,4 +1,4 @@
-import { EventEmitter, Output } from '@angular/core';
+import { Input, DoCheck } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
 import { Fiche } from 'src/model/fiche';
 
@@ -7,7 +7,9 @@ import { Fiche } from 'src/model/fiche';
   templateUrl: './signes-hema.component.html',
   styleUrls: ['./signes-hema.component.css']
 })
-export class SignesHemaComponent implements OnInit {
+export class SignesHemaComponent implements OnInit,DoCheck {
+
+  @Input('SignesHemaUpd') SignesHemaUpd: Fiche | undefined;
 
   fiche4!: Fiche;
 
@@ -27,6 +29,15 @@ export class SignesHemaComponent implements OnInit {
       hb:0,vgm:0,retic:0,leuco:0,pnn:0,plq:0,ageDebutManiHema:0,hbf:0,erythroblaste:0,pourcenAdipo:0
 
     } as Fiche;
+  }
+  ngDoCheck(): void {
+
+    if (this.SignesHemaUpd!=undefined){
+
+      this.fiche4=this.SignesHemaUpd;
+
+    }
+
   }
 
   ngOnInit(): void {

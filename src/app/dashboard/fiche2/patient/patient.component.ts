@@ -1,5 +1,5 @@
 import { Patient } from './../../../../model/patient';
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, DoCheck } from '@angular/core';
 import { FormControl } from '@angular/forms';
 
 @Component({
@@ -7,7 +7,9 @@ import { FormControl } from '@angular/forms';
   templateUrl: './patient.component.html',
   styleUrls: ['./patient.component.css']
 })
-export class PatientComponent implements OnInit {
+export class PatientComponent implements OnInit,DoCheck{
+
+  @Input('patientUpd') patientUpd: Patient | undefined;
 
   patient!: Patient;
 
@@ -26,6 +28,15 @@ export class PatientComponent implements OnInit {
 
   constructor() {
     this.patient = { sexe: this.chosenItem, gouvernorat: 'NP', dateNaissance: this.date.value } as Patient;
+  }
+  ngDoCheck(): void {
+
+    if (this.patientUpd!=undefined){
+
+      this.patient=this.patientUpd
+
+    }
+
   }
 
   ngOnInit(): void {

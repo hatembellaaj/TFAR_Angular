@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, DoCheck } from '@angular/core';
 import { Fiche } from 'src/model/fiche';
 
 @Component({
@@ -6,7 +6,9 @@ import { Fiche } from 'src/model/fiche';
   templateUrl: './biologie-moleculaire.component.html',
   styleUrls: ['./biologie-moleculaire.component.css']
 })
-export class BiologieMoleculaireComponent implements OnInit {
+export class BiologieMoleculaireComponent implements OnInit,DoCheck {
+
+  @Input('BiologieMole') BiologieMole: Fiche | undefined;
 
   fiche5!: Fiche;
 
@@ -16,6 +18,13 @@ export class BiologieMoleculaireComponent implements OnInit {
 
   constructor() {
     this.fiche5 = { ubiquitination: 'NP', resUbiquitination: 'Moin1' } as Fiche;
+  }
+  ngDoCheck(): void {
+    if (this.BiologieMole!=undefined){
+
+      this.fiche5=this.BiologieMole;
+
+    }
   }
 
   ngOnInit(): void {

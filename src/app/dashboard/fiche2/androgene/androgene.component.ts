@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, DoCheck } from '@angular/core';
 import { Androgene } from 'src/model/androgene';
 
 @Component({
@@ -6,7 +6,9 @@ import { Androgene } from 'src/model/androgene';
   templateUrl: './androgene.component.html',
   styleUrls: ['./androgene.component.css']
 })
-export class AndrogeneComponent implements OnInit {
+export class AndrogeneComponent implements OnInit,DoCheck {
+
+  @Input('androgeneUpd') androgeneUpd: Androgene | undefined;
 
   androgene!: Androgene;
 
@@ -16,6 +18,13 @@ export class AndrogeneComponent implements OnInit {
 
   constructor() {
     this.androgene = { mois: 'Janvier', reponse: 'NP' } as Androgene;
+  }
+  ngDoCheck(): void {
+    if (this.androgeneUpd!=undefined){
+
+      this.androgene=this.androgeneUpd;
+
+    }
   }
 
   ngOnInit(): void {

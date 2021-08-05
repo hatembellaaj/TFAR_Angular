@@ -9,7 +9,9 @@ import { FicheComponent } from './fiche/fiche.component';
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css']
 })
-export class DashboardComponent  {
+export class DashboardComponent {
+
+  nameOfComp!:any;
 
 
   menuItems = ['organisme', 'departement', 'user', 'fiche', 'statistique'];
@@ -22,6 +24,20 @@ export class DashboardComponent  {
 
   constructor(private breakpointObserver: BreakpointObserver) {
 
+  }
+
+
+
+  onActivate(component: any): void {
+
+    this.nameOfComp=component.constructor.name;
+
+    console.log('nom du composant    :   ',this.nameOfComp)
+
+    if (this.nameOfComp=='FicheComponent'){
+      console.log('this is the FicheComponent');
+
+    }
   }
 
 

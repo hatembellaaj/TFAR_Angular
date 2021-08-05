@@ -15,7 +15,7 @@
     <mat-form-field appearance="fill">
       <mat-label>Numbre de frére(s) et soeur(s) vivants </mat-label>
       <mat-select [(ngModel)]="fiche1.nbVivant" ngModel name="nfsv" required>
-        <mat-option *ngFor="let item of tab " value="{{item}}">{{item}}</mat-option>
+        <mat-option *ngFor="let item of tab " [value]="item">{{item}}</mat-option>
       </mat-select>
     </mat-form-field>
     <br>
@@ -24,7 +24,7 @@
     <mat-form-field appearance="fill">
       <mat-label>Place de l'enfant dans la fratrie </mat-label>
       <mat-select [(ngModel)]="fiche1.placeEnfant" ngModel name="nfsv" required>
-        <mat-option *ngFor="let item of tab2 " value="{{item}}">{{item}}</mat-option>
+        <mat-option *ngFor="let item of tab2 " [value]="item">{{item}}</mat-option>
       </mat-select>
     </mat-form-field>
 
@@ -38,7 +38,7 @@
     <mat-form-field appearance="fill">
       <mat-label>Décedés par AF </mat-label>
       <mat-select [(ngModel)]="fiche1.nbMort" ngModel name="dpaf" required>
-        <mat-option *ngFor="let item of tab2 " value="{{item}}">{{item}}</mat-option>
+        <mat-option *ngFor="let item of tab2 " [value]="item">{{item}}</mat-option>
       </mat-select>
     </mat-form-field>
 
@@ -48,7 +48,7 @@
     <mat-form-field appearance="fill">
       <mat-label>Mort(s) né(s) </mat-label>
       <mat-select [(ngModel)]="fiche1.mortNe" ngModel name="dpaf" required>
-        <mat-option *ngFor="let item of tab2 " value="{{item}}">{{item}}</mat-option>
+        <mat-option *ngFor="let item of tab2 " [value]="item">{{item}}</mat-option>
       </mat-select>
     </mat-form-field>
 
@@ -67,7 +67,7 @@
     <mat-form-field appearance="fill">
       <mat-label>Fausse(s) couche(s) spontanné(s) </mat-label>
       <mat-select [(ngModel)]="fiche1.avortement" ngModel name="dpaf" required>
-        <mat-option *ngFor="let item of tab " value="{{item}}">{{item}}</mat-option>
+        <mat-option *ngFor="let item of tab " [value]="item">{{item}}</mat-option>
       </mat-select>
     </mat-form-field>
 
@@ -87,7 +87,7 @@
     <mat-form-field appearance="fill">
       <mat-label>Cousin(s) </mat-label>
       <mat-select [(ngModel)]="fiche1.nbCousin" ngModel name="dpaf" required>
-        <mat-option *ngFor="let item of tab2 " value="{{item}}">{{item}}</mat-option>
+        <mat-option *ngFor="let item of tab2 " [value]="item">{{item}}</mat-option>
       </mat-select>
     </mat-form-field>
     <br>
@@ -96,7 +96,7 @@
     <mat-form-field appearance="fill">
       <mat-label>Membres de la famille atteints de cancer </mat-label>
       <mat-select [(ngModel)]="fiche1.nbMembre" ngModel name="dpaf" required>
-        <mat-option *ngFor="let item of tab2 " value="{{item}}">{{item}}</mat-option>
+        <mat-option *ngFor="let item of tab2 " [value]="item">{{item}}</mat-option>
       </mat-select>
     </mat-form-field>
 

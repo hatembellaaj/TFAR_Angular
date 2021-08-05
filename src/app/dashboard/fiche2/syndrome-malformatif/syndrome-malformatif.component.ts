@@ -1,4 +1,4 @@
-import { Component, OnInit, DoCheck, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, DoCheck, Output, EventEmitter, Input } from '@angular/core';
 import { Fiche } from 'src/model/fiche';
 
 @Component({
@@ -7,6 +7,8 @@ import { Fiche } from 'src/model/fiche';
   styleUrls: ['./syndrome-malformatif.component.css']
 })
 export class SyndromeMalformatifComponent implements OnInit, DoCheck {
+
+  @Input('SyndromeMalf') SyndromeMalf: Fiche | undefined;
 
   fiche3!: Fiche;
 
@@ -44,7 +46,8 @@ export class SyndromeMalformatifComponent implements OnInit, DoCheck {
       anomPouce: 'NP', anomAutreDoigts: 'NP', courtsTrapus: 'NP', syndactylie: 'NP', agenesieRadius: 'NP', anomOrteil: 'NP',
       typeAnomOrteil: 'NP', bifide: 'NP', luxCongHanche: 'NP', anomNeuro: 'NP', retardMent: 'NP', performanceScolaire: 'NP',
       hypoacousie: 'NP', strabisme: 'NP', anomCardVas: 'NP', echoCoeur: 'NP', anomDig: 'NP', endocrinopathie: 'NP', diabete: 'NP', hypothyroidie: 'NP',
-      deficiteGH: 'NP', poidsDS: 'NP', tailleDS: 'NP', anomVerge: 'NP', anomVoisUri: 'NP', autreUrogenital: 'autreMU'
+      deficiteGH: 'NP', poidsDS: 'NP', tailleDS: 'NP', anomVerge: 'NP', anomVoisUri: 'NP', autreUrogenital: 'autreMU',tailleNaiss:30,poidsNaiss:1.5,
+      aageChDiag:0,aageOssDiag:0,ageRetard:0,poids:0,taille:50,mageChDiag:0,mageOssDiag:0
     } as Fiche;
 
 
@@ -52,6 +55,12 @@ export class SyndromeMalformatifComponent implements OnInit, DoCheck {
   }
 
   ngDoCheck(): void {
+
+    if (this.SyndromeMalf!=undefined){
+
+      this.fiche3=this.SyndromeMalf
+
+    }
 
     if (this.fiche3.tacheCaf != 'Oui') {
 
