@@ -1,4 +1,4 @@
-import { EventEmitter, Input, Output } from '@angular/core';
+import { EventEmitter, Input, OnChanges, Output, SimpleChanges } from '@angular/core';
 import { Component, OnInit, DoCheck } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Fiche } from 'src/model/fiche';
@@ -8,7 +8,7 @@ import { Fiche } from 'src/model/fiche';
   templateUrl: './traitement.component.html',
   styleUrls: ['./traitement.component.css']
 })
-export class TraitementComponent implements OnInit, DoCheck {
+export class TraitementComponent implements OnInit, DoCheck,OnChanges {
 
   @Input('traitementUpd') traitementUpd: Fiche | undefined;
 
@@ -67,14 +67,28 @@ export class TraitementComponent implements OnInit, DoCheck {
     } as Fiche;
 
   }
+  ngOnChanges(changes: SimpleChanges): void {
+    console.log(changes);
+
+    const derniereValeur = changes.traitementUpd.previousValue;
+    const currentValue = changes.traitementUpd.currentValue
+
+    if (derniereValeur == undefined && currentValue != undefined) {
+
+      this.fiche8 = currentValue;
+
+    }
+  }
 
   ngDoCheck(): void {
+
+    /*
 
     if (this.traitementUpd!=undefined){
 
       this.fiche8=this.traitementUpd;
 
-    }
+    }*/
 
     if (this.fiche8.chelationFer != 'Oui') {
       this.fiche8.chelateur = '';

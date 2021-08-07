@@ -1,6 +1,6 @@
 import { Laboratoire } from './../../../../model/laboratoire';
 import { Observable } from 'rxjs';
-import { Component, OnInit, DoCheck, EventEmitter, Input } from '@angular/core';
+import { Component, OnInit, DoCheck, EventEmitter, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { LaboratoireService } from 'src/app/services/laboratoire.service';
 import { map } from 'rxjs/operators';
 import { Fiche } from 'src/model/fiche';
@@ -11,7 +11,7 @@ import { Output } from '@angular/core';
   templateUrl: './congelation-cell.component.html',
   styleUrls: ['./congelation-cell.component.css']
 })
-export class CongelationCellComponent implements OnInit, DoCheck {
+export class CongelationCellComponent implements OnInit, DoCheck,OnChanges{
 
   @Input('CongelationCellUpd') CongelationCellUpd: Fiche | undefined;
 
@@ -29,16 +29,30 @@ export class CongelationCellComponent implements OnInit, DoCheck {
   constructor(private laboratoireService: LaboratoireService) {
     this.fiche6 = { congelationCellule: 'NP' } as Fiche;
   }
+  ngOnChanges(changes: SimpleChanges): void {
+    console.log(changes);
+
+    const derniereValeur = changes.CongelationCellUpd.previousValue;
+    const currentValue = changes.CongelationCellUpd.currentValue
+
+    if (derniereValeur == undefined && currentValue != undefined) {
+
+      this.fiche6 = currentValue;
+
+    }
+  }
 
 
 
   ngDoCheck(): void {
 
+    /*
+
     if (this.CongelationCellUpd!=undefined){
 
       this.fiche6=this.CongelationCellUpd;
 
-    }
+    }*/
 
     if (this.fiche6.congelationCellule != 'Faite') {
 

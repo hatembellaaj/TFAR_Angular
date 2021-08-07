@@ -1,4 +1,4 @@
-import { Input, DoCheck } from '@angular/core';
+import { Input, DoCheck, OnChanges, SimpleChanges } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
 import { Fiche } from 'src/model/fiche';
 
@@ -7,7 +7,7 @@ import { Fiche } from 'src/model/fiche';
   templateUrl: './signes-hema.component.html',
   styleUrls: ['./signes-hema.component.css']
 })
-export class SignesHemaComponent implements OnInit,DoCheck {
+export class SignesHemaComponent implements OnInit,DoCheck,OnChanges {
 
   @Input('SignesHemaUpd') SignesHemaUpd: Fiche | undefined;
 
@@ -30,13 +30,27 @@ export class SignesHemaComponent implements OnInit,DoCheck {
 
     } as Fiche;
   }
+  ngOnChanges(changes: SimpleChanges): void {
+    console.log(changes);
+
+    const derniereValeur = changes.SignesHemaUpd.previousValue;
+    const currentValue = changes.SignesHemaUpd.currentValue
+
+    if (derniereValeur == undefined && currentValue != undefined) {
+
+      this.fiche4 = currentValue;
+
+    }
+  }
   ngDoCheck(): void {
+
+    /*
 
     if (this.SignesHemaUpd!=undefined){
 
       this.fiche4=this.SignesHemaUpd;
 
-    }
+    }*/
 
   }
 

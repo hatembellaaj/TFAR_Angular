@@ -1,5 +1,5 @@
 import { Patient } from './../../../../model/patient';
-import { Component, EventEmitter, Input, OnInit, Output, DoCheck } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, DoCheck, OnChanges, SimpleChanges } from '@angular/core';
 import { FormControl } from '@angular/forms';
 
 @Component({
@@ -7,7 +7,7 @@ import { FormControl } from '@angular/forms';
   templateUrl: './patient.component.html',
   styleUrls: ['./patient.component.css']
 })
-export class PatientComponent implements OnInit,DoCheck{
+export class PatientComponent implements OnInit,DoCheck,OnChanges{
 
   @Input('patientUpd') patientUpd: Patient | undefined;
 
@@ -28,22 +28,43 @@ export class PatientComponent implements OnInit,DoCheck{
 
   constructor() {
     this.patient = { sexe: this.chosenItem, gouvernorat: 'NP', dateNaissance: this.date.value } as Patient;
+
+
+  }
+  ngOnChanges(changes: SimpleChanges): void {
+   console.log(changes);
+
+   const derniereValeur=changes.patientUpd.previousValue;
+   const currentValue=changes.patientUpd.currentValue;
+
+   if (derniereValeur==undefined  && currentValue!=undefined){
+
+    this.patient=currentValue;
+
+   }
+
   }
   ngDoCheck(): void {
 
-    if (this.patientUpd!=undefined){
+
+    /*if (this.patientUpd!=undefined){
 
       this.patient=this.patientUpd
 
-    }
+    }*/
+
+
 
   }
 
   ngOnInit(): void {
+
   }
 
   radioChange() {
     this.patient.sexe = this.chosenItem;
+
+
 
   }
 

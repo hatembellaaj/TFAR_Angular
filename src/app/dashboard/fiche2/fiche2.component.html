@@ -12,7 +12,11 @@
     <mat-form-field class="example-full-width">
       <mat-label>User</mat-label>
 
-      <mat-select [(value)]="ficheI.codeUser"  name="UserOfFiche" required>
+      <!--<mat-select [(value)]="ficheI.codeUser"  name="UserOfFiche" required>
+        <mat-option *ngFor="let item of users$ | async " [value]="item.code" >{{item.nom}}</mat-option>
+      </mat-select>-->
+
+      <mat-select [(ngModel)]="ficheI.codeUser" ngModel name="UserOfFiche" required>
         <mat-option *ngFor="let item of users$ | async " [value]="item.code" >{{item.nom}}</mat-option>
       </mat-select>
 
@@ -200,6 +204,6 @@
 </form>
 <div fxLayoutAlign="center center">
 
-  <button mat-raised-button color="primary" (click)="saveFiche()" [disabled]='this.var==false'>Ajouter</button>
+  <button mat-raised-button color="primary" (click)="submit();">Ajouter</button>
   <button mat-raised-button color="warn" (click)="toFiche()">Quitter</button>
 </div>

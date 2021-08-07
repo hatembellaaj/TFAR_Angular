@@ -182,6 +182,8 @@ export class FicheComponent implements OnInit{
     }
     )
 
+
+
     this.router.navigate(["dashboard/fiche2"]);
 
 

@@ -1,4 +1,4 @@
-import { Component, OnInit, DoCheck, Output, EventEmitter, Input } from '@angular/core';
+import { Component, OnInit, DoCheck, Output, EventEmitter, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { Fiche } from 'src/model/fiche';
 
 @Component({
@@ -6,7 +6,7 @@ import { Fiche } from 'src/model/fiche';
   templateUrl: './syndrome-malformatif.component.html',
   styleUrls: ['./syndrome-malformatif.component.css']
 })
-export class SyndromeMalformatifComponent implements OnInit, DoCheck {
+export class SyndromeMalformatifComponent implements OnInit, DoCheck,OnChanges {
 
   @Input('SyndromeMalf') SyndromeMalf: Fiche | undefined;
 
@@ -53,14 +53,26 @@ export class SyndromeMalformatifComponent implements OnInit, DoCheck {
 
 
   }
+  ngOnChanges(changes: SimpleChanges): void {
+    console.log(changes);
+
+    const derniereValeur = changes.SyndromeMalf.previousValue;
+    const currentValue = changes.SyndromeMalf.currentValue
+
+    if (derniereValeur == undefined && currentValue != undefined) {
+
+      this.fiche3 = currentValue;
+
+    }
+  }
 
   ngDoCheck(): void {
-
+/*
     if (this.SyndromeMalf!=undefined){
 
       this.fiche3=this.SyndromeMalf
 
-    }
+    }*/
 
     if (this.fiche3.tacheCaf != 'Oui') {
 

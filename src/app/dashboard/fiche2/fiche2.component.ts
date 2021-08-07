@@ -65,7 +65,6 @@ export class Fiche2Component implements OnInit, OnDestroy, DoCheck {
   parentComponent!: any;
 
   ficheUpdate!: Fiche;
-  $subs!: Subscription;
   patientupdate!: Patient | undefined;
   HistoireFamiliale!: Fiche;
   circonstanceDecouverte!: Fiche;
@@ -77,6 +76,10 @@ export class Fiche2Component implements OnInit, OnDestroy, DoCheck {
   CongelationCell!: Fiche;
   ScoreClinique!: Fiche;
   Traitement!: Fiche;
+
+  ficheToSave!:Fiche;
+
+  idOfFiche!:number | undefined;
 
 
 
@@ -94,16 +97,14 @@ export class Fiche2Component implements OnInit, OnDestroy, DoCheck {
 
   }
   ngDoCheck(): void {
-    if (this.etudeCytoComponent?.bool == true) {
-      this.var = true;
-    }
+    
   }
 
 
 
   ngOnDestroy(): void {
 
-    this.$subs.unsubscribe();
+
 
 
   }
@@ -115,11 +116,15 @@ export class Fiche2Component implements OnInit, OnDestroy, DoCheck {
     this.ficheI = { dateDiagnostique: this.date1.value, dateEnregistrement: this.date2.value, codeUser: this.selectedUser } as Fiche;
 
 
-    this.$subs = this.fiche2Service.receivedFiche().subscribe(data => {
+    this.fiche2Service.receivedFiche().subscribe(data => {
       this.ficheUpdate = data;
       console.log('fiche update ', this.ficheUpdate);
+      this.idOfFiche=this.ficheUpdate.idFiche;
       this.decomposeFicheUpdate(this.ficheUpdate);
+
     });
+
+
 
 
   }
@@ -136,52 +141,34 @@ export class Fiche2Component implements OnInit, OnDestroy, DoCheck {
   }
 
   saveFiche() {
-    let ficheToSave = {} as Fiche;
-    Object.assign(ficheToSave, this.ficheI);
 
-    let patient = this.patientComponent.savePatientInformations();
-    ficheToSave.patient = patient;
-    //Object.assign(ficheToSave , patient);
-    //ficheToSave.patient = patient;
-
-    console.log('patient to :  ',ficheToSave.patient);
-
-    let histoireFamiliale = this.histoireFamilialeComponent.saveFamille();
-    Object.assign(ficheToSave, histoireFamiliale);
-
-    let circonstanceDecouverte = this.circonDeDecouverteComponent.saveCirDecInformations();
-    Object.assign(ficheToSave, circonstanceDecouverte);
-
-    let SyndromeMalformatif = this.syndromeMalformatifComponent.saveSandMalInformations();
-    Object.assign(ficheToSave, SyndromeMalformatif);
-
-    let EtudeCyto = this.etudeCytoComponent.saveCytoInformations();
-    ficheToSave.cytogenetique = EtudeCyto;
-
-    let androgene = this.androgeneComponent.saveAndrogeneInformations();
-    ficheToSave.androgene = androgene;
-
-    let SignesHema = this.SignesHemaComponent.saveSigneHemaInformations();
-    Object.assign(ficheToSave, SignesHema);
-
-    let BiologieMoleculaire = this.biologieMoleculaireComponent.saveBioMolecInformations();
-    Object.assign(ficheToSave, BiologieMoleculaire);
-
-    let CongelationCell = this.congelationCellComponent.saveCongCellInformations();
-    Object.assign(ficheToSave, CongelationCell);
-
-    let ScoreClinique = this.ScoreCliniqueComponent.saveScoreCliInformations();
-    Object.assign(ficheToSave, ScoreClinique);
-
-    let Traitement = this.TraitementComponent.saveTraitInformations();
-    Object.assign(ficheToSave, Traitement);
-
-    console.log(ficheToSave, "mokkkkkk")
-
-
-    this.ficheService.saveFiche(ficheToSave).subscribe(
+    this.ficheService.saveFiche(this.recupererFicheInParent()).subscribe(
       res => {
         console.log('fiche saved   :  ',res)
+        this.router.navigate(["dashboard/fiche"]);
+      },
+      err => {
+        console.log(err.message);
+
+        if (err.status == 500) {
+          this.openSnackBar("You must enter the required attributes", "Submit data fail", 3000);
+
+        }
+
+      }
+    );
+  }
+
+  updateFiche() {
+
+    let ficheupd:Fiche=this.recupererFicheInParent();
+    ficheupd.idFiche=this.ficheUpdate.idFiche;
+
+    console.log(ficheupd);
+
+    this.ficheService.updateFiche(ficheupd).subscribe(
+      res => {
+        console.log('fiche saved in update  :  ',res)
         this.router.navigate(["dashboard/fiche"]);
       },
       err => {
@@ -208,10 +195,62 @@ export class Fiche2Component implements OnInit, OnDestroy, DoCheck {
     console.log(typeof (this.ficheI.dateEnregistrement), "ddddoooo1");
   }
 
+  recupererFicheInParent():Fiche{
+
+    this.ficheToSave = {} as Fiche;
+    Object.assign(this.ficheToSave, this.ficheI);
+
+    let patient = this.patientComponent.savePatientInformations();
+    this.ficheToSave.patient = patient;
+    //Object.assign(ficheToSave , patient);
+    //ficheToSave.patient = patient;
+
+    console.log('patient to :  ',this.ficheToSave.patient);
+
+    let histoireFamiliale = this.histoireFamilialeComponent.saveFamille();
+    Object.assign(this.ficheToSave, histoireFamiliale);
+
+    let circonstanceDecouverte = this.circonDeDecouverteComponent.saveCirDecInformations();
+    Object.assign(this.ficheToSave, circonstanceDecouverte);
+
+    let SyndromeMalformatif = this.syndromeMalformatifComponent.saveSandMalInformations();
+    Object.assign(this.ficheToSave, SyndromeMalformatif);
+
+    let EtudeCyto = this.etudeCytoComponent.saveCytoInformations();
+    this.ficheToSave.cytogenetique = EtudeCyto;
+
+    let androgene = this.androgeneComponent.saveAndrogeneInformations();
+    this.ficheToSave.androgene = androgene;
+
+    let SignesHema = this.SignesHemaComponent.saveSigneHemaInformations();
+    Object.assign(this.ficheToSave, SignesHema);
+
+    let BiologieMoleculaire = this.biologieMoleculaireComponent.saveBioMolecInformations();
+    Object.assign(this.ficheToSave, BiologieMoleculaire);
+
+    let CongelationCell = this.congelationCellComponent.saveCongCellInformations();
+    Object.assign(this.ficheToSave, CongelationCell);
+
+    let ScoreClinique = this.ScoreCliniqueComponent.saveScoreCliInformations();
+    Object.assign(this.ficheToSave, ScoreClinique);
+
+    let Traitement = this.TraitementComponent.saveTraitInformations();
+    Object.assign(this.ficheToSave, Traitement);
+
+    console.log(this.ficheToSave, "mokkkkkk");
+
+    return this.ficheToSave;
+
+
+
+  }
+
 
   decomposeFicheUpdate(fiche: Fiche) {
 
-    this.ficheI.idFiche = fiche.idFiche;
+    console.log('wxc',fiche);
+
+    //this.ficheI.idFiche = fiche.idFiche;
     this.ficheI.dateDiagnostique = fiche.dateDiagnostique;
     this.ficheI.dateEnregistrement = fiche.dateEnregistrement;
     this.ficheI.codeUser = fiche.codeUser;
@@ -293,8 +332,25 @@ export class Fiche2Component implements OnInit, OnDestroy, DoCheck {
     } as Fiche;
 
 
+return this.ficheI.idFiche
+  }
+
+  submit(){
+    if(Number.isFinite(this.idOfFiche)==true){
+
+      console.log('update mokhtar');
+
+      this.updateFiche();
+
+  }else{
+
+    this.saveFiche();
+
+    console.log('create mokhtar');
 
   }
+
+}
 
 }
 

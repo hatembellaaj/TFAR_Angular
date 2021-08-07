@@ -1,5 +1,5 @@
 
-import { Component, EventEmitter, Input, OnInit, Output, DoCheck } from '@angular/core';
+import { Component, Input, OnInit, DoCheck, OnChanges, SimpleChanges } from '@angular/core';
 import { Fiche } from 'src/model/fiche';
 
 
@@ -8,7 +8,7 @@ import { Fiche } from 'src/model/fiche';
   templateUrl: './circon-de-decouverte.component.html',
   styleUrls: ['./circon-de-decouverte.component.css']
 })
-export class CirconDeDecouverteComponent implements OnInit,DoCheck {
+export class CirconDeDecouverteComponent implements OnInit, DoCheck, OnChanges {
 
   @Input('circonstanceDec') circonstanceDec: Fiche | undefined;
 
@@ -24,13 +24,27 @@ export class CirconDeDecouverteComponent implements OnInit,DoCheck {
       syndromeAnemique: 'NP', syndromeHem: 'NP', syndromeInf: 'NP', decouverteFort: 'NP', enqueteFam: 'NP', typeCancer: '', cancer: 'NP'
     } as Fiche;
   }
-  ngDoCheck(): void {
+  ngOnChanges(changes: SimpleChanges): void {
+    console.log(changes);
 
-    if (this.circonstanceDec!=undefined){
+    const derniereValeur = changes.circonstanceDec.previousValue;
+    const currentValue = changes.circonstanceDec.currentValue
 
-      this.fiche2=this.circonstanceDec
+    if (derniereValeur == undefined && currentValue != undefined) {
+
+      this.fiche2 = currentValue;
 
     }
+  }
+  ngDoCheck(): void {
+
+    /*
+
+    if (this.circonstanceDec != undefined) {
+
+      this.fiche2 = this.circonstanceDec
+
+    }*/
 
 
   }
@@ -38,7 +52,7 @@ export class CirconDeDecouverteComponent implements OnInit,DoCheck {
   ngOnInit(): void {
   }
 
-  saveCirDecInformations(){
+  saveCirDecInformations() {
     return this.fiche2;
   }
 

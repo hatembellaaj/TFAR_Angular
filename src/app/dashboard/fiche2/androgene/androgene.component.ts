@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output, DoCheck } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, DoCheck, OnChanges, SimpleChanges } from '@angular/core';
 import { Androgene } from 'src/model/androgene';
 
 @Component({
@@ -6,7 +6,7 @@ import { Androgene } from 'src/model/androgene';
   templateUrl: './androgene.component.html',
   styleUrls: ['./androgene.component.css']
 })
-export class AndrogeneComponent implements OnInit,DoCheck {
+export class AndrogeneComponent implements OnInit,DoCheck,OnChanges {
 
   @Input('androgeneUpd') androgeneUpd: Androgene | undefined;
 
@@ -19,12 +19,26 @@ export class AndrogeneComponent implements OnInit,DoCheck {
   constructor() {
     this.androgene = { mois: 'Janvier', reponse: 'NP' } as Androgene;
   }
+  ngOnChanges(changes: SimpleChanges): void {
+    console.log(changes);
+
+    const derniereValeur = changes.androgeneUpd.previousValue;
+    const currentValue = changes.androgeneUpd.currentValue
+
+    if (derniereValeur == undefined && currentValue != undefined) {
+
+      this.androgene = currentValue;
+
+    }
+  }
   ngDoCheck(): void {
+
+    /*
     if (this.androgeneUpd!=undefined){
 
       this.androgene=this.androgeneUpd;
 
-    }
+    }*/
   }
 
   ngOnInit(): void {
