@@ -28,6 +28,8 @@ export class EtudeCytoComponent implements OnInit,DoCheck,OnChanges {
 
   irTab = ['Oui', 'Non'];
 
+  var!:any;
+
   date1 = new FormControl(new Date());
   date2 = new FormControl(new Date());
 
@@ -37,7 +39,7 @@ export class EtudeCytoComponent implements OnInit,DoCheck,OnChanges {
       dateMoelle : this.date2.value,lymphocytes : 'NonFaite',
       agentPortant : 'Non',instabilite : 'Non',
       instabilitePourcentage : 0,ir : 'Non',irPourcentage : 0,
-      moelle : 'NonFaite',resultatMoelle : ''}
+      moelle : 'NonFaite',resultatMoelle : '',idLaboratoire:this.var}
    }
 
   ngDoCheck(): void {
@@ -62,7 +64,7 @@ export class EtudeCytoComponent implements OnInit,DoCheck,OnChanges {
     this.getAlllaboratoires();
 
     this.laboratoireService.getAllLaboratoires().subscribe(data => {
-      console.log(data, "sssssssssssss"); this.cytogenetique.idLaboratoire = data[0].id
+      console.log(data, "sssssssssssss"); this.var=data[0].id;
     });
   }
 
