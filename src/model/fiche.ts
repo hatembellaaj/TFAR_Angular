@@ -455,7 +455,7 @@ export interface Fiche {
 
   frere?:Frere;
 
-  cytogenetique?:Cytogenetique;
+  cytogenetique?:Array<Cytogenetique>;
 
 
 }

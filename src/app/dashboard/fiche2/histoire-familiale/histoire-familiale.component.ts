@@ -9,6 +9,10 @@ import { Component, OnInit, DoCheck, Input, OnChanges, SimpleChanges } from '@an
 })
 export class HistoireFamilialeComponent implements OnInit, DoCheck, OnChanges {
 
+
+
+
+
   @Input('histoireFam') histoireFam: Fiche | undefined;
 
 
@@ -23,6 +27,9 @@ export class HistoireFamilialeComponent implements OnInit, DoCheck, OnChanges {
   dConsanguiniteParent = ['NP', 'Absence', 'Endogamme', 'Lointaine', 'Double cousins germains (2 eme degre)', 'Cousins germains(3 eme degre)'];
 
   constructor() {
+
+
+
   }
   ngOnChanges(changes: SimpleChanges): void {
     console.log(changes);
@@ -60,4 +67,11 @@ export class HistoireFamilialeComponent implements OnInit, DoCheck, OnChanges {
   saveFamille() {
     return this.fiche1;
   }
+
+
+
+
+
+
+
 }

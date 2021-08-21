@@ -1,10 +1,13 @@
-import { Component,Input, OnInit,DoCheck, OnChanges, SimpleChanges} from '@angular/core';
+import { element } from 'protractor';
+import { Component, Input, OnInit, DoCheck, OnChanges, SimpleChanges, ViewChild, OnDestroy, ViewChildren, QueryList, AfterViewInit, AfterViewChecked } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { MatAccordion } from '@angular/material/expansion';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { LaboratoireService } from 'src/app/services/laboratoire.service';
 import { Cytogenetique } from 'src/model/cytogenetique';
 import { Laboratoire } from 'src/model/laboratoire';
+import { EssaiCytoComponent } from './essai-cyto/essai-cyto.component';
 
 
 @Component({
@@ -12,44 +15,25 @@ import { Laboratoire } from 'src/model/laboratoire';
   templateUrl: './etude-cyto.component.html',
   styleUrls: ['./etude-cyto.component.css']
 })
-export class EtudeCytoComponent implements OnInit,DoCheck,OnChanges {
+export class EtudeCytoComponent implements OnInit,DoCheck,OnDestroy,AfterViewChecked{
 
-  @Input('etudeCytoUpd') etudeCytoUpd: Cytogenetique | undefined;
+  @ViewChild(MatAccordion) accordion!: MatAccordion;
 
-  cytogenetique!: Cytogenetique ;
+  @Input('etudeCytoUpd') etudeCytoUpd: Array<Cytogenetique> | undefined;
 
-  laboratoires$!: Observable<Laboratoire[]>;
+  @ViewChildren(EssaiCytoComponent) essaiCytoRef!: QueryList<EssaiCytoComponent>;
 
-  lymphoTab = ['Faite', 'NonFaite'];
+  tabCyto:Array<Cytogenetique>=[];
 
-  agentPortantTab = ['Non', 'MMC', 'DEB'];
+  cyto1!:Cytogenetique;
 
-  instabiliteTab = ['Oui', 'Non'];
+  cyto2!:Cytogenetique;
 
-  irTab = ['Oui', 'Non'];
+  cyto3!:Cytogenetique;
 
-  var!:number;
-
-  f=false;
-
-  date1 = new FormControl(new Date());
-  date2 = new FormControl(new Date());
+  cyto4!:Cytogenetique;
 
 
-  constructor(private laboratoireService: LaboratoireService) {
-
-    this.cytogenetique={dateSang:this.date1.value,
-      dateMoelle : this.date2.value,lymphocytes : 'NonFaite',
-      agentPortant : 'Non',instabilite : 'Non',
-      instabilitePourcentage : 0,ir : 'Non',irPourcentage : 0,
-      moelle : 'NonFaite',resultatMoelle : ''}//,idLaboratoire:this.var}
-
-   }
-
-  ngDoCheck(): void {
-
-
-  }
 
   ngOnChanges(changes: SimpleChanges): void {
     console.log(changes);
@@ -59,42 +43,62 @@ export class EtudeCytoComponent implements OnInit,DoCheck,OnChanges {
 
     if (derniereValeur==undefined  && currentValue!=undefined){
 
-     this.cytogenetique=currentValue;
+      this.tabCyto=currentValue;
+      this.cyto1=this.tabCyto[0];
+      this.cyto2=this.tabCyto[1];
+      this.cyto3=this.tabCyto[2];
+      this.cyto4=this.tabCyto[3];
 
-     this.f=true;
 
-    }
-  }
+    }}
 
-  ngOnInit(): void {
 
-    this.getAlllaboratoires();
 
-    this.laboratoireService.getAllLaboratoires().subscribe(data => {
-      if (this.f==false){
 
-        this.cytogenetique.idLaboratoire=data[0].id;
 
-      }
+
+  constructor() {
+
+
+   }
+  ngAfterViewChecked(): void {
+
+    this.tabCyto=[];
+
+    this.essaiCytoRef.toArray().forEach(element=>{
+        this.tabCyto.push(element.cytogenetique);
+
+      //console.log('AfterViewChecked1',element.cytogenetique)
+
     });
 
 
+
+
+  }
+  ngOnDestroy(): void {
+    console.log('fin mmm',this.tabCyto);
+  }
+
+  ngDoCheck(): void {
+
+
   }
 
 
+
+
+  ngOnInit(): void {
+
+
+
+  }
 
 
 
   saveCytoInformations(){
-    return this.cytogenetique;
-  }
+    return this.tabCyto;
+  }}
 
-  getAlllaboratoires() {
 
-    this.laboratoires$ = this.laboratoireService.getAllLaboratoires().pipe(map(data => {
-      console.log(data); return data
-    }));
 
-  }
-
-}

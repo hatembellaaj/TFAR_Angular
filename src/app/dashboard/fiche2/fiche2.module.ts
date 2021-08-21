@@ -16,6 +16,7 @@ import { EtudeCytoComponent } from './etude-cyto/etude-cyto.component';
 import { SignesHemaComponent } from './signes-hema/signes-hema.component';
 import { TraitementComponent } from './traitement/traitement.component';
 import { AndrogeneComponent } from './androgene/androgene.component';
+import { EssaiCytoComponent } from './etude-cyto/essai-cyto/essai-cyto.component';
 
 
 
@@ -33,6 +34,7 @@ import { AndrogeneComponent } from './androgene/androgene.component';
     SignesHemaComponent,
     TraitementComponent,
     AndrogeneComponent,
+    EssaiCytoComponent,
   ],
   imports: [
     CommonModule,

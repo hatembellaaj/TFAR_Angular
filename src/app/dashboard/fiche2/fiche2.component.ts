@@ -69,7 +69,7 @@ export class Fiche2Component implements OnInit, OnDestroy, DoCheck {
   HistoireFamiliale!: Fiche;
   circonstanceDecouverte!: Fiche;
   SyndromeMalformatif!: Fiche;
-  EtudeCyto!: Cytogenetique | undefined;
+  EtudeCyto!: Array<Cytogenetique> | undefined;
   androgene!: Androgene | undefined;
   SignesHema!: Fiche;
   BiologieMoleculaire!: Fiche;
@@ -97,7 +97,7 @@ export class Fiche2Component implements OnInit, OnDestroy, DoCheck {
 
   }
   ngDoCheck(): void {
-    
+
   }
 
 
