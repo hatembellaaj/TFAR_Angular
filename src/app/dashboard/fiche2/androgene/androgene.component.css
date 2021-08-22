@@ -1,0 +1,27 @@
+.flex-container {
+  display: flex;
+}
+
+
+.flex-container > mat-form-field {
+  margin: 10px;
+  padding: 20px;
+  width: 470px;
+  height: 75px;
+
+}
+
+
+.flex-container > button
+{
+  margin: 10px;
+  padding: 20px;
+  width: 470px;
+  height: 75px;
+}
+
+button{
+
+  margin: 15px;
+
+}

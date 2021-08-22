@@ -1,3 +1,4 @@
+
 import { Component, EventEmitter, Input, OnInit, Output, DoCheck, OnChanges, SimpleChanges } from '@angular/core';
 import { Androgene } from 'src/model/androgene';
 
@@ -8,15 +9,19 @@ import { Androgene } from 'src/model/androgene';
 })
 export class AndrogeneComponent implements OnInit,DoCheck,OnChanges {
 
-  @Input('androgeneUpd') androgeneUpd: Androgene | undefined;
 
   androgene!: Androgene;
+
+  dataAndrogArray:Array<Androgene>=[];
+
+  @Input('androgeneUpd') androgeneUpd: Array<Androgene> | undefined;
 
   mois = ['Janvier', 'Fevrier', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Aout', 'Septembre', 'Octobre', 'Novembre', 'Decembre'];
 
   response = ['NP', 'RC', 'RP', 'RM', 'Echec'];
 
   constructor() {
+
     this.androgene = { mois: 'Janvier', reponse: 'NP' } as Androgene;
   }
   ngOnChanges(changes: SimpleChanges): void {
@@ -27,26 +32,52 @@ export class AndrogeneComponent implements OnInit,DoCheck,OnChanges {
 
     if (derniereValeur == undefined && currentValue != undefined) {
 
-      this.androgene = currentValue;
+      this.dataAndrogArray = currentValue;
 
     }
   }
   ngDoCheck(): void {
 
-    /*
-    if (this.androgeneUpd!=undefined){
-
-      this.androgene=this.androgeneUpd;
-
-    }*/
   }
 
   ngOnInit(): void {
+    this.dataAndrogArray.push(this.androgene);
   }
 
 
   saveAndrogeneInformations() {
-    return this.androgene;
+    return this.dataAndrogArray;
   }
+
+
+
+  addForm(){
+
+    if (this.dataAndrogArray.length<24){
+
+      this.androgene = { mois: 'Janvier', reponse: 'NP' } as Androgene;
+      this.dataAndrogArray.push(this.androgene);
+      console.log("data after add  :  ",this.dataAndrogArray);
+
+    } else {
+
+      console.log('length of the array must not be longer then 24')
+
+    }
+
+
+  }
+
+  removeForm(index:number){
+
+    this.dataAndrogArray.splice(index,1);
+
+    console.log("data after remove :  ",this.dataAndrogArray);
+
+
+
+  }
+
+
 
 }

@@ -449,7 +449,7 @@ export interface Fiche {
 
   patient?:Patient;
 
-  androgene?:Androgene;
+  androgene?:Array<Androgene>;
 
   cousin?:Cousin;
 

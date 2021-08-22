@@ -5,7 +5,7 @@ import { Patient } from './../../../model/patient';
 import { Departement } from '../../../model/departement';
 import { Component, OnDestroy, OnInit, ViewChild, DoCheck } from '@angular/core';
 import { MatAccordion } from '@angular/material/expansion';
-import { Observable, Subscription } from 'rxjs';
+import { Observable} from 'rxjs';
 import { Organisme } from 'src/model/organisme';
 import { map } from 'rxjs/operators';
 import { Router } from '@angular/router';
@@ -70,7 +70,7 @@ export class Fiche2Component implements OnInit, OnDestroy, DoCheck {
   circonstanceDecouverte!: Fiche;
   SyndromeMalformatif!: Fiche;
   EtudeCyto!: Array<Cytogenetique> | undefined;
-  androgene!: Androgene | undefined;
+  androgene!: Array<Androgene> | undefined;
   SignesHema!: Fiche;
   BiologieMoleculaire!: Fiche;
   CongelationCell!: Fiche;
