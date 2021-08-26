@@ -1,0 +1,55 @@
+.km{
+  margin-left: 25px;
+  margin-top: 35px;
+}
+
+
+.flex-container {
+  display: flex;
+  justify-content: left;
+}
+
+
+.flex-container > mat-form-field ,span{
+  margin: 10px;
+  padding: 10px;
+  width: 200px;
+  height: 75px;
+
+}
+
+.km1{
+  margin-left: 25px;
+  margin-top: 10px;
+}
+
+.st{
+
+  width: 100%;
+  height: 535px;
+
+  background-color: rgb(220, 220, 248);
+
+
+
+}
+
+canvas {
+  background-color: rgb(198, 198, 241);
+  width: 100%;
+  height: auto;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 
 import { StatistiqueRoutingModule } from './statistique-routing.module';
 import { StatistiqueComponent } from './statistique.component';
+import { MaterialModule } from 'src/app/material/material.module';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -11,7 +13,9 @@ import { StatistiqueComponent } from './statistique.component';
   ],
   imports: [
     CommonModule,
-    StatistiqueRoutingModule
+    StatistiqueRoutingModule,
+    MaterialModule,
+    FormsModule 
   ]
 })
 export class StatistiqueModule { }

@@ -70,8 +70,7 @@ export class HistoireFamilialeComponent implements OnInit, DoCheck, OnChanges {
 
 
 
-
-
+  
 
 
 }

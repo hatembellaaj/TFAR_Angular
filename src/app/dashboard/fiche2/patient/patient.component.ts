@@ -61,8 +61,10 @@ export class PatientComponent implements OnInit,DoCheck,OnChanges{
 
   }
 
-  radioChange() {
-    this.patient.sexe = this.chosenItem;
+  radioChange(a:any) {
+    this.patient.sexe = a;
+
+    console.log('qqqqqq',this.patient.sexe);
 
 
 

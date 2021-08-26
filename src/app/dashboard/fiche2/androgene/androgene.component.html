@@ -5,7 +5,7 @@
   <mat-label>Mois</mat-label>
 
   <mat-select [(ngModel)]="obj.mois" ngModel name="mois" required>
-    <mat-option *ngFor="let item of mois " value="{{item}}">{{item}}</mat-option>
+    <mat-option *ngFor="let item of mois " [value]="item">{{item}}</mat-option>
   </mat-select>
 
 </mat-form-field>

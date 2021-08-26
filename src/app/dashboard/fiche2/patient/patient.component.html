@@ -12,8 +12,8 @@
       <div class="example-full-width">
         <mat-label>Sexe : </mat-label>
 
-        <mat-radio-group name="opList" [(ngModel)]="chosenItem">
-          <mat-radio-button *ngFor="let op of list" [value]="op.name" name="opList" (change)="radioChange()">{{
+        <mat-radio-group name="opList" [(ngModel)]="patient.sexe" ngModel>
+          <mat-radio-button *ngFor="let op of list" [value]="op.name" name="opList" (change)="radioChange(op.name)">{{
             op.name}}</mat-radio-button>
         </mat-radio-group>
 

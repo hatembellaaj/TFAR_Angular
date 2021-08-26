@@ -48,6 +48,22 @@ export class FicheService {
     return this.http.get<Fiche>(this.baseUrl+"/api/fiches/find/"+ficheList.idFiche,{ headers: this.headers });
   }
 
+  getMF_Patient(): Observable<any>{
+    return this.http.get<any>(this.baseUrl+"/api/patients/statSexe", { headers: this.headers });
+  }
+
+  getnbre_UIV(): Observable<any>{
+    return this.http.get<any>(this.baseUrl+"/api/fiches/statuiv", { headers: this.headers });
+  }
+
+  getnbre_cellu(): Observable<any>{
+    return this.http.get<any>(this.baseUrl+"/api/fiches/statcellularite", { headers: this.headers });
+  }
+
+  getnbre_morphologie(): Observable<any>{
+    return this.http.get<any>(this.baseUrl+"/api/fiches/statmorphologie", { headers: this.headers });
+  }
+
 
 
 }

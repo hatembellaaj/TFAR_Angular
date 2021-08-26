@@ -1,1 +1,101 @@
-<p>statistique works!</p>
+<div class="km">
+
+  <button mat-raised-button color="primary">KM</button>
+
+</div>
+
+
+<div class="flex-container">
+  <span class="label">Paramétres : </span>
+  <mat-form-field appearance="fill">
+    <mat-label>Paramétres </mat-label>
+    <mat-select [(ngModel)]="varf" ngModel name="Paramétres" required>
+      <mat-option *ngFor="let item of ['uiv','cellularite','morphologie']" value="{{item}}">{{item}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
+
+
+<div class="km1">
+
+  <button mat-raised-button color="primary" (click)="SubFiche(varf)">Submit Fiche</button>
+
+</div>
+<br>
+
+<div class="st" style="display: flex;justify-content: space-around;" [ngSwitch]="varf1">
+
+
+  <div class="container" *ngSwitchCase="'uiv'">
+    <div class="row">
+      <div class="col-md-4"><canvas id="pieChart1" width="420" height="420"></canvas></div>
+
+
+
+      <div class="col-md-4"><canvas id="barChart1" width="420" height="420"></canvas></div>
+
+    </div>
+  </div>
+
+  <div class="container" *ngSwitchCase="'cellularite'">
+    <div class="row">
+      <div class="col-md-4"><canvas id="pieChart2" width="420" height="420"></canvas></div>
+
+
+
+      <div class="col-md-4"><canvas id="barChart2" width="420" height="420"></canvas></div>
+
+    </div>
+  </div>
+  <div class="container" *ngSwitchCase="'morphologie'">
+    <div class="row">
+      <div class="col-md-4"><canvas id="pieChart3" width="420" height="420"></canvas></div>
+
+
+
+      <div class="col-md-4"><canvas id="barChart3" width="420" height="420"></canvas></div>
+
+    </div>
+  </div>
+
+  <div *ngSwitchDefault></div>
+
+
+
+
+</div><br>
+
+<div class="flex-container">
+  <span class="label">Paramétres : </span>
+  <mat-form-field appearance="fill">
+    <mat-label>Paramétres </mat-label>
+    <mat-select [(ngModel)]="varp" ngModel name="Paramétres" required>
+      <mat-option *ngFor="let item of ['sexe']" value="{{item}}">{{item}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
+
+
+<div class="km1">
+
+  <button mat-raised-button color="primary"  (click)="SubPatient(varp)">Submit Patient</button>
+
+</div>
+
+<br>
+
+<div class="st" style="display: flex;justify-content: space-around;">
+
+
+  <div class="container" *ngIf="varp1=='sexe'">
+    <div class="row">
+      <div class="col-md-4"><canvas id="pieChart" width="420" height="420"></canvas></div>
+
+
+
+      <div class="col-md-4"><canvas id="barChart" width="420" height="420"></canvas></div>
+
+    </div>
+  </div>
+
+</div>
